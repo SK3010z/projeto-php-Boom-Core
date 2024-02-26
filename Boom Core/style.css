@@ -1,0 +1,39 @@
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+  background-color: #f1f3f8;
+}
+
+/* cabeçalho */
+#header {
+  width: auto;
+  height: 60px;
+  background-image: linear-gradient(90deg, #000000, #3533cd, #3533cd);
+  opacity: 78%;
+  padding: 10px 80px;
+  vertical-align: middle;
+}
+#logo {
+  height: 100%;
+  width: 200px;
+  text-align: left;
+  display: contents;
+}
+
+#logo img {
+  height: 100%;
+  width: 8%;
+  object-fit: contain;
+}
+#header #boom {
+  /* vertical-align: 1em; */
+  font-size: larger;
+  font-family: "roboto";
+  font-weight: bold;
+  color: #ffffff;
+  transform: translateY(50%);
+}
+
+#header.opcoes {
+}

@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="header">
-        <span id="logo"><img src="boom core.png" alt=""></span>
-        <label id="boom">Boom Core</label>
-        <label class="opcoes">Boom Core</label>
+        <span class="logo"><a class="logo" href="index.php"><img src="boom core.png" alt=""></a></span>
+        <span id="boom"><a href="index.php">Boom Core</a></span>
+        <a id="produtos" href="index.php"><p>Produtos</p><div></div></a>
 
     
         

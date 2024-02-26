@@ -29,8 +29,8 @@
         echo "<script>{$str}</script>";
         
     };
-    js("ola");
     
+
     if($_POST){
         $x = $_POST["x"];
         $y = $_POST["y"];

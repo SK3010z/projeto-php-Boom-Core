@@ -9,31 +9,67 @@ body {
 #header {
   width: auto;
   height: 60px;
-  background-image: linear-gradient(90deg, #000000, #3533cd, #3533cd);
+  background-image: linear-gradient(90deg, #000000, #3533cd);
   opacity: 78%;
   padding: 10px 80px;
-  vertical-align: middle;
 }
-#logo {
-  height: 100%;
-  width: 200px;
+/* links */
+#header a{
+  color: white;
+  text-decoration: none;
+}
+/* area do logo  */
+.logo {
+  height: inherit;
+  width: 60px;
   text-align: left;
-  display: contents;
+  display: inline-block;
 }
-
-#logo img {
-  height: 100%;
-  width: 8%;
+/* imagem do logo  */
+.logo img {
+  height: inherit;
+  width: inherit;
   object-fit: contain;
 }
+/* link clicavel do logo  */
+.logo a{
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+/* nome da empresa -> menu principal */
 #header #boom {
-  /* vertical-align: 1em; */
+  display: inline-block;
+  height: inherit;
+  vertical-align: middle;
   font-size: larger;
   font-family: "roboto";
   font-weight: bold;
   color: #ffffff;
-  transform: translateY(50%);
 }
 
-#header.opcoes {
+
+/* opcões do cabeçalho do site  */
+#header #produtos{
+  display: inline-block;
+  height: inherit;
+  vertical-align: top;
+  margin-left: 20%;
+  p{
+    transform: translateY(100%);
+    font-size: larger;
+    font-weight: bold;
+  }
+  div{
+      width: 70%;
+      height: 3px;
+      display: block;
+      border-radius: 1em;
+      text-align: center;
+      transform: translate(20%, 800%);
+      
+      
+
+      background-color: white;
+  }
 }

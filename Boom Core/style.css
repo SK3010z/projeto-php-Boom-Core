@@ -1,6 +1,27 @@
 @import url("reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+@keyframes start{
+  0%{
+      width: 0%;
+  }
+  100%{
+      width: 100%;
+  }
+}
+@keyframes end{
+  0%{
+      width: 100%;
+  }
+  100%{
+      width: 0%;
+  }
+}
+
+
+
+
+
 body {
   background-color: #f1f3f8;
 }
@@ -55,21 +76,45 @@ body {
   height: inherit;
   vertical-align: top;
   margin-left: 20%;
-  p{
-    transform: translateY(100%);
+  p{ /*texto*/
+    vertical-align: middle;
     font-size: larger;
     font-weight: bold;
+    margin-top: 25%;
   }
-  div{
-      width: 70%;
+  div{ /*traço do produtos*/
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 0%;
       height: 3px;
       display: block;
       border-radius: 1em;
       text-align: center;
-      transform: translate(20%, 800%);
-      
-      
+      background-color: white; 
+  }
+}
 
-      background-color: white;
+
+
+#header #servicos{
+  display: inline-block;
+  height: inherit;
+  vertical-align: top;
+  margin-left: 8%;
+  p{ /*texto*/
+    vertical-align: middle;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 25%;
+  }
+  div{ /*traço do produtos*/
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 0%;
+      height: 3px;
+      display: block;
+      border-radius: 1em;
+      text-align: center;
+      background-color: white; 
   }
 }

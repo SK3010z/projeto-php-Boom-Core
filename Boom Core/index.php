@@ -8,14 +8,15 @@
 </head>
 <body>
     <div id="header">
-        <span class="logo"><a class="logo" href="index.php"><img src="boom core.png" alt=""></a></span>
-        <span id="boom"><a href="index.php">Boom Core</a></span>
-        <a id="produtos" href="index.php"><p>Produtos</p><div></div></a>
+        <span class="logo"><a class="logo" href="./"><img src="boom core.png" alt=""></a></span>
+        <span id="boom"><a href="./">Boom Core</a></span>
+        <a id="produtos" href="./" onmouseover="start('traco1')" onmouseleave="end('traco1')"><p>Produtos</p><div id="traco1"></div></a>
+        <a id="servicos" href="./" onmouseover="start('traco2')" onmouseleave="end('traco2')"><p>Servicos</p><div id="traco2"></div></a>
 
     
         
     </div>
 
-    
+    <script src="script.js"></script>
 </body>
 </html>

@@ -13,8 +13,9 @@
         <a id="produtos" href="./" onmouseover="start('traco1')" onmouseleave="end('traco1')"><p>Produtos</p><div id="traco1"></div></a>
         <a id="servicos" href="./" onmouseover="start('traco2')" onmouseleave="end('traco2')"><p>Serviços</p><div id="traco2"></div></a>
         <a id="atendimentos" href="./" onmouseover="start('traco3')" onmouseleave="end('traco3')"><p>Atendimentos</p><div id="traco3"></div></a>
-        <form action="index.php" id="pesquisa">
-            <input type="text">
+        <form action="index.php" id="pesquisa" method="post">
+            <input type="text" placeholder="Pesquisa">
+            <input type="submit" id="botao" value="">
         </form>
     </div>
 

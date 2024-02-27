@@ -149,10 +149,20 @@ body {
   display: inline-block;
   vertical-align: top;
 
-  input {
+  input[type="text"] {
     height: 30px;
-    :focus{
-      
-    }
+    font-size: large;
+    border: 0px none transparent;
+    vertical-align: middle;
+  }
+  input#botao {
+    vertical-align: middle;
+    margin-top: 0;
+    height: 32px;
+    width: 32px;
+    padding: 1px 2px;
+    border: unset;
+    background-image: url("lupa.png");
+    object-fit: contain;
   }
 }

@@ -1,4 +1,4 @@
-@import url("reset.css");
+@import url("../assets/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 @keyframes start {
@@ -33,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   text-align: center;
-} 
+}
 /* links */
 #header a {
   color: white;
@@ -42,7 +42,7 @@ body {
 
 /*headerL (ESQUERDO)*/
 /* area do logo  */
-#header #headerL{
+#header #headerL {
   margin-right: 25px;
 }
 
@@ -77,15 +77,11 @@ body {
   margin-top: 20px;
 }
 
-
-
 /* headerR (DIREITA) */
 /* opcões do cabeçalho do site  */
 
-#header #headerR{
-  
+#header #headerR {
   width: 800px;
-  
 }
 #header #produtos {
   display: inline-block;
@@ -124,7 +120,7 @@ body {
     margin-top: 28%;
   }
   div {
-    /*traço do produtos*/
+    /*traço do prodrltos*/
     margin: 0 auto;
     margin-top: 5%;
     width: 0%;
@@ -176,32 +172,30 @@ body {
     vertical-align: middle;
     margin-top: 0;
     height: 32px;
-    width: 32px; 
+    width: 32px;
     padding: 1px 2px;
     border: unset;
-    background: url("lupa.png") no-repeat scroll transparent;
+    background: url("../assets/lupa.png") no-repeat scroll transparent;
     background-position: center;
     border-radius: 10px;
     transform: translateX(-38px);
-    
+
     background-size: 25px 25px;
     object-fit: contain;
-
   }
-  input#botao:hover{
+  input#botao:hover {
     background-color: #0000003d;
   }
 }
 
-#header #user{
+#header #user {
   width: 45px;
   height: 45px;
   vertical-align: top;
   transform: translateY(30%);
-  
 }
 
-#header #notificacao{
+#header #notificacao {
   width: 45px;
   height: 45px;
   vertical-align: top;

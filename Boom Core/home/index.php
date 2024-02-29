@@ -9,7 +9,7 @@
 <body>
     <div id="header">
         <span id="headerL">
-            <span class="logo"><a class="logo" href="./"><img src="boom core.png" alt=""></a></span>
+            <span class="logo"><a class="logo" href="./"><img src="../assets/boom core.png" alt=""></a></span>
             <span id="boom"><a href="./">Boom Core</a></span>
         </span>
         <span id="headerR">
@@ -20,8 +20,8 @@
                 <input type="text" placeholder="Pesquisa" name="pesquisa">
                 <input type="submit" id="botao" value="" title="pesquisar">
             </form>
-            <a href="index.php"><img id="user" src="user.png" title="perfil do usuário"/></a>
-            <a href="index.php"><img id="notificacao" src="sino.png" title="perfil do usuário"/></a>
+            <a href="index.php"><img id="user" src="../assets/user.png" title="perfil do usuário"/></a>
+            <a href="index.php"><img id="notificacao" src="../assets/sino.png" title="perfil do usuário"/></a>
         </span>
     </div>
 

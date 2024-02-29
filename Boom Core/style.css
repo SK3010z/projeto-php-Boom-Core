@@ -30,13 +30,22 @@ body {
   background-image: linear-gradient(90deg, #000000, #3533cd);
   opacity: 78%;
   padding: 10px 1% 10px 10%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 } 
 /* links */
 #header a {
   color: white;
   text-decoration: none;
 }
+
+/*headerL (ESQUERDO)*/
 /* area do logo  */
+#header #headerL{
+  margin-right: 25px;
+}
+
 .logo {
   height: inherit;
   width: 60px;
@@ -68,12 +77,20 @@ body {
   margin-top: 20px;
 }
 
+
+
+/* headerR (DIREITA) */
 /* opcões do cabeçalho do site  */
+
+#header #headerR{
+  
+  width: 800px;
+  
+}
 #header #produtos {
   display: inline-block;
   height: inherit;
   vertical-align: top;
-  margin-left: 20%;
   p {
     /*texto*/
     vertical-align: middle;
@@ -174,4 +191,20 @@ body {
   input#botao:hover{
     background-color: #0000003d;
   }
+}
+
+#header #user{
+  width: 45px;
+  height: 45px;
+  vertical-align: top;
+  transform: translateY(30%);
+  
+}
+
+#header #notificacao{
+  width: 45px;
+  height: 45px;
+  vertical-align: top;
+  transform: translateY(30%);
+  margin-left: 1.5%;
 }

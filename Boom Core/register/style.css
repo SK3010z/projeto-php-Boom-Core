@@ -15,3 +15,7 @@ h1 {
   font-family: "Roboto";
   text-align: center;
 }
+
+#content input {
+  margin: 10px;
+}

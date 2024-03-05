@@ -1,0 +1,130 @@
+@import url("../assets/reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@keyframes aumentar {
+  0% {
+    height: 1em;
+  }
+  100% {
+    height: 1em;
+  }
+}
+
+body {
+  background-color: #f6f6f6;
+}
+
+/* INICIO DO CABEÇARIO */
+
+#header {
+  text-wrap: nowrap;
+  width: auto;
+  height: 60px;
+  background-image: linear-gradient(90deg, #000000, #3533cd);
+  opacity: 78%;
+  padding: 10px 1% 10px 10%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+/* links */
+#header a {
+  color: white;
+  text-decoration: none;
+}
+
+/*headerL (ESQUERDO)*/
+/* area do logo  */
+#header #headerL {
+  margin-right: 25px;
+}
+
+.logo {
+  height: inherit;
+  width: 60px;
+  text-align: left;
+  display: inline-block;
+}
+/* imagem do logo  */
+.logo img {
+  height: inherit;
+  width: inherit;
+  object-fit: contain;
+}
+/* link clicavel do logo  */
+.logo a {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+/* nome da empresa -> menu principal */
+#header #boom {
+  display: inline-block;
+  height: inherit;
+  margin: auto 0;
+  font-size: 2em;
+  font-family: "roboto";
+  font-weight: bold;
+  color: #ffffff;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+/* FIM DO CABEÇARIO */
+
+/* CAIXA DE CADASTRO  */
+.flex_container {
+  display: block;
+  height: 300px;
+  width: 400px;
+  margin: 120px auto 0;
+  background-color: #5e5dd2;
+  border-radius: 20px;
+  padding: 60px 30px;
+  align-content: center;
+}
+
+.flex_container form {
+  h1 {
+    font-family: "Roboto";
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+  }
+
+  label {
+    font-size: 1.3em;
+    font-family: "Roboto";
+    text-align: left;
+    justify-content: left;
+    font-weight: 500;
+    color: white;
+  }
+  input {
+    width: 100%;
+    font-size: 1.2em;
+    height: 1.2em;
+    box-shadow: 2px 2px grey;
+    border-radius: 20px 20px / 30px 30px;
+    margin-bottom: 20px;
+    transition: height 0.2s;
+  }
+  input:focus {
+    /* animation: aumentar 2s; */
+
+    height: 1.6em;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+    font-family: "Roboto";
+    font-size: large;
+    font-weight: 500;
+    text-align: center;
+    margin: 15px auto;
+    color: white;
+    cursor: pointer;
+    display: block;
+  }
+}

@@ -53,6 +53,10 @@
         echo count($arrayMassa); // conta quantos elementos tem
 
 
+        // isset() = Retorna TRUE se uma variável é declarada e não é nula
+        // empty() = Retorna TRUE se uma variável não é declarada, false, null ou ""
+
+
         
     
 

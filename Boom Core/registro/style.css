@@ -11,7 +11,11 @@
 }
 
 body {
-  background-color: #f6f6f6;
+  background-image: url(../assets/fundo.jpg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* INICIO DO CABEÇARIO */
@@ -75,10 +79,11 @@ body {
 /* CAIXA DE CADASTRO  */
 .flex_container {
   display: block;
-  height: 300px;
+  height: fit-content;
   width: 400px;
   margin: 120px auto 0;
-  background-color: #5e5dd2;
+  background-color: transparent;
+  border: 3px solid rgba(255, 255, 255, 0.568);
   border-radius: 20px;
   padding: 60px 30px;
   align-content: center;
@@ -87,10 +92,11 @@ body {
 .flex_container form {
   h1 {
     font-family: "Roboto";
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     text-align: center;
     color: white;
+    margin-bottom: 20px;
   }
 
   label {
@@ -104,7 +110,7 @@ body {
   input {
     width: 100%;
     font-size: 1.2em;
-    height: 1.2em;
+    height: 1.8em;
     box-shadow: 2px 2px grey;
     border-radius: 20px 20px / 30px 30px;
     margin-bottom: 20px;
@@ -113,18 +119,21 @@ body {
   input:focus {
     /* animation: aumentar 2s; */
 
-    height: 1.6em;
+    height: 2.1em;
   }
   button {
     border: none;
-    background-color: transparent;
+    background-color: #00000030;
+    border-radius: 20px;
+    padding: 3px;
     font-family: "Roboto";
-    font-size: large;
+    font-size: 2em;
     font-weight: 500;
     text-align: center;
     margin: 15px auto;
     color: white;
     cursor: pointer;
     display: block;
+    width: 80%;
   }
 }

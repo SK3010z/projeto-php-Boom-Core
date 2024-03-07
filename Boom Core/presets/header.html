@@ -1,251 +1,275 @@
 <div id="header">
-    <span id="headerL">
-        <span class="logo"><a class="logo" href="./"><img src="../assets/boom core.png" alt=""></a></span>
-        <span id="boom"><a href="./">Boom Core</a></span>
-    </span>
-    <span id="headerR">
+  <span id="headerL">
+    <span class="logo"
+      ><a class="logo" href="./"><img src="../assets/boom core.png" alt="" /></a
+    ></span>
+    <span id="boom"><a href="./">Boom Core</a></span>
+  </span>
+  <span id="headerR">
+    <!-- produtos -->
+    <a
+      id="produtos"
+      href="./"
+      onmouseover="start('traco1')"
+      onmouseleave="end('traco1')"
+      ><p>Produtos</p>
+      <div id="traco1"></div
+    ></a>
 
-        <!-- produtos -->
-        <a id="produtos" href="./" onmouseover="start('traco1')" onmouseleave="end('traco1')"><p>Produtos</p><div id="traco1"></div></a>
+    <!-- serviços  -->
+    <a
+      id="servicos"
+      href="./"
+      onmouseover="start('traco2')"
+      onmouseleave="end('traco2')"
+      ><p>Serviços</p>
+      <div id="traco2"></div
+    ></a>
 
-        <!-- serviços  -->
-        <a id="servicos" href="./" onmouseover="start('traco2')" onmouseleave="end('traco2')"><p>Serviços</p><div id="traco2"></div></a>
+    <!-- atendimentos -->
+    <a
+      id="atendimentos"
+      href="./"
+      onmouseover="start('traco3')"
+      onmouseleave="end('traco3')"
+      ><p>Atendimentos</p>
+      <div id="traco3"></div
+    ></a>
 
-        <!-- atendimentos -->
-        <a id="atendimentos" href="./" onmouseover="start('traco3')" onmouseleave="end('traco3')"><p>Atendimentos</p><div id="traco3"></div></a>
+    <!-- pesquisa  -->
+    <form action="index.php" id="pesquisa" method="get">
+      <!-- caixa de pesquisa  -->
+      <input type="text" placeholder="Pesquisa" name="pesquisa" />
+      <!-- botao de pesquisar  -->
+      <input type="submit" id="botao" value="" title="pesquisar" />
+    </form>
 
-        <!-- pesquisa  -->
-        <form action="index.php" id="pesquisa" method="get">
-            <!-- caixa de pesquisa  -->
-            <input type="text" placeholder="Pesquisa" name="pesquisa">
-            <!-- botao de pesquisar  -->
-            <input type="submit" id="botao" value="" title="pesquisar">
-        </form>
+    <!-- botao de usuario  -->
+    <a href="index.php"
+      ><img id="user" src="../assets/user.png" title="Perfil do usuário"
+    /></a>
 
-        <!-- botao de usuario  -->
-        <a href="index.php"><img id="user" src="../assets/user.png" title="Perfil do usuário"/></a>
-        
-        <!-- notificações  -->
-        <a href="index.php"><img id="notificacao" src="../assets/sino.png" title="Notificações"/></a>
-    </span>
+    <!-- notificações  -->
+    <a href="index.php"
+      ><img id="notificacao" src="../assets/sino.png" title="Notificações"
+    /></a>
+  </span>
 </div>
 
 <style>
-@import url("../assets/reset.css");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+  @import url("../assets/reset.css");
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-body {
-  background-color: #f1f3f8;
-}
-
-@keyframes start {
-  0% {
-    width: 0%;
+  body {
+    background-color: transparent;
+    background-image: url("../assets/fundo.jpg");
   }
-  100% {
-    width: 100%;
+
+  @keyframes start {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
   }
-}
-@keyframes end {
-  0% {
-    width: 100%;
+  @keyframes end {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0%;
+    }
   }
-  100% {
-    width: 0%;
-  }
-}
 
-
-
-/* cabeçalho */
-#header {
-  text-wrap: nowrap;
-  width: auto;
-  height: 60px;
-  background-image: linear-gradient(90deg, #000000, #3533cd);
-  opacity: 78%;
-  padding: 10px 1% 10px 10%;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-}
-/* links */
-#header a {
-  color: white;
-  text-decoration: none;
-}
-
-/*headerL (LADO ESQUERDO)*/
-/* area do logo  */
-#header #headerL {
-  margin-right: 25px;
-}
-
-.logo {
-  height: inherit;
-  width: 60px;
-  text-align: left;
-  display: inline-block;
-}
-/* imagem do logo  */
-.logo img {
-  height: inherit;
-  width: inherit;
-  object-fit: contain;
-}
-/* link clicavel do logo  */
-.logo a {
-  height: 100%;
-  width: 100%;
-  display: block;
-}
-/* nome da empresa -> menu principal */
-#header #boom {
-  display: inline-block;
-  height: inherit;
-  margin: auto 0;
-  font-size: 2em;
-  font-family: "roboto";
-  font-weight: bold;
-  color: #ffffff;
-  vertical-align: top;
-  margin-top: 20px;
-}
-
-/* headerR (DIREITA) */
-/* opcões do cabeçalho do site  */  
-#header #headerR {
-  width: 800px;
-}
-#header #produtos {
-  display: inline-block;
-  height: inherit;
-  vertical-align: top;
-  p {
-    /*texto*/
-    vertical-align: middle;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 25%;
-  }
-  div {
-    /*traço do produtos*/
-    margin: 0 auto;
-    margin-top: 5%;
-    width: 0%;
-    height: 3px;
-    display: block;
-    border-radius: 1em;
+  /* cabeçalho */
+  #header {
+    text-wrap: nowrap;
+    width: auto;
+    height: 60px;
+    background-image: linear-gradient(90deg, #000000, #3533cd);
+    opacity: 78%;
+    padding: 10px 1% 10px 10%;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-    background-color: white;
   }
-}
+  /* links */
+  #header a {
+    color: white;
+    text-decoration: none;
+  }
 
-#header #servicos {
-  display: inline-block;
-  height: inherit;
-  vertical-align: top;
-  margin-left: 3%;
-  p {
-    /*texto*/
-    vertical-align: middle;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 28%;
+  /*headerL (LADO ESQUERDO)*/
+  /* area do logo  */
+  #header #headerL {
+    margin-right: 25px;
   }
-  div {
-    /*traço do prodrltos*/
-    margin: 0 auto;
-    margin-top: 5%;
-    width: 0%;
-    height: 3px;
-    display: block;
-    border-radius: 1em;
-    text-align: center;
-    background-color: white;
-  }
-}
 
-#header #atendimentos {
-  display: inline-block;
-  height: inherit;
-  vertical-align: top;
-  margin-left: 3%;
-  p {
-    /*texto*/
-    vertical-align: middle;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 17%;
+  .logo {
+    height: inherit;
+    width: 60px;
+    text-align: left;
+    display: inline-block;
   }
-  div {
-    /*traço do produtos*/
-    margin: 0 auto;
-    margin-top: 5%;
-    width: 0%;
-    height: 3px;
-    display: block;
-    border-radius: 1em;
-    text-align: center;
-    background-color: white;
-  }
-}
-
-#header #pesquisa {
-  margin: 18px 0 0 3%;
-  display: inline-block;
-  vertical-align: top;
-
-  input[type="text"] {
-    height: 30px;
-    font-size: large;
-    border: 0px none transparent;
-    vertical-align: middle;
-  }
-  input#botao {
-    vertical-align: middle;
-    margin-top: 0;
-    height: 32px;
-    width: 32px;
-    padding: 1px 2px;
-    border: unset;
-    background: url("../assets/lupa.png") no-repeat scroll transparent;
-    background-position: center;
-    border-radius: 10px;
-    transform: translateX(-38px);
-
-    background-size: 25px 25px;
+  /* imagem do logo  */
+  .logo img {
+    height: inherit;
+    width: inherit;
     object-fit: contain;
   }
-  input#botao:hover {
-    background-color: #0000003d;
+  /* link clicavel do logo  */
+  .logo a {
+    height: 100%;
+    width: 100%;
+    display: block;
   }
-}
+  /* nome da empresa -> menu principal */
+  #header #boom {
+    display: inline-block;
+    height: inherit;
+    margin: auto 0;
+    font-size: 2em;
+    font-family: "roboto";
+    font-weight: bold;
+    color: #ffffff;
+    vertical-align: top;
+    margin-top: 20px;
+  }
 
-#header #user {
-  width: 45px;
-  height: 45px;
-  vertical-align: top;
-  transform: translateY(30%);
-}
+  /* headerR (DIREITA) */
+  /* opcões do cabeçalho do site  */
+  #header #headerR {
+    width: 800px;
+  }
+  #header #produtos {
+    display: inline-block;
+    height: inherit;
+    vertical-align: top;
+    p {
+      /*texto*/
+      vertical-align: middle;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 25%;
+    }
+    div {
+      /*traço do produtos*/
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 0%;
+      height: 3px;
+      display: block;
+      border-radius: 1em;
+      text-align: center;
+      background-color: white;
+    }
+  }
 
-#header #notificacao {
-  width: 45px;
-  height: 45px;
-  vertical-align: top;
-  transform: translateY(30%);
-  margin-left: 1.5%;
-}
+  #header #servicos {
+    display: inline-block;
+    height: inherit;
+    vertical-align: top;
+    margin-left: 3%;
+    p {
+      /*texto*/
+      vertical-align: middle;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 28%;
+    }
+    div {
+      /*traço do prodrltos*/
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 0%;
+      height: 3px;
+      display: block;
+      border-radius: 1em;
+      text-align: center;
+      background-color: white;
+    }
+  }
 
+  #header #atendimentos {
+    display: inline-block;
+    height: inherit;
+    vertical-align: top;
+    margin-left: 3%;
+    p {
+      /*texto*/
+      vertical-align: middle;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 17%;
+    }
+    div {
+      /*traço do produtos*/
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 0%;
+      height: 3px;
+      display: block;
+      border-radius: 1em;
+      text-align: center;
+      background-color: white;
+    }
+  }
+
+  #header #pesquisa {
+    margin: 18px 0 0 3%;
+    display: inline-block;
+    vertical-align: top;
+
+    input[type="text"] {
+      height: 30px;
+      font-size: large;
+      border: 0px none transparent;
+      vertical-align: middle;
+    }
+    input#botao {
+      vertical-align: middle;
+      margin-top: 0;
+      height: 32px;
+      width: 32px;
+      padding: 1px 2px;
+      border: unset;
+      background: url("../assets/lupa.png") no-repeat scroll transparent;
+      background-position: center;
+      border-radius: 10px;
+      transform: translateX(-38px);
+
+      background-size: 25px 25px;
+      object-fit: contain;
+    }
+    input#botao:hover {
+      background-color: #0000003d;
+    }
+  }
+
+  #header #user {
+    width: 45px;
+    height: 45px;
+    vertical-align: top;
+    transform: translateY(30%);
+  }
+
+  #header #notificacao {
+    width: 45px;
+    height: 45px;
+    vertical-align: top;
+    transform: translateY(30%);
+    margin-left: 1.5%;
+  }
 </style>
 <script>
-    function start(str) {
-        var traco = document.getElementById(str);
-        traco.style.animation = "start 0.2s ease forwards"
-    }
-    
-    function end(str) {
-        var traco = document.getElementById(str);
-        traco.style.animation = "end 0.2s ease forwards"
-    }
+  function start(str) {
+    var traco = document.getElementById(str);
+    traco.style.animation = "start 0.2s ease forwards";
+  }
+
+  function end(str) {
+    var traco = document.getElementById(str);
+    traco.style.animation = "end 0.2s ease forwards";
+  }
 </script>

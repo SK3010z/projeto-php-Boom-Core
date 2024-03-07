@@ -17,33 +17,37 @@
 
     <div class="flex_container">
       
-      <form method="post" action="index.php">
+      <form method="post" action="../home/">
         <h1>Cadastro</h1>
         <!-- Nome  -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputEmail1" class="form-label">Nome</label>
-          <input type="name" class="form-control" id="exampleInputEmail1" name="nome"/>
+          <label for="exampleInputEmail1" class="labelInputs1">Nome</label>
+          <input type="name" class="inputs1" id="exampleInputEmail1" name="nome"/>
         <!-- </div> -->
         <br />
         <!-- Email -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputPassword1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputPassword1" name="email"/>
+          <label for="exampleInputPassword1" class="labelInputs1">Email</label>
+          <input type="email" class="inputs1" id="exampleInputPassword1" name="email"/>
         <!-- </div> -->
         <br />
         <!-- Senha  -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputPassword1" class="form-label">Senha</label>
+          <label for="exampleInputPassword1" class="labelInputs1">Senha</label>
           <input
             type="password"
-            class="form-control"
+            class="inputs1"
             id="exampleInputPassword1"
             name="senha"
           />
+        <span><input type="checkbox" name="manter" id="manter"><label for="manter" id="labelManter">Manter-me conectado</label></span>
+        <span><a href=""></a></span>
         <!-- </div> -->
         <br />
         <!-- enviar -->
         <button type="submit" id="botaoEnviar">Enviar</button>
+
+        
       </form>
     </div>
   </body>

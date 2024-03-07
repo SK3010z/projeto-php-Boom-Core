@@ -97,9 +97,10 @@ body {
     text-align: center;
     color: white;
     margin-bottom: 20px;
+    transition: 0.2s;
   }
 
-  label {
+  label.labelInputs1 {
     font-size: 1.3em;
     font-family: "Roboto";
     text-align: left;
@@ -107,7 +108,15 @@ body {
     font-weight: 500;
     color: white;
   }
-  input {
+  label#labelManter {
+    font-size: 1.1em;
+    font-family: "Roboto";
+    text-align: left;
+    justify-content: left;
+    font-weight: 400;
+    color: white;
+  }
+  input.inputs1 {
     width: 100%;
     font-size: 1.2em;
     height: 1.8em;
@@ -116,10 +125,15 @@ body {
     margin-bottom: 20px;
     transition: height 0.2s;
   }
-  input:focus {
+  input.inputs1:focus {
     /* animation: aumentar 2s; */
 
     height: 2.1em;
+  }
+  input#manter {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 7px;
   }
   button {
     border: none;

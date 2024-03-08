@@ -1,3 +1,4 @@
+/* 
 @import url("../assets/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
@@ -20,10 +21,10 @@
 
 body {
   
-}
+} */
 
 /* cabeçalho */
-#header {
+/* #header {
   text-wrap: nowrap;
   width: auto;
   height: 60px;
@@ -33,39 +34,39 @@ body {
   display: flex;
   justify-content: space-between;
   text-align: center;
-}
+} */
 /* links */
-#header a {
+/* #header a {
   color: white;
   text-decoration: none;
-}
+} */
 
 /*headerL (ESQUERDO)*/
 /* area do logo  */
-#header #headerL {
+/* #header #headerL {
   margin-right: 25px;
-}
+} */
 
-.logo {
+/* .logo {
   height: inherit;
   width: 60px;
   text-align: left;
   display: inline-block;
-}
+} */
 /* imagem do logo  */
-.logo img {
+/* .logo img {
   height: inherit;
   width: inherit;
   object-fit: contain;
-}
+} */
 /* link clicavel do logo  */
-.logo a {
+/* .logo a {
   height: 100%;
   width: 100%;
   display: block;
-}
+} */
 /* nome da empresa -> menu principal */
-#header #boom {
+/* #header #boom {
   display: inline-block;
   height: inherit;
   margin: auto 0;
@@ -75,28 +76,28 @@ body {
   color: #ffffff;
   vertical-align: top;
   margin-top: 20px;
-}
+} */
 
 /* headerR (DIREITA) */
 /* opcões do cabeçalho do site  */
 
-#header #headerR {
+/* #header #headerR {
   width: 800px;
-}
-#header #produtos {
+} */
+/* #header #produtos {
   display: inline-block;
   height: inherit;
   vertical-align: top;
-  p {
+  p { */
     /*texto*/
-    vertical-align: middle;
+    /* vertical-align: middle;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 25%;
   }
-  div {
+  div { */
     /*traço do produtos*/
-    margin: 0 auto;
+    /* margin: 0 auto;
     margin-top: 5%;
     width: 0%;
     height: 3px;
@@ -105,23 +106,23 @@ body {
     text-align: center;
     background-color: white;
   }
-}
+} */
 
-#header #servicos {
+/* #header #servicos {
   display: inline-block;
   height: inherit;
   vertical-align: top;
   margin-left: 3%;
-  p {
+  p { */
     /*texto*/
-    vertical-align: middle;
+    /* vertical-align: middle;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 28%;
   }
-  div {
+  div { */
     /*traço do prodrltos*/
-    margin: 0 auto;
+    /* margin: 0 auto;
     margin-top: 5%;
     width: 0%;
     height: 3px;
@@ -130,23 +131,23 @@ body {
     text-align: center;
     background-color: white;
   }
-}
+} */
 
-#header #atendimentos {
+/* #header #atendimentos {
   display: inline-block;
   height: inherit;
   vertical-align: top;
   margin-left: 3%;
-  p {
+  p { */
     /*texto*/
-    vertical-align: middle;
+    /* vertical-align: middle;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 17%;
   }
-  div {
+  div { */
     /*traço do produtos*/
-    margin: 0 auto;
+    /* margin: 0 auto;
     margin-top: 5%;
     width: 0%;
     height: 3px;
@@ -155,9 +156,9 @@ body {
     text-align: center;
     background-color: white;
   }
-}
+} */
 
-#header #pesquisa {
+/* #header #pesquisa {
   margin: 18px 0 0 3%;
   display: inline-block;
   vertical-align: top;
@@ -201,4 +202,4 @@ body {
   vertical-align: top;
   transform: translateY(30%);
   margin-left: 1.5%;
-}
+} */

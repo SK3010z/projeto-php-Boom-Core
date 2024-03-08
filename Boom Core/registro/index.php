@@ -7,12 +7,7 @@
   <body>
 
 
-  <div id="header">
-        <span id="headerL">
-            <span class="logo"><a class="logo" href="./"><img src="../assets/boom core.png" alt=""></a></span>
-            <span id="boom"><a href="./">Boom Core</a></span>
-        </span>
-    </div>
+  <?php include("../presets/header.html") ?>
 
 
     <div class="flex_container">
@@ -21,31 +16,31 @@
         <h1>Cadastro</h1>
         <!-- Nome  -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputEmail1" class="labelInputs1">Nome</label>
-          <input type="name" class="inputs1" id="exampleInputEmail1" name="nome"/>
+          <label for="exampleInputEmail1" class="labelInputs1" for="nome">Nome</label>
+          <input type="name" class="inputs1" id="nome" name="nome"/>
         <!-- </div> -->
         <br />
         <!-- Email -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputPassword1" class="labelInputs1">Email</label>
-          <input type="email" class="inputs1" id="exampleInputPassword1" name="email"/>
+          <label for="exampleInputPassword1" class="labelInputs1" for="email">Email</label>
+          <input type="email" class="inputs1" id="email" name="email"/>
         <!-- </div> -->
         <br />
         <!-- Senha  -->
         <!-- <div class="form1"> -->
-          <label for="exampleInputPassword1" class="labelInputs1">Senha</label>
+          <label for="senha" class="labelInputs1">Senha</label>
           <input
             type="password"
             class="inputs1"
-            id="exampleInputPassword1"
+            id="senha"
             name="senha"
           />
-        <span><input type="checkbox" name="manter" id="manter"><label for="manter" id="labelManter">Manter-me conectado</label></span>
-        <span><a href=""></a></span>
+        <span id="spanManter"><input type="checkbox" name="manter" id="manter"><label for="manter" class="labelSub">Manter-me conectado</label></span>
         <!-- </div> -->
         <br />
         <!-- enviar -->
         <button type="submit" id="botaoEnviar">Enviar</button>
+        <span id="spanLogin"><label for="login" class="labelSub">Já possui uma conta?</label><a href="" id="login">Login</a></span>
 
         
       </form>

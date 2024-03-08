@@ -16,6 +16,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  width: 100%;
 }
 
 /* INICIO DO CABEÇARIO */
@@ -81,12 +82,13 @@ body {
   display: block;
   height: fit-content;
   width: 400px;
-  margin: 120px auto 0;
+  margin: 80px auto 0;
   background-color: transparent;
   border: 3px solid rgba(255, 255, 255, 0.568);
   border-radius: 20px;
   padding: 60px 30px;
   align-content: center;
+  transform: scale(0.9);
 }
 
 .flex_container form {
@@ -100,6 +102,7 @@ body {
     transition: 0.2s;
   }
 
+  
   label.labelInputs1 {
     font-size: 1.3em;
     font-family: "Roboto";
@@ -108,13 +111,32 @@ body {
     font-weight: 500;
     color: white;
   }
-  label#labelManter {
+  
+  label.labelSub {
     font-size: 1.1em;
     font-family: "Roboto";
-    text-align: left;
-    justify-content: left;
     font-weight: 400;
     color: white;
+
+  }
+  #spanManter{
+    text-align: left;
+    justify-content: left;
+  }
+  #spanLogin{
+    text-align: center;
+    justify-content: center;
+    display: grid;
+    margin: auto;
+    a{
+      color: white;
+      text-decoration: none;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
   }
   input.inputs1 {
     width: 100%;
@@ -131,8 +153,8 @@ body {
     height: 2.1em;
   }
   input#manter {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.4em;
+    height: 1.4em;
     border-radius: 7px;
   }
   button {

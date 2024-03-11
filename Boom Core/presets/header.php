@@ -44,10 +44,26 @@
       <input type="submit" id="botao" value="" title="pesquisar" />
     </form>
 
+    <!-- opções do usuario  -->
+    <span id="opcoesUsuario">
+      <?php 
+      if(isset($_SESSION['user'])){
+      echo"<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
+      echo"<form method='post' action='C:/xampp/htdocs/projetos/Boom Core/registro'><button type='submit' class='opcaoUser'>Encerrar sessão</button></form> <br>";
+      
+      }
+      else{
+        echo "<a class='opcaoUser' href='./login.php'>Login</a> <br>";
+        echo "<a class='opcaoUser' href='./registro'>Cadastro</a>";
+      }
+      ?>
+
+
+    </span>
     <!-- botao de usuario  -->
-    <a href="index.php"
-      ><img id="user" src="../assets/user.png" title="Perfil do usuário"
-    /></a>
+    <button id="botaoUsuario" onclick="opcoesUsuario('opcoesUsuario')">
+      <img id="user" src="../assets/user.png" title="Perfil do usuário"/>
+    </button>
 
     <!-- notificações  -->
     <a href="index.php"
@@ -62,12 +78,13 @@
   @import url("../assets/Roboto/");
 
   body {
-    background-image: url(../assets/fundo.jpg);
-    background-color: transparent;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/fundo.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    
     width: 100%;
+    color: white;
   }
 
   @keyframes start {
@@ -86,13 +103,31 @@
       width: 0%;
     }
   }
+  @keyframes abrirOpcoesUsuario{
+    0%{
+      height: 0px;
+    }
+    100%{
+      height: fit-content;
+    }
+  }
+  @keyframes fecharOpcoesUsuario{
+    0%{
+      height: fit-content;
+    }
+    100%{
+      height: 0px;
+    }
+  }
 
   /* cabeçalho */
   #header {
     text-wrap: nowrap;
     width: auto;
     height: 60px;
-    background-image: linear-gradient(90deg, #00000027, #3633cd25);
+    /*background-image: linear-gradient(90deg, #707070a8, #3633cda8);*/
+    background-color: #000000a0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.74);
     opacity: 100%;
     padding: 10px 1% 10px 10%;
     display: flex;
@@ -257,7 +292,42 @@
     height: 45px;
     vertical-align: top;
     transform: translateY(30%);
+    cursor: pointer;
   }
+
+  #header #botaoUsuario{
+    background-color: transparent;
+    border: unset;
+  }
+
+  #header #opcoesUsuario{
+    position: absolute;
+    background-color: rgba(0,0,0,0.7) ;
+    width: 150px;
+    height: fit-content;
+    right: 90px;
+    top: 70px;
+    border-radius: 10px;
+    padding: 10.5px 0px 5px;
+    border: 2px solid rgba(255, 255, 255, 0.74);
+    .opcaoUser{
+      font-family: 'Roboto';
+      font-weight: 500;
+      line-height: 2em;
+      font-size: larger;
+      margin-top: -10px;
+      width: 100%;
+      /* background-color: transparent; */
+      display: grid;
+      transition: background-color 0.2s;
+      /* border-top: 2px solid rgba(255, 255, 255, 0.74); */
+      /* border-bottom: 2px solid rgba(255, 255, 255, 0.74); */
+    }
+    .opcaoUser:hover{
+      background-color: rgba(255,255,255,0.2);
+    }
+  }
+  
 
   #header #notificacao {
     width: 45px;
@@ -269,12 +339,29 @@
 </style>
 <script>
   function start(str) {
-    var traco = document.getElementById(str);
+    let traco = document.getElementById(str);
     traco.style.animation = "start 0.2s ease forwards";
   }
 
   function end(str) {
-    var traco = document.getElementById(str);
+    let traco = document.getElementById(str);
     traco.style.animation = "end 0.2s ease forwards";
+  }
+
+  let opcoesUsuarioSwitch = false;
+  function opcoesUsuario(str){
+
+    let opcoesUsuario = document.getElementById(str)
+
+    if (opcoesUsuarioSwitch === false){
+      opcoesUsuario.style.transform = "translateY(-1000%)";
+      opcoesUsuarioSwitch = true;
+    }
+    else{
+      opcoesUsuario.style.transform = "translateY(0%)";
+      opcoesUsuarioSwitch = false;
+
+    }
+
   }
 </script>

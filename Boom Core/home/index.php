@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-    <?php include("../presets/header.html") ?>
+    <?php include("../presets/header.php") ?>
 
     <!-- <script src="script.js"></script> -->
 </body>

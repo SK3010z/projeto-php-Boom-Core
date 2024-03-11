@@ -11,27 +11,21 @@
   <body>
 
 
-  <?php
-  include("../presets/header.php");
+  <?php 
+    include("../presets/header.php") 
   ?>
 
 
     <div class="flex_container">
       
-      <form method="post" action="../login">
-        <h1>Cadastrar</h1>
+      <form method="post" action="./">
+        <h1>Login</h1>
         <!-- Nome  -->
         <!-- <div class="form1"> -->
           <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
-          <input type="name" class="inputs1" id="user" name="user" maxlength="15"/>
+          <input type="name" class="inputs1" id="user" name="user"/>
         <!-- </div> -->
-        <br/>
-        <!-- Email -->
-        <!-- <div class="form1"> -->
-          <label for="exampleInputPassword1" class="labelInputs1" for="email">Email</label>
-          <input type="email" class="inputs1" id="email" name="email"/>
-        <!-- </div> -->
-        <br/>
+        <br />
         <!-- Senha  -->
         <!-- <div class="form1"> -->
           <label for="senha" class="labelInputs1">Senha</label>
@@ -45,8 +39,8 @@
         <!-- </div> -->
         <br />
         <!-- enviar -->
-        <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
-        <span id="spanLogin"><label for="login" class="labelSub">Já possui uma conta?</label><a href="../login" id="login">Entrar</a></span>
+        <button type="submit" id="botaoEnviar">Enviar</button>
+        <span id="spanLogin"><label for="login" class="labelSub">Ainda não possui uma conta?</label><a href="../registro" id="login">Cadastrar</a></span>
 
         
       </form>
@@ -55,21 +49,21 @@
 </html>
 
 <?php
-  
-  if(isset($_POST["enviar"])){
-    $_SESSION["user"] = filter_input(INPUT_POST, "user", FILTER_SANITIZE_SPECIAL_CHARS);
-    $_SESSION["email"] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
-    $_SESSION["senha"] = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_SPECIAL_CHARS);
+
+/*
+  if (isset($_POST["enviar"])){
+    $_SESSION["user"] = $_POST["user"];
     $_SESSION["email"] = $_POST["email"];
     $_SESSION["senha"] = $_POST["senha"];
 
-
-  };
-
-
+  }
+*/
+foreach ($_SESSION as $key => $value) {
+  # code...
+  echo $key . $value . "<br>";
+}
 
   
-
   
 
 ?>

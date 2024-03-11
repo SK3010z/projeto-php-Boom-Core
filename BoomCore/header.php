@@ -49,13 +49,20 @@
       <?php 
       if(isset($_SESSION['user'])){
       echo"<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
-      echo"<form method='post' action=''><button type='submit' class='opcaoUser' style='AAAAAAAAAAAAAAAAAA'>Encerrar sessão</button></form> <br>";
+      echo"<form class='opcaoUser' method='post' action='home.php' id='formEncerrar' name='logout'><a onclick='encessarSessao()'>Encerrar sessão</a></form> <br>";
       
       }
       else{
         echo "<a class='opcaoUser' href='./login.php'>Entrar</a> <br>";
         echo "<a class='opcaoUser' href='./registro.php'>Cadastro</a>";
       }
+
+      if(isset($_POST["logout"])){
+        session_destroy();
+        echo
+        
+      }
+
       ?>
 
 
@@ -74,8 +81,10 @@
 
 <style>
   @import url("./assets/reset.css");
-  /*@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");*/
-  @import url(assets/Roboto/);
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+
 
   body {
     background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(./assets/fundo.jpg);
@@ -312,6 +321,10 @@
     border: 2px solid rgba(255, 255, 255, 0.74);
     transform: translateY(-1000%);
     .opcaoUser{
+      background-color: transparent; 
+      border: unset; 
+      color: white;
+      padding: 0;
       font-family: 'Roboto';
       font-weight: 500;
       line-height: 2em;
@@ -327,6 +340,7 @@
     .opcaoUser:hover{
       background-color: rgba(255,255,255,0.2);
     }
+    
   }
   
 
@@ -352,7 +366,7 @@
   let opcoesUsuarioSwitch = false;
   function opcoesUsuario(str){
 
-    let opcoesUsuario = document.getElementById(str)
+    let opcoesUsuario = document.getElementById('opcoesUsuario')
 
     if (opcoesUsuarioSwitch === false){
       opcoesUsuario.style.transform = "translateY(0%)";
@@ -364,5 +378,9 @@
 
     }
 
+  }
+  function encessarSessao(){
+    var formulario = document.getElementById("formEncerrar");
+    formulario.submit();
   }
 </script>

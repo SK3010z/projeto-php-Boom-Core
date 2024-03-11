@@ -1,5 +1,6 @@
 <?php
   session_start();
+  header("Location: home.php")
 ?>
 
 <html>
@@ -22,7 +23,7 @@
         <!-- Nome  -->
         <!-- <div class="form1"> -->
           <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
-          <input type="name" class="inputs1" id="user" name="user" maxlength="15"/>
+          <input type="name" class="inputs1" id="user" name="user" maxlength="15" minlength="3"/>
         <!-- </div> -->
         <br/>
         <!-- Email -->

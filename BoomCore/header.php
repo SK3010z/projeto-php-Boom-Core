@@ -1,15 +1,15 @@
 <div id="header">
   <span id="headerL">
     <span class="logo"
-      ><a class="logo" href="./"><img src="../assets/boom core.png" alt="" /></a
+      ><a class="logo" href="./home.php"><img src="./assets/boom core.png" alt="" /></a
     ></span>
-    <span id="boom"><a href="./">Boom Core</a></span>
+    <span id="boom"><a href="./home.php">Boom Core</a></span>
   </span>
   <span id="headerR">
     <!-- produtos -->
     <a
       id="produtos"
-      href="./"
+      href="./home.php"
       onmouseover="start('traco1')"
       onmouseleave="end('traco1')"
       ><p>Produtos</p>
@@ -19,7 +19,7 @@
     <!-- serviços  -->
     <a
       id="servicos"
-      href="./"
+      href="./home.php"
       onmouseover="start('traco2')"
       onmouseleave="end('traco2')"
       ><p>Serviços</p>
@@ -29,7 +29,7 @@
     <!-- atendimentos -->
     <a
       id="atendimentos"
-      href="./"
+      href="./home.php"
       onmouseover="start('traco3')"
       onmouseleave="end('traco3')"
       ><p>Atendimentos</p>
@@ -37,7 +37,7 @@
     ></a>
 
     <!-- pesquisa  -->
-    <form action="index.php" id="pesquisa" method="get">
+    <form action="home.php" id="pesquisa" method="get">
       <!-- caixa de pesquisa  -->
       <input type="text" placeholder="Pesquisa" name="pesquisa" />
       <!-- botao de pesquisar  -->
@@ -49,12 +49,12 @@
       <?php 
       if(isset($_SESSION['user'])){
       echo"<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
-      echo"<form method='post' action='C:/xampp/htdocs/projetos/Boom Core/registro'><button type='submit' class='opcaoUser'>Encerrar sessão</button></form> <br>";
+      echo"<form method='post' action=''><button type='submit' class='opcaoUser' style='AAAAAAAAAAAAAAAAAA'>Encerrar sessão</button></form> <br>";
       
       }
       else{
-        echo "<a class='opcaoUser' href='./login.php'>Login</a> <br>";
-        echo "<a class='opcaoUser' href='./registro'>Cadastro</a>";
+        echo "<a class='opcaoUser' href='./login.php'>Entrar</a> <br>";
+        echo "<a class='opcaoUser' href='./registro.php'>Cadastro</a>";
       }
       ?>
 
@@ -62,29 +62,30 @@
     </span>
     <!-- botao de usuario  -->
     <button id="botaoUsuario" onclick="opcoesUsuario('opcoesUsuario')">
-      <img id="user" src="../assets/user.png" title="Perfil do usuário"/>
+      <img id="user" src="./assets/user.png" title="Perfil do usuário"/>
     </button>
 
     <!-- notificações  -->
     <a href="index.php"
-      ><img id="notificacao" src="../assets/sino.png" title="Notificações"
+      ><img id="notificacao" src="./assets/sino.png" title="Notificações"
     /></a>
   </span>
 </div>
 
 <style>
-  @import url("../assets/reset.css");
+  @import url("./assets/reset.css");
   /*@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");*/
-  @import url("../assets/Roboto/");
+  @import url(assets/Roboto/);
 
   body {
-    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../assets/fundo.jpg);
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(./assets/fundo.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     
     width: 100%;
-    color: white;
+    color: white; 
+    font-family: "Roboto";
   }
 
   @keyframes start {
@@ -170,7 +171,7 @@
     height: inherit;
     margin: auto 0;
     font-size: 2em;
-    font-family: "roboto";
+    font-family: "Roboto";
     font-weight: bold;
     color: #ffffff;
     vertical-align: top;
@@ -274,7 +275,7 @@
       width: 32px;
       padding: 1px 2px;
       border: unset;
-      background: url("../assets/lupa.png") no-repeat scroll transparent;
+      background: url("./assets/lupa.png") no-repeat scroll transparent;
       background-position: center;
       border-radius: 10px;
       transform: translateX(-38px);
@@ -291,7 +292,6 @@
     width: 45px;
     height: 45px;
     vertical-align: top;
-    transform: translateY(30%);
     cursor: pointer;
   }
 
@@ -310,6 +310,7 @@
     border-radius: 10px;
     padding: 10.5px 0px 5px;
     border: 2px solid rgba(255, 255, 255, 0.74);
+    transform: translateY(-1000%);
     .opcaoUser{
       font-family: 'Roboto';
       font-weight: 500;
@@ -354,11 +355,11 @@
     let opcoesUsuario = document.getElementById(str)
 
     if (opcoesUsuarioSwitch === false){
-      opcoesUsuario.style.transform = "translateY(-1000%)";
+      opcoesUsuario.style.transform = "translateY(0%)";
       opcoesUsuarioSwitch = true;
     }
     else{
-      opcoesUsuario.style.transform = "translateY(0%)";
+      opcoesUsuario.style.transform = "translateY(-1000%)";
       opcoesUsuarioSwitch = false;
 
     }

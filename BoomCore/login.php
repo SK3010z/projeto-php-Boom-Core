@@ -1,4 +1,72 @@
-@import url("../assets/reset.css");
+<?php 
+  session_start();
+?>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+
+
+  <?php 
+    include("./header.php") 
+  ?>
+
+
+    <div class="flex_container">
+      
+      <form method="post" action="./home.php">
+        <h1>Entrar</h1>
+        <!-- Nome  -->
+        <!-- <div class="form1"> -->
+          <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
+          <input type="name" class="inputs1" id="user" name="user"/>
+        <!-- </div> -->
+        <br />
+        <!-- Senha  -->
+        <!-- <div class="form1"> -->
+          <label for="senha" class="labelInputs1">Senha</label>
+          <input
+            type="password"
+            class="inputs1"
+            id="senha"
+            name="senha"
+          />
+        <span id="spanManter"><input type="checkbox" name="manter" id="manter"><label for="manter" class="labelSub">Manter-me conectado</label></span>
+        <!-- </div> -->
+        <br />
+        <!-- enviar -->
+        <button type="submit" id="botaoEnviar">Enviar</button>
+        <span id="spanLogin"><label for="login" class="labelSub">Ainda não possui uma conta?</label><a href="./registro.php" id="login">Cadastrar</a></span>
+
+        
+      </form>
+    </div>
+  </body>
+</html>
+
+<?php
+
+/*
+  if (isset($_POST["enviar"])){
+    $_SESSION["user"] = $_POST["user"];
+    $_SESSION["email"] = $_POST["email"];
+    $_SESSION["senha"] = $_POST["senha"];
+
+  }
+*/
+foreach ($_SESSION as $key => $value) {
+  # code...
+  echo $key . $value . "<br>";
+}
+
+?>
+
+
+<style>
+@import url("./assets/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 @keyframes aumentar {
@@ -9,73 +77,7 @@
     height: 1em;
   }
 }
-/*
-body {
-  background-image: url(../assets/fundo.jpg);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-}
-*/
-/* INICIO DO CABEÇARIO */
 
-/* #header {
-  text-wrap: nowrap;
-  width: auto;
-  height: 60px;
-  background-image: linear-gradient(90deg, #000000, #3533cd);
-  opacity: 78%;
-  padding: 10px 1% 10px 10%;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-} */
-/* links */
-/* #header a {
-  color: white;
-  text-decoration: none;
-} */
-
-/*headerL (ESQUERDO)*/
-/* area do logo  */
-/* #header #headerL {
-  margin-right: 25px;
-} */
-
-/* .logo {
-  height: inherit;
-  width: 60px;
-  text-align: left;
-  display: inline-block;
-} */
-/* imagem do logo  */
-/* .logo img {
-  height: inherit;
-  width: inherit;
-  object-fit: contain;
-} */
-/* link clicavel do logo  */
-/* .logo a {
-  height: 100%;
-  width: 100%;
-  display: block;
-} */
-/* nome da empresa -> menu principal */
-/* #header #boom {
-  display: inline-block;
-  height: inherit;
-  margin: auto 0;
-  font-size: 2em;
-  font-family: "roboto";
-  font-weight: bold;
-  color: #ffffff;
-  vertical-align: top;
-  margin-top: 20px;
-} */
-
-/* FIM DO CABEÇARIO */
 
 /* CAIXA DE CADASTRO  */
 .flex_container {
@@ -100,7 +102,6 @@ body {
     color: white;
     margin-bottom: 20px;
     transition: 0.2s;
-    
   }
 
   
@@ -174,3 +175,5 @@ body {
     width: 80%;
   }
 }
+
+</style>

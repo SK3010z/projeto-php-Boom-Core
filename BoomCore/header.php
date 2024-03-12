@@ -48,8 +48,8 @@
     <span id="opcoesUsuario">
       <?php 
       if(isset($_SESSION['user'])){
-      echo"<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
-      echo"<form class='opcaoUser' method='post' action='home.php' id='formEncerrar' name='logout'><a onclick='encessarSessao()'>Encerrar sessão</a></form> <br>";
+      echo "<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
+      echo "<form method='post' action='' name='logout'><input class='opcaoUser' type='submit' name='logout' value='Encerrar sessão'></input></form> <br>";
       
       }
       else{
@@ -57,14 +57,8 @@
         echo "<a class='opcaoUser' href='./registro.php'>Cadastro</a>";
       }
 
-      if(isset($_POST["logout"])){
-        session_destroy();
-        echo
-        
-      }
-
       ?>
-
+    
 
     </span>
     <!-- botao de usuario  -->
@@ -313,11 +307,11 @@
     position: absolute;
     background-color: rgba(0,0,0,0.7) ;
     width: 150px;
-    height: fit-content;
+    height: min-content;
     right: 90px;
     top: 70px;
     border-radius: 10px;
-    padding: 10.5px 0px 5px;
+    padding-top: 10.5px;
     border: 2px solid rgba(255, 255, 255, 0.74);
     transform: translateY(-1000%);
     .opcaoUser{
@@ -340,7 +334,9 @@
     .opcaoUser:hover{
       background-color: rgba(255,255,255,0.2);
     }
-    
+    input.opcaoUser{
+      cursor: pointer;
+    }
   }
   
 

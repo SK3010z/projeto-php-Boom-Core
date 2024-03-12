@@ -1,14 +1,35 @@
+ <!-- PHP -->
 <?php
   session_start();
-  header("Location: home.php")
-?>
+  // header("Location: registro.php");
+ 
+
+    // if(isset($_POST["enviar"])){echo "true";}
+    if(isset($_POST["enviar"])){
+      $_SESSION["user"] = $_POST["user"];
+      $_SESSION["email"] = $_POST["email"];
+      $_SESSION["senha"] = $_POST["senha"];
+      header("Location: home.php");
+    };
+    /*
+    foreach ($_POST as $key => $value) {
+      # code...
+      echo $key . $value . "<br>";
+    }
+    foreach ($_SESSION as $key => $value) {
+      # code...
+      echo $key . $value . "<br>";
+    }*/
+  ?>
 
 <html>
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+</head>
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 
 
   <?php
@@ -18,7 +39,7 @@
 
     <div class="flex_container">
       
-      <form method="post" action="registro.php">
+      <form method="post" action="">
         <h1>Cadastrar</h1>
         <!-- Nome  -->
         <!-- <div class="form1"> -->
@@ -56,25 +77,7 @@
 
 
 
-<!-- PHP -->
-<?php
-  
-  if(isset($_POST["enviar"])){echo "true";}
-  if(isset($_POST["enviar"])){
-    $_SESSION["user"] = $_POST["user"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["senha"] = $_POST["senha"];
-    $_SESSION["teste"] = "yeah";
-  };
-  foreach ($_POST as $key => $value) {
-    # code...
-    echo $key . $value . "<br>";
-  }
-  foreach ($_SESSION as $key => $value) {
-    # code...
-    echo $key . $value . "<br>";
-  }
-?>
+
 
 <!-- CSS -->
 <style>

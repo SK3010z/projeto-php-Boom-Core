@@ -28,15 +28,11 @@
         echo "false";
     }
     foreach ($_SESSION as $key => $value) {
-        echo $key . $value . "<br>";
+        echo "{$key} -> {$value}  <br>";
     }
-    echo count($_SESSION) . "<br>";
-    // }
-    
-    /*foreach ($_POST as $key => $value) {
-        # code...
-        echo $key . $value . "<br>";
-      }*/
+
+
+
     ?>
 
     <!-- <script src="script.js"></script> -->

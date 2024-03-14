@@ -12,7 +12,11 @@
 
 
 !/mysql/
+/mysql/*
 /mysql/*/
-!/mysql/data*/
-!/mysql/data*/*
+!/mysql/data/
+!/mysql/data/*
+/mysql/data_old
+/mysql/data_old/
+/mysql/data_old/*
 

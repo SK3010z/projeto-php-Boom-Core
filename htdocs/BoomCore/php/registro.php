@@ -2,9 +2,15 @@
 <?php
   session_start();
   if(isset($_POST["enviar"])){
+    try{
+      include("./php_assets/conn.php");
+      // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    }
+    catch(null){}
     $_SESSION["user"] = $_POST["user"];
     $_SESSION["email"] = $_POST["email"];
     $_SESSION["senha"] = $_POST["senha"];
+
     
     header("Location: home.php");
   }
@@ -20,7 +26,7 @@
 
   <body>
     <?php
-      include("./header.php");
+      include("./php_assets/header.php");
     ?>
 
     <!-- Caixa de cadastro -->

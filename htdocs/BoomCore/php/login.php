@@ -16,7 +16,7 @@
   <body>
 
   <?php 
-    include("./header.php");
+    include("./php_assets/header.php");
   ?>
 
     <div class="flex_container">

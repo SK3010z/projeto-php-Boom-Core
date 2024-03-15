@@ -5,7 +5,13 @@
     $dbName = "boomcore";
 
     // Create connection
-    $conn = mysqli_connect($server, $user, $senha,$dbName);
+    try{
+        $conn = mysqli_connect($server, $user, $senha,$dbName);
+
+    }
+    catch(null){
+    }
+    
 
     // Check connection
     if (!$conn) {

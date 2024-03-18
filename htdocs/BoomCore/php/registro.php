@@ -1,30 +1,31 @@
  <!-- PHP -->
 
 <?php
+  $errorConn = false;
+  //INICIA a SESSAO(o de sempre)
   session_start();
-  // Se nenhum estiver vazio 
+  // SE clicar em ENVIAR
   if(isset($_POST["enviar"]))
   {
+    // TENTA a CONEXAO com o bd
     try{
       include("./php_assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
       $sql = "INSERT INTO contas(user, senha, email) VALUES
               ('{$_POST["user"]}', '{$_POST["senha"]}', '{$_POST["email"]}');";
       mysqli_query($conn, $sql);
       mysqli_close($conn);
+      // ATRIBUI as informações da SESSAO
       $_SESSION["user"] = $_POST["user"];
-      $_SESSION["email"] = $_POST["email"];
       $_SESSION["senha"] = $_POST["senha"];
+      //Leva para a PÁGINA PRINCIPAL
       header("Location: home.php");
+      mysqli_close($conn);
     }
-    catch(null){
-      echo"
-        <script>
-          falhaConexao();
-        </script>
-      ";
+    catch(Exception $e){
+      $errorConn = true;
+
     }
   }
-  
 ?>
 
 <html>
@@ -43,7 +44,7 @@
     <!-- Caixa de cadastro -->
     <div class="flex_container">
       <form method="post">
-        <h1>Cadastrar</h1>
+        <h1 onclick="falhaConexao();">Cadastrar</h1>
         
         <!-- Nome de usuário -->
         <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
@@ -88,4 +89,13 @@
 </html>
 <script src="../js/registro.js"></script>
 
+<?php
+  if ($errorConn){
+    echo"
+        <script>
+          falhaConexao();
+        </script>
+      ";
+  }
+?>
 

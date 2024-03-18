@@ -20,19 +20,16 @@
     
 
     if (isset($_SESSION["user"])) {
-        echo "true";
+        echo "<h1 style='font-size: xx-large; text-align: center; margin-top: 20px'>Seja bem-vindo <b style='font-weight: bold'>{$_SESSION['user']}</b>!</h1>";
     }
 
     else{
-        echo "false";
-    }
-    foreach ($_SESSION as $key => $value) {
-        echo "{$key} -> {$value}  <br>";
+        
     }
 
 
 
     ?>
-
+    
 </body>
 </html>

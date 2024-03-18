@@ -1,4 +1,6 @@
 <?php 
+  $errorConn = false;
+  $errorValid = false;
   session_start();
   if (isset($_POST['logout'])) {
     session_destroy();
@@ -23,31 +25,19 @@
         mysqli_close($conn);
         //DEFINE os valoroes da SESSAO 
         $_SESSION["user"] = $_POST["user"];
-        $_SESSION["email"] = $_POST["email"];
         $_SESSION["senha"] = $_POST["senha"];
         //leva para a PAGINA PRINCIPAL
         header("Location: home.php");
       }
       //caso nao encontre valor correspondente, exibe que o usuario e/ou a senha estão incorretos abaixo do login
       else{
-        echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-        NAO TA EXECUTANDO O SCRIPTTTTTTTTTT falhaConexao()
+        $errorValid = true;
         
-        echo"
-          <script>
-            falhaConexao(); 
-          </script>
-        ";
       }
     }
     //ERRO em CONECTAR com o BANCO DE DADOS, exibe que nao foi possivel conectar com o servidor abaixo do login
-    catch(null){
-      echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-      echo"
-        <script>
-          falhaConexao();
-        </script>
-      ";
+    catch(Exception $e){
+      $errorConn = true;
     }
   }
   
@@ -108,7 +98,22 @@
 
 <script src="../js/login.js"></script>
 
-
-<style>
-@import url();
-</style>
+<?php
+  //erro com maior prioridade de aparecer, por isso if e elseif
+  //FALHA na CONEXAO com o BANCO DE DADOS
+  if ($errorConn){
+    echo"
+        <script>
+          falhaConexao();
+        </script>
+      ";
+  }
+  //Usuario e/ou senha incorretos
+  elseif($errorValid){
+    echo"
+      <script>
+        incorreto(); 
+      </script>
+    ";
+  }
+?>

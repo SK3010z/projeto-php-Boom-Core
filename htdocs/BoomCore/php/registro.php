@@ -1,20 +1,31 @@
  <!-- PHP -->
+
 <?php
   session_start();
-  if(isset($_POST["enviar"])){
+  // Se nenhum estiver vazio 
+  if(isset($_POST["enviar"]))
+  {
     try{
-      include("./php_assets/conn.php");
-      // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      include("./php_assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
+      $sql = "INSERT INTO contas(user, senha, email) VALUES
+              ('{$_POST["user"]}', '{$_POST["senha"]}', '{$_POST["email"]}');";
+      mysqli_query($conn, $sql);
+      mysqli_close($conn);
+      $_SESSION["user"] = $_POST["user"];
+      $_SESSION["email"] = $_POST["email"];
+      $_SESSION["senha"] = $_POST["senha"];
+      header("Location: home.php");
     }
-    catch(null){}
-    $_SESSION["user"] = $_POST["user"];
-    $_SESSION["email"] = $_POST["email"];
-    $_SESSION["senha"] = $_POST["senha"];
-
-    
-    header("Location: home.php");
+    catch(null){
+      echo"
+        <script>
+          falhaConexao();
+        </script>
+      ";
+    }
   }
-  ?>
+  
+?>
 
 <html>
 
@@ -31,22 +42,22 @@
 
     <!-- Caixa de cadastro -->
     <div class="flex_container">
-      <form method="post" action="">
+      <form method="post">
         <h1>Cadastrar</h1>
         
         <!-- Nome de usuário -->
         <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
-        <input type="name" class="inputs1" id="user" name="user" maxlength="15" minlength="3"/>
+        <input type="name" class="inputs1" id="user" name="user" minlength="3" maxlength="30" required/>
         <br>
 
         <!-- Email -->
         <label for="exampleInputPassword1" class="labelInputs1" for="email">Email</label>
-        <input type="email" class="inputs1" id="email" name="email"/>
+        <input type="email" class="inputs1" id="email" name="email" required/>
         <br>
 
         <!-- Senha -->
         <label for="senha" class="labelInputs1">Senha</label>
-        <input type="password" class="inputs1" id="senha" name="senha"/>
+        <input type="password" class="inputs1" id="senha" name="senha" minlength="3" maxlength="100" required/>
 
         <!-- Manter login -->
         <span id="spanManter">
@@ -57,6 +68,12 @@
 
         <!-- Enviar -->
         <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
+
+        <!-- Caso falha na conexao com o banco de dados  -->
+        <div id="divFalha">
+          <p id="pFalha">
+          </p>
+        </div>
 
         <!-- Ja possui uma conta?  -->
         <span id="spanLogin">
@@ -69,5 +86,6 @@
     </div>
   </body>
 </html>
+<script src="../js/registro.js"></script>
 
 

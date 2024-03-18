@@ -106,4 +106,13 @@
     display: block;
     width: 80%;
   }
+  #divFalha{
+    height: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    p{
+      font-size: 0px;
+    }
+  }
 }

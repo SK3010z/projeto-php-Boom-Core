@@ -7,11 +7,13 @@
   // SE clicar em ENVIAR
   if(isset($_POST["enviar"]))
   {
-    // TENTA a CONEXAO com o bd
+    //CONEXAO com o BANCO DE DADOS
     try{
-      include("./php_assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
+      include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
+      
       $sql = "INSERT INTO contas(user, senha, email) VALUES
               ('{$_POST["user"]}', '{$_POST["senha"]}', '{$_POST["email"]}');";
+      
       mysqli_query($conn, $sql);
       mysqli_close($conn);
       // ATRIBUI as informações da SESSAO
@@ -21,6 +23,8 @@
       header("Location: home.php");
       mysqli_close($conn);
     }
+
+    //se a conexão com o BANCO DE DADOS FALHAR, da um aviso abaixo do botao de enviar
     catch(Exception $e){
       $errorConn = true;
 
@@ -38,7 +42,7 @@
 
   <body>
     <?php
-      include("./php_assets/header.php");
+      include("./assets/header.php");
     ?>
 
     <!-- Caixa de cadastro -->

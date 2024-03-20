@@ -19,7 +19,7 @@ function falhaConexao() {
 function incorreto() {
   let falhaDiv = document.getElementById("divFalha");
   let falhaP = document.getElementById("pFalha");
-  falhaP.innerHTML = "O nome de usuário e/ou a senha estão incorretos.";
+  falhaP.innerHTML = "O nome de usuário e/ou senha estão incorretos.";
   falhaDiv.style = `
     background-color: #ff00007e;
     border-radius: 5px;

@@ -16,7 +16,7 @@
 </head>
 <body>
     
-    <?php include("./php_assets/header.php");
+    <?php include("./assets/header.php");
     
 
     if (isset($_SESSION["user"])) {

@@ -11,7 +11,7 @@
   {
     // AAAAAAAAAAAAAAAAA DA UUM JEITO DE VERIFICAR SE EXISTE NO BANCO DE DADOS E ENT INICIAR A SESSAO
     try{
-      include("./php_assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
+      include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
       
       //SELECIONA os itens que corresponderem com USER e SENHA nas ENTRADAS do LOGIN
       $sql = "SELECT * from contas where user = '{$_POST["user"]}' and senha = '{$_POST["senha"]}'"; 
@@ -53,7 +53,7 @@
   <body>
 
   <?php 
-    include("./php_assets/header.php");
+    include("./assets/header.php");
   ?>
 
     <div class="flex_container">

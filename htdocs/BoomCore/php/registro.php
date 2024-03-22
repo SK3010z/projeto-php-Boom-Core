@@ -10,12 +10,12 @@
     //CONEXAO com o BANCO DE DADOS
     try{
       include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
-      
+      $hash = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+
       $sql = "INSERT INTO contas(user, senha, email) VALUES
-              ('{$_POST["user"]}', '{$_POST["senha"]}', '{$_POST["email"]}');";
+              ('{$_POST["user"]}', '{$hash}', '{$_POST["email"]}');";
       
       mysqli_query($conn, $sql);
-      mysqli_close($conn);
       // ATRIBUI as informações da SESSAO
       $_SESSION["user"] = $_POST["user"];
       $_SESSION["senha"] = $_POST["senha"];

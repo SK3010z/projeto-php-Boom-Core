@@ -14,18 +14,19 @@
       include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
       
       //SELECIONA os itens que corresponderem com USER e SENHA nas ENTRADAS do LOGIN
-      $sql = "SELECT * from contas where user = '{$_POST["user"]}' and senha = '{$_POST["senha"]}'"; 
+      $sql = "SELECT user, senha from contas where user = '{$_POST["user"]}'"; 
       //EXECUTA o codigo sql
       $select = mysqli_query($conn, $sql);
+      $linha = mysqli_fetch_assoc($select);
       //Se existir algum valor(que é o caso que corresponde), INICIA A SESSAO e leva para a pagina principal
-      if(mysqli_num_rows($select) > 0){
+      if(mysqli_num_rows($select) > 0 && password_verify($_POST['senha'], $linha['senha'])){
         //array associativo do select
-        $linha = mysqli_fetch_assoc($select);
+        
         //FECHA a CONEXÃO com o banco de dados
         mysqli_close($conn);
         //DEFINE os valoroes da SESSAO 
         $_SESSION["user"] = $_POST["user"];
-        $_SESSION["senha"] = $_POST["senha"];
+        $_SESSION["senha"] = $linha['senha'];
         //leva para a PAGINA PRINCIPAL
         header("Location: home.php");
       }

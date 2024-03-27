@@ -38,6 +38,7 @@
     <meta charset="utf-8" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../css/registro.css" />  
+    <title>Cadastrar</title>
   </head>
 
   <body>

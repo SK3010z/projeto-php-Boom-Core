@@ -29,7 +29,8 @@
   h1 {
     font-family: "Roboto";
     font-size: 3em;
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: 8px;
     text-align: center;
     color: white;
     margin-bottom: 20px;

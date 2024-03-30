@@ -1,36 +1,67 @@
  <!-- PHP -->
-
 <?php
-  $errorConn = false;
-  //INICIA a SESSAO(o de sempre)
-  session_start();
-  // SE clicar em ENVIAR
-  if(isset($_POST["enviar"]))
-  {
+session_start();
+$errorConn = false;
+$errorUserJaExiste = false;
+$errorEmailJaUtilizado = false;
+$errorSenhasDiferentes = false;
+try {
     //CONEXAO com o BANCO DE DADOS
-    try{
-      include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
-      $hash = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+    include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
 
-      $sql = "INSERT INTO contas(user, senha, email) VALUES
-              ('{$_POST["user"]}', '{$hash}', '{$_POST["email"]}');";
-      
-      mysqli_query($conn, $sql);
-      // ATRIBUI as informações da SESSAO
-      $_SESSION["user"] = $_POST["user"];
-      $_SESSION["senha"] = $_POST["senha"];
-      //Leva para a PÁGINA PRINCIPAL
-      header("Location: home.php");
-      mysqli_close($conn);
-    }
+    if(isset($_POST["enviar"])){
+        $senha = $_POST["senha"];
+        $senha2 = $_POST["senha2"];
 
-    //se a conexão com o BANCO DE DADOS FALHAR, da um aviso abaixo do botao de enviar
-    catch(Exception $e){
-      $errorConn = true;
+        if ($senha == $senha2) { 
+        $user = filter_input(INPUT_POST,"user",FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    }
+        $sqlSelect = "SELECT user, email from contas where user = '{$user}' or email = '{$email}'"; 
+        $select = mysqli_query($conn, $sqlSelect);
+        
+        //se ja existir algum correspondente
+        if (mysqli_num_rows($select) > 0){
+            $linha = mysqli_fetch_assoc($select);
+            //se for o msm usuario
+            if ($linha['user'] == $user){
+            $errorUserJaExiste = true;
+            
+            }
+            //senao, se for o msm email
+            else if ($linha['email'] == $email){
+            $errorEmailJaUtilizado = true;
+            
+            }
+        }
+        else{
+            $hash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO contas (user, senha, email) VALUES
+                        ('$user', '$hash', '$senha')";
+
+            mysqli_query($conn, $sql);
+            $_SESSION["user"] = $_POST["user"];
+            $_SESSION["senha"] = $_POST["senha"];
+            header("location: home.php");
+        }
+        }
+        else{
+        $errorSenhasDiferentes = true;
+
+        }
   }
+  mysqli_close($conn);
+} 
+catch (Exception $e) {
+  $errorConn = true;
+}
+
+
 ?>
+
+
 
 <html>
 
@@ -49,7 +80,7 @@
     <!-- Caixa de cadastro -->
     <div class="flex_container">
       <form method="post">
-        <h1 onclick="falhaConexao();">Cadastrar</h1>
+        <h1 onclick="falhaConexao();">CADASTRAR</h1>
         
         <!-- Nome de usuário -->
         <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
@@ -64,6 +95,10 @@
         <!-- Senha -->
         <label for="senha" class="labelInputs1">Senha</label>
         <input type="password" class="inputs1" id="senha" name="senha" minlength="3" maxlength="100" required/>
+
+        <!-- Senha2 -->
+        <label for="senha2" class="labelInputs1">Confirmar Senha</label>
+        <input type="password" class="inputs1" id="senha" name="senha2" minlength="3" maxlength="100" required/>
 
         <!-- Manter login -->
         <span id="spanManter">
@@ -99,6 +134,27 @@
     echo"
         <script>
           falhaConexao();
+        </script>
+      ";
+  }
+  else if ($errorUserJaExiste){
+    echo"
+        <script>
+          falhaUserJaExiste();
+        </script>
+      ";
+  }
+  else if ($errorEmailJaUtilizado){
+    echo"
+        <script>
+          falhaEmailJaUtilizado();
+        </script>
+      ";
+  }
+  else if ($errorSenhasDiferentes){
+    echo"
+        <script>
+          falhaSenhasDiferentes();
         </script>
       ";
   }

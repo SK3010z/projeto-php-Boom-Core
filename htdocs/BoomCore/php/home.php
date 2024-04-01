@@ -39,7 +39,7 @@ if (isset($_POST['logout'])) {
       for ($i = 0; $i < 170; $i += 4)
         echo "
           <div class='card'>
-            <img src='https://http2.mlstatic.com/D_NQ_NP_615386-MLB52544612239_112022-O.webp'/>
+            <img src='../produtos/Geforce Rtx 3060 Series.png'/>
             <div>
               <h2>Placa De Vídeo Nvidia Asus Dual Geforce Rtx 3060 Series</h2>
               <p class='valor'>R$ 3.000</p><br>
@@ -51,9 +51,8 @@ if (isset($_POST['logout'])) {
     ?>
   </div>
   <!-- </div> -->
-  <style>
 
-  </style>
+  
 </body>
 
 </html>

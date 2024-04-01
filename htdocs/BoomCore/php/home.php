@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("./assets/conn.php");
 
 if (isset($_POST['logout'])) {
   session_destroy();
@@ -34,15 +35,19 @@ if (isset($_POST['logout'])) {
   <!-- <div id="site"> -->
   <div id="container">
     <?php
-    for ($i = 0; $i < 170; $i += 4) {
-
-      for ($i = 0; $i < 170; $i += 4)
-        echo "
+    $sql = "SELECT preco, descricao, img_url FROM produtos order by preco ";
+    //EXECUTA o codigo sql
+    $select = mysqli_query($conn, $sql);
+    while ($produto = mysqli_fetch_assoc($select)) {
+      $img_url = $produto['img_url'];
+      $descricao = $produto['descricao'];
+      $preco = number_format($produto['preco'], 2, ',', '.');
+      echo "
           <div class='card'>
-            <img src='../produtos/Geforce Rtx 3060 Series.png'/>
+            <img src='{$img_url}'/>
             <div>
-              <h2>Placa De Vídeo Nvidia Asus Dual Geforce Rtx 3060 Series</h2>
-              <p class='valor'>R$ 3.000</p><br>
+              <h2>{$descricao}</h2>
+              <p class='valor'>R\${$preco}</p><br>
               <button>Comprar</button>
             </div>
           </div>
@@ -52,7 +57,7 @@ if (isset($_POST['logout'])) {
   </div>
   <!-- </div> -->
 
-  
+
 </body>
 
 </html>

@@ -46,7 +46,7 @@
 .valor {
   color: black;
   font-size: 1.5em;
-  margin-right: 56%;
+  /* margin-right: 56%; */
   margin-top: 3%;
   font-weight: bold;
 }
@@ -61,8 +61,14 @@
 }
 
 .card h2 {
+  height: 3em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   font-size: 1.2rem;
   margin-left: 5%;
+  margin-top: 5px;
   color: black;
 }
 

@@ -35,14 +35,16 @@ if (isset($_POST['logout'])) {
   <!-- <div id="site"> -->
   <div id="container">
     <?php
-    $sql = "SELECT preco, descricao, img_url FROM produtos order by preco ";
+    $sql = "SELECT preco, descricao, img_url FROM produtos order by preco desc";
     //EXECUTA o codigo sql
     $select = mysqli_query($conn, $sql);
+
     while ($produto = mysqli_fetch_assoc($select)) {
       $img_url = $produto['img_url'];
       $descricao = $produto['descricao'];
       $preco = number_format($produto['preco'], 2, ',', '.');
       echo "
+
           <div class='card'>
             <img src='{$img_url}'/>
             <div>
@@ -51,6 +53,7 @@ if (isset($_POST['logout'])) {
               <button>Comprar</button>
             </div>
           </div>
+          
         ";
     }
     ?>

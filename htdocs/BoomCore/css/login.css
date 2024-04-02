@@ -1,6 +1,5 @@
 @import url("reset.css");
 
-
 @keyframes aumentar {
   0% {
     height: 1em;
@@ -10,9 +9,9 @@
   }
 }
 
-
 /* CAIXA DE CADASTRO  */
 .flex_container {
+  backdrop-filter: blur(2px) brightness(0.8);
   display: block;
   height: fit-content;
   width: 400px;
@@ -29,14 +28,14 @@
   h1 {
     font-family: "Roboto";
     font-size: 3em;
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: 8px;
     text-align: center;
     color: white;
     margin-bottom: 20px;
     transition: 0.2s;
   }
 
-  
   label.labelInputs1 {
     font-size: 1.3em;
     font-family: "Roboto";
@@ -45,30 +44,29 @@
     font-weight: 500;
     color: white;
   }
-  
+
   label.labelSub {
     font-size: 1.1em;
     font-family: "Roboto";
     font-weight: 400;
     color: white;
-
   }
-  #spanManter{
+  #spanManter {
     text-align: left;
     justify-content: left;
   }
-  #spanLogin{
+  #spanLogin {
     text-align: center;
     justify-content: center;
     display: grid;
     margin: auto;
-    a{
+    a {
       color: white;
       text-decoration: none;
       font-size: 1.3em;
       font-weight: bold;
     }
-    a:hover{
+    a:hover {
       text-decoration: underline;
     }
   }
@@ -106,12 +104,12 @@
     display: block;
     width: 80%;
   }
-  #divFalha{
+  #divFalha {
     height: 0px;
     width: 100%;
     margin: 0px;
     padding: 0px;
-    p{
+    p {
       font-size: 0px;
     }
   }

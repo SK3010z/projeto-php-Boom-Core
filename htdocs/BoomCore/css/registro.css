@@ -10,8 +10,23 @@
   }
 }
 
+#container {
+  border-radius: 25px;
+  position: relative;
+  z-index: -1;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  margin: 25px auto;
+  display: flex;
+  flex-wrap: wrap;
+  height: 80%;
+  width: 80%;
+  justify-content: left;
+}
 /* CAIXA DE CADASTRO  */
 .flex_container {
+  z-index: -1;
+  backdrop-filter: blur(2px) brightness(0.8);
+
   display: block;
   height: fit-content;
   width: 400px;
@@ -46,7 +61,7 @@
     font-weight: 500;
     color: white;
   }
-  
+
   /* Labels da parte de baixo (a partir do manter login)  */
   label.labelSub {
     font-size: 1.1em;
@@ -54,7 +69,7 @@
     font-weight: 400;
     color: white;
   }
-  
+
   /* Inputs  */
   input.inputs1 {
     width: 100%;
@@ -71,7 +86,7 @@
   }
 
   /*Manter login  */
-  #spanManter{
+  #spanManter {
     text-align: left;
     justify-content: left;
   }
@@ -81,7 +96,7 @@
     height: 1.4em;
     border-radius: 7px;
   }
-  
+
   /* Botao enviar  */
   #botaoEnviar {
     border: none;
@@ -99,32 +114,32 @@
     width: 80%;
     transition: 0.3s;
   }
-  #botaoEnviar:hover{
+  #botaoEnviar:hover {
     background-color: #9c9c9c40;
   }
 
   /* Ja possui uma conta? Entrar  */
-  #spanLogin{
+  #spanLogin {
     text-align: center;
     justify-content: center;
     display: grid;
     margin: auto;
-    a{
+    a {
       color: white;
       text-decoration: none;
       font-size: 1.3em;
       font-weight: bold;
     }
-    a:hover{
+    a:hover {
       text-decoration: underline;
     }
   }
-  #divFalha{
+  #divFalha {
     height: 0px;
     width: 100%;
     margin: 0px;
     padding: 0px;
-    p{
+    p {
       font-size: 0px;
     }
   }

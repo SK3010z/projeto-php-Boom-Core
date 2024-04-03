@@ -21,7 +21,11 @@ if (isset($_POST['logout'])) {
 
 <body>
 
+
+
   <?php include("./assets/header.php");
+
+  
 
 
   if (isset($_SESSION["user"])) {
@@ -29,6 +33,55 @@ if (isset($_POST['logout'])) {
   } else {
   }
 
+  if ($_SESSION["user"] == "admin"){
+
+    echo "
+      <div id='adminDiv'>
+        <form action='' method='post' enctype='multipart/form-data'>
+          <h2>Novo produto</h2>
+          <input type='number' name='preco' placeholder='preço' step='0.01'>
+          <input type='text' name='descricao' placeholder='descrição'>
+          <label for'imagem'>Imagem:</label><input type='file' name='imagem' placeholder='imagem'>
+          <br>
+          <input type='submit' name='submitNovoProduto'>
+        </form>
+      </div>
+    ";
+
+    
+
+    if(isset($_POST['submitNovoProduto'])){
+      $pasta_imagem = '../produtos/';
+      $arquivo_imagem = $pasta_imagem . basename($_FILES['imagem']['name']);
+      $tipoArquivo = strtolower(pathinfo($arquivo_imagem,PATHINFO_EXTENSION));
+      $check = getimagesize($_FILES['imagem']['tmp_name']);
+      if($check !== false){
+        $preco = $_POST['preco'];
+        $descricao = $_POST['descricao'];
+
+        $sqlAdmin = "INSERT INTO produtos(preco, descricao, img_url) VALUES 
+                      ({$preco}, '{$descricao}', '{$arquivo_imagem}')";
+        
+
+
+        if (move_uploaded_file($_FILES['imagem']['tmp_name'], $arquivo_imagem)){
+          echo 'enviado';
+          mysqli_query($conn, $sqlAdmin);
+        }else{
+          echo 'falha em enviar' . $arquivo_imagem;
+        }
+      }
+      else{
+        echo "não é imagem";
+      }
+    }
+
+
+
+
+
+    
+  }
 
 
   ?>

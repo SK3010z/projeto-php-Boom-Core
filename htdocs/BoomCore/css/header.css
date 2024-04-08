@@ -1,6 +1,7 @@
 @import url("reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+
 body {
   background: url(../images/fundo.jpg);
   background-repeat: no-repeat;
@@ -28,7 +29,7 @@ body {
     width: 0%;
   }
 }
-@keyframes abrirOpcoesUsuario {
+/* @keyframes abrirOpcoesUsuario {
   0% {
     height: 0px;
   }
@@ -43,7 +44,7 @@ body {
   100% {
     height: 0px;
   }
-}
+} */
 
 /* cabeçalho */
 #header {
@@ -131,7 +132,7 @@ body {
     font-weight: bold;
   }
 
-  div {
+  .traco {
     margin: 0 auto;
     margin-top: 5%;
     width: 0%;
@@ -140,7 +141,12 @@ body {
     border-radius: 1em;
     text-align: center;
     background-color: white;
+    transition: 0.2s;
   }
+}
+
+#header .opcoesHeader:hover .traco {
+  width: 100%;
 }
 
 #header #pesquisa {
@@ -174,20 +180,30 @@ body {
   }
 }
 
-#header #user {
+#header #user #botaousuario img {
   width: 45px;
   height: 45px;
   vertical-align: top;
   cursor: pointer;
 }
 
-#header #botaoUsuario {
+#header #user:hover #opcoesUsuario {
+  display: inline-block;
+}
+#header #user #botaoUsuario {
+  padding: 7px;
   background-color: transparent;
   border: unset;
+  border-radius: 100%;
+}
+#header #user #botaoUsuario:hover {
+  background-color: #0000003d;
+  
 }
 
-#header #opcoesUsuario {
+#header #user #opcoesUsuario {
   position: absolute;
+  display: none;
   background-color: rgba(0, 0, 0, 0.7);
   width: 150px;
   height: min-content;
@@ -196,30 +212,31 @@ body {
   border-radius: 10px;
   padding-top: 10.5px;
   border: 2px solid rgba(255, 255, 255, 0.74);
-  transform: translateY(-1000%);
-  .opcaoUser {
-    background-color: transparent;
-    border: unset;
-    color: white;
-    padding: 0;
-    font-family: "Roboto";
-    font-weight: 500;
-    line-height: 2em;
-    font-size: larger;
-    margin-top: -10px;
-    width: 100%;
-    /* background-color: transparent; */
-    display: grid;
-    transition: background-color 0.2s;
-    /* border-top: 2px solid rgba(255, 255, 255, 0.74); */
-    /* border-bottom: 2px solid rgba(255, 255, 255, 0.74); */
-  }
-  .opcaoUser:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  input.opcaoUser {
-    cursor: pointer;
-  }
+}
+
+#header #user #opcoesUsuario .opcaoUser {
+  background-color: transparent;
+  border: unset;
+  color: white;
+  padding: 0;
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: 2em;
+  font-size: larger;
+  margin-top: -10px;
+  width: 100%;
+  /* background-color: transparent; */
+  display: grid;
+  transition: background-color 0.2s;
+  /* border-top: 2px solid rgba(255, 255, 255, 0.74); */
+  /* border-bottom: 2px solid rgba(255, 255, 255, 0.74); */
+}
+
+#header #user #opcoesUsuario .opcaoUser:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#header #user #opcoesUsuario input.opcaoUser {
+  cursor: pointer;
 }
 
 #header #notificacao {

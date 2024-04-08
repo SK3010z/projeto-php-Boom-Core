@@ -3,7 +3,7 @@
   <span id="headerL">
     <span class="logo">
       <a class="logo" href="./home.php">
-      <img src="../images/boom core.png" alt="" />
+        <img src="../images/boom core.png" alt="" />
       </a>
     </span>
     <span id="boom">
@@ -16,33 +16,21 @@
 
   <span id="headerR">
     <!-- Produtos -->
-    <a id="produtos"
-      class="opcoesHeader"
-      href="./home.php"
-      onmouseover="start('traco1')"
-      onmouseleave="end('traco1')">
+    <a id="produtos" class="opcoesHeader" href="./home.php" onmouseover="start('traco1')" onmouseleave="end('traco1')">
       <p>Produtos</p>
-      <div id="traco1"></div>
+      <div class="traco"></div>
     </a>
 
     <!-- Serviços  -->
-    <a id="servicos"
-      class="opcoesHeader"
-      href="./home.php"
-      onmouseover="start('traco2')"
-      onmouseleave="end('traco2')">
+    <a id="servicos" class="opcoesHeader" href="./home.php" onmouseover="start('traco2')" onmouseleave="end('traco2')">
       <p>Serviços</p>
-      <div id="traco2"></div>
+      <div class="traco"></div>
     </a>
 
     <!-- atendimentos -->
-    <a id="atendimentos"
-      class="opcoesHeader"
-      href="./home.php"
-      onmouseover="start('traco3')"
-      onmouseleave="end('traco3')">
+    <a id="atendimentos" class="opcoesHeader" href="./home.php" onmouseover="start('traco3')" onmouseleave="end('traco3')">
       <p>Atendimentos</p>
-      <div id="traco3"></div>
+      <div class="traco"></div>
     </a>
 
     <!-- pesquisa  -->
@@ -53,11 +41,13 @@
       <input type="submit" id="botao" value="" title="pesquisar" />
     </form>
 
+
     <!-- caixa de opções do usuario  -->
-    <span id="opcoesUsuario">
-      <?php 
+    <span id="user">
+      <span id="opcoesUsuario">
+        <?php
         // Se um nome de usuario estiver definido... 
-        if(isset($_SESSION['user'])){
+        if (isset($_SESSION['user'])) {
           //nome do usuario 
           echo "<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
           // botao de encerrar sessão
@@ -65,26 +55,23 @@
                   <input class='opcaoUser' type='submit' name='logout' value='Encerrar sessão'>
                 </form>
                 <br>";
-        
         }
         // Se nao estiver com um nome de usuario definido... 
-        else{
+        else {
           // botao pra pagina de login 
           echo "<a class='opcaoUser' href='./login.php'>Entrar</a> <br>";
           // botao pra pagina de Cadastro
           echo "<a class='opcaoUser' href='./registro.php'>Cadastrar</a>";
         }
-      ?>
+        ?>
+      </span>
+      <!-- botao de usuario  -->
+      <button id="botaoUsuario" onclick="opcoesUsuario('opcoesUsuario')">
+        <img src="../images/user.png" title="Perfil do usuário" />
+      </button>
     </span>
-    <!-- botao de usuario  -->
-    <button id="botaoUsuario" onclick="opcoesUsuario('opcoesUsuario')">
-      <img id="user" src="../images/user.png" title="Perfil do usuário"/>
-    </button>
-
     <!-- notificações  -->
-    <a href="index.php"
-      ><img id="notificacao" src="../images/sino.png" title="Notificações"
-    /></a>
+    <a href="index.php"><img id="notificacao" src="../images/sino.png" title="Notificações" /></a>
   </span>
 </div>
 <style>

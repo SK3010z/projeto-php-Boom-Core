@@ -59,6 +59,7 @@
 .card span#optionsBotao #p3 {
   background-color: transparent;
   outline: unset;
+  background-image: url("../images/options.png");
 }
 .card span#optionsBotao #p3 {
   border: unset;
@@ -83,7 +84,6 @@
   border: 3px solid black;
   border-radius: 5px;
   transform: translate(-38px, 28px);
-
 }
 .card span#optionsBotao #p3:hover #options {
   display: inline-block;
@@ -115,18 +115,15 @@
   border-radius: 5px;
 }
 
-.card span#optionsBotao #p3 #options .opcao#edit:hover + #telaEditar{
+.card span#optionsBotao #p3 #options .opcao#edit:hover + #telaEditar {
   display: block;
 }
-.card span#optionsBotao #p3 #options #telaEditar:hover{
+.card span#optionsBotao #p3 #options #telaEditar:hover {
   display: block;
 }
-.card span#optionsBotao #p3 #options #telaEditar input{
+.card span#optionsBotao #p3 #options #telaEditar input {
   font-size: larger;
-  
 }
-
-
 
 .card #imagemProduto {
   object-fit: contain;

@@ -50,8 +50,7 @@ if (isset($_POST['submitEditProduto'])) {
   } else {
   }
 
-  echo isset($_SESSION["user"]);
-  if (isset($_SESSION["user"]) == "admin") {
+  if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
 
     echo "
       <div id='adminDiv'>
@@ -111,7 +110,7 @@ if (isset($_POST['submitEditProduto'])) {
       $descricao = $produto['descricao'];
       $preco = number_format($produto['preco'], 2, ',', '.');
       $opcoesAdm = '';
-      if (isset($_SESSION["user"]) == "admin") {
+      if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
         $opcoesAdm = "
         <span id='optionsBotao'>
         <button id='p3'>

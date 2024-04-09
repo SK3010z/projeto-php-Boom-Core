@@ -30,7 +30,7 @@
   display: block;
   height: fit-content;
   width: 400px;
-  margin: 50px auto 0;
+  margin: 35px auto 0;
   background-color: transparent;
   border: 3px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -49,7 +49,6 @@
     text-align: center;
     color: white;
     margin-bottom: 20px;
-    transition: 0.2s;
   }
 
   /* Labels dos Inputs  */
@@ -60,6 +59,24 @@
     justify-content: left;
     font-weight: 500;
     color: white;
+    
+  }
+  img.iconLabelLogin{
+    margin-left: 5px;
+    height: 25px;
+  }
+  button.botaoOlho{
+    border: unset;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    display: block;
+    background-color: transparent;
+    transform: translate(358px, 4px);
+    cursor: pointer;
+  }
+  button.botaoOlho img{
+    height: 25px;
   }
 
   /* Labels da parte de baixo (a partir do manter login)  */
@@ -79,6 +96,7 @@
     border-radius: 20px 20px / 30px 30px;
     margin-bottom: 20px;
     transition: height 0.2s;
+    padding-right: 40px;
   }
   input.inputs1:focus {
     /* animation: aumentar 2s; */

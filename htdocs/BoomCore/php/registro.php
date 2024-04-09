@@ -36,7 +36,7 @@
           $hash = password_hash($senha, PASSWORD_DEFAULT);
 
           $sql = "INSERT INTO contas (user, senha, email) VALUES
-                        ('$user', '$hash', '$senha')";
+                        ('$user', '$hash', '$email')";
 
           mysqli_query($conn, $sql);
           $_SESSION["user"] = $_POST["user"];
@@ -76,32 +76,49 @@
      <div class="flex_container">
        <form method="post">
          <h1>CADASTRAR</h1>
+        
+        <?php
+        //nao apagar tudo caso ja exista um item no banco de dados
+        //atribuição condicional dos valores dos inputs, caso definida, será o valor do input, caso nao, será vazia
+        $oldUser = isset($_POST['user']) ? $_POST['user'] : '';
+        $oldEmail = isset($_POST['email']) ? $_POST['email'] : '';
+        $oldPass = isset($_POST['senha']) ? $_POST['senha'] : ''; 
+        $oldPass2 = isset($_POST['senha2']) ? $_POST['senha2'] : ''; 
+        echo
+        "
+          <!-- Nome de usuário -->
+          <label for='user' class='labelInputs1' for='user'>Nome de usuário</label>
+          <img src='../images/userLogin.png' alt='usuário' class='iconLabelLogin'>
+          <input type='name' class='inputs1' id='user' name='user' minlength='3' maxlength='30' required value='{$oldUser}'/>
+          <br>
 
-         <!-- Nome de usuário -->
-         <label for="exampleInputEmail1" class="labelInputs1" for="user">Nome de usuário</label>
-         <input type="name" class="inputs1" id="user" name="user" minlength="3" maxlength="30" required />
-         <br>
+          <!-- Email -->
+          <label for='email' class='labelInputs1' for='email'>Email</label>
+          <img src='../images/emailLogin.png' alt='usuário' class='iconLabelLogin'>
+          <input type='email' class='inputs1' id='email' name='email' required value='{$oldEmail}'/>
+          <br>
 
-         <!-- Email -->
-         <label for="exampleInputPassword1" class="labelInputs1" for="email">Email</label>
-         <input type="email" class="inputs1" id="email" name="email" required />
-         <br>
+          <!-- Senha -->
+          <label for='senha' class='labelInputs1'>Senha</label>
+          <img src='../images/senhaLogin.png' alt='usuário' class='iconLabelLogin'>
+          <button type='button' class='botaoOlho' onclick=\"exibirEsconderSenha('olho','senha')\"><img  src='../images/olhoMostrar.png' alt='exibir senha' id='olho' ></button>
+          <input type='password' class='inputs1' id='senha' name='senha' minlength='3' maxlength='100' required value='{$oldPass}'/>
 
-         <!-- Senha -->
-         <label for="senha" class="labelInputs1">Senha</label>
-         <input type="password" class="inputs1" id="senha" name="senha" minlength="3" maxlength="100" required />
-
-         <!-- Senha2 -->
-         <label for="senha2" class="labelInputs1">Confirmar Senha</label>
-         <input type="password" class="inputs1" id="senha" name="senha2" minlength="3" maxlength="100" required />
+          <!-- Senha2 -->
+          <label for='senha2' class='labelInputs1'>Confirmar Senha</label>
+          <img src='../images/senhaLogin.png' alt='usuário' class='iconLabelLogin'>
+          <button type='button' class='botaoOlho' onclick=\"exibirEsconderSenha('olho2','senha2')\"><img  src='../images/olhoMostrar.png' alt='exibir senha' id='olho2' ></button>
+          <input type='password' class='inputs1' id='senha2' name='senha2' minlength='3' maxlength='100' required value='{$oldPass2}'/>
+        ";
+         ?>
 
          <!-- Manter login -->
-         <span id="spanManter">
-           <input type="checkbox" name="manter" id="manter">
-           <label for="manter" class="labelSub">Manter-me conectado</label>
-         </span>
-         <br>
-
+         <span id='spanManter'>
+            <input type='checkbox' name='manter' id='manter'>
+            <label for='manter' class='labelSub'>Manter-me conectado</label>
+          </span>
+          <br>
+        
          <!-- Enviar -->
          <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
 

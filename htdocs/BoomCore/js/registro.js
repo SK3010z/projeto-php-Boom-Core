@@ -72,3 +72,21 @@ function falhaSenhasDiferentes() {
   
     
 }
+
+
+//false -> senha nao a mostra, true -> senha a mostra
+let estadoSenha = false;
+function exibirEsconderSenha(olho, input){
+  let olhoSenha = document.getElementById(olho);
+  let inputSenha = document.getElementById(input);
+  if(estadoSenha){
+    olhoSenha.src='../images/olhoMostrar.png';
+    inputSenha.type = 'password';
+  }
+  else{
+    olhoSenha.src='../images/olhofechar.png';
+    inputSenha.type = 'text';
+
+  }
+  estadoSenha = !estadoSenha;
+}

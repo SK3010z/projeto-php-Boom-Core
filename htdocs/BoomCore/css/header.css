@@ -48,6 +48,9 @@ body {
 
 /* cabeçalho */
 #header {
+  top: 0;
+  position: sticky;
+  z-index: 1;
   text-wrap: nowrap;
   width: auto;
   height: 60px;

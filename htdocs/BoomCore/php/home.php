@@ -41,28 +41,6 @@ if (isset($_POST['submitEditProduto'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <?php include("./assets/header.php"); ?>
 
 
@@ -131,34 +109,42 @@ if (isset($_POST['submitEditProduto'])) {
     //EXECUTA o codigo sql
     $select = mysqli_query($conn, $sql);
 
-    while ($produto = mysqli_fetch_assoc($select) and false) {
+    while ($produto = mysqli_fetch_assoc($select)) {
       $id = $produto['id'];
       $img_url = $produto['img_url'];
       $descricao = $produto['descricao'];
       $preco = number_format($produto['preco'], 2, ',', '.');
       $opcoesAdm = '';
       if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
-        $opcoesAdm = "
-        <span id='optionsBotao'>
-        <button id='p3'>
-          
-          <span id='options' enctype='multipart/form-data'>
-            <form method='post'>
-              <input id='edit' class='opcao' value='editar item'>
-              <span id='telaEditar'>
-                <input type='number' name='precoEdit' placeholder='preço' step='0.01'> <br>
-                <input type='text' name='descricaoEdit' placeholder='descrição'><br>
-                <!-- <label for='imagem'>Imagem:</label><input type='file' name='imagemEdit' placeholder='imagem'> -->
-                <!-- <br> -->
-                <input type='submit' name='submitEditProduto'>
-              </span>
-              <input class='opcao' type='submit' value='deletar item' name='delete'>
-              <input type='hidden' value='{$id}' name='idProduto'>
-            </form>
-          </span>
-        </button>
-      </span>
-        ";
+        $opcoesAdm = <<<END
+        <!-- TRES PONTINHOS -->
+        <button id='p3' onclick="drop('opcoes')"></button>
+        
+        <form method='post' enctype='multipart/form-data'>
+          <div id='opcoes' class='dropdown options'>
+            <ul>
+              <li class='option'> <!-- EDITAR ITEM -->
+                <button type='button' id='btnEdit' onclick="drop('edit')">Editar Item</button>
+              </li>
+              <li class='option'> <!-- DELETAR ITEM -->
+                <button type='submit' name='delete' id='btnDel'>Apagar Item</button>
+              </li>
+            </ul>
+          </div>
+          <div id='containerEdit'>
+            <div id='edit' class='dropdown telaEditar'>
+              <input type='number' name='precoEdit' placeholder='preço' step='0.01'> <br>
+              <input type='text' name='descricaoEdit' placeholder='descrição'><br>
+              <!-- <label for='imagem'>Imagem:</label><input type='file' name='imagemEdit' placeholder='imagem'> -->
+              <!-- <br> -->
+              <input type='submit' name='submitEditProduto'>
+            </div>
+          </div>
+        
+          <!-- ID do produto -->
+          <input type='hidden' value='{$id}' name='idProduto'>
+        </form>
+        END;
       }
 
       echo "
@@ -175,53 +161,18 @@ if (isset($_POST['submitEditProduto'])) {
       ";
     }
     ?>
+
   </div>
 
-  <button id='p3'></button>
-    <div id='options' enctype='multipart/form-data'>
-      <form method='post'>
-        <input id='edit' class='opcao' value='editar item'>
-        <span id='telaEditar'>
-          <input type='number' name='precoEdit' placeholder='preço' step='0.01'> <br>
-          <input type='text' name='descricaoEdit' placeholder='descrição'><br>
-          <!-- <label for='imagem'>Imagem:</label><input type='file' name='imagemEdit' placeholder='imagem'> -->
-          <!-- <br> -->
-          <input type='submit' name='submitEditProduto'>
-        </span>
-        <input class='opcao' type='submit' value='deletar item' name='delete'>
-        <input type='hidden' value='{$id}' name='idProduto'>
-      </form>
-    </div>
 
-  REFAZER ESSE KRLLLLLLLLLLLL
 
-<script>
-    implementa esse krl
-// function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-// }
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
-</script>
 
-  
-        
 
-  
+
 
   <!-- </div> -->
 
 </body>
 
 </html>
+<script src="../js/home.js"></script>

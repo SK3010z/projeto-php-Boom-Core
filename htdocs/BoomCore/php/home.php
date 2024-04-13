@@ -19,6 +19,7 @@ if (isset($_POST['submitEditProduto'])) {
   mysqli_query($conn, $sqlEdit);
 }
 
+
 ?>
 
 <html lang="en">
@@ -81,9 +82,10 @@ if (isset($_POST['submitEditProduto'])) {
         $preco = $_POST['preco'];
         $descricao = $_POST['descricao'];
 
+
         $sqlAdmin = "INSERT INTO produtos(preco, descricao, img_url) VALUES 
                       ({$preco}, '{$descricao}', '{$arquivo_imagem}')";
-
+        
 
 
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $arquivo_imagem)) {
@@ -98,17 +100,30 @@ if (isset($_POST['submitEditProduto'])) {
       }
     }
   }
-
-
+  
   ?>
   <!-- <div id="site"> -->
-  <div id="container">
+  
 
     <?php
-    $sql = "SELECT id, preco, descricao, img_url FROM produtos order by preco desc";
+    $sql = "SELECT id, preco, descricao, img_url FROM produtos ";
     //EXECUTA o codigo sql
+
+    //PESQUISA
+    if (isset($_GET['pesquisa'])){
+      if(!empty($_GET['promptPesquisa'])){
+        //obtém a pesquisa
+        $pesquisa = trim($_GET['promptPesquisa']);
+        // aplica a condição da pesquisa no sql 
+        $sql = $sql . "WHERE descricao LIKE '%{$pesquisa}%' ";
+        echo "<h1 id='resultados'>Resultados para \"<b>{$pesquisa}</b>\":</h1>";
+      }
+    }
+    
     $select = mysqli_query($conn, $sql);
 
+
+    echo "<div id='container'>";
     while ($produto = mysqli_fetch_assoc($select)) {
       $id = $produto['id'];
       $img_url = $produto['img_url'];

@@ -36,9 +36,9 @@
     <!-- pesquisa  -->
     <form action="home.php" id="pesquisa" method="get">
       <!-- caixa de pesquisa  -->
-      <input type="text" placeholder="Pesquisa" name="pesquisa" />
+      <input type="text" placeholder="Pesquisar Produto" name="promptPesquisa" />
       <!-- botao de pesquisar  -->
-      <input type="submit" id="botao" value="" title="pesquisar" />
+      <input type="submit" id="botao" value="" title="pesquisar" name='pesquisa'/>
     </form>
 
 

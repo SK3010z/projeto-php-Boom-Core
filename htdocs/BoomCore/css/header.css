@@ -62,6 +62,7 @@ body {
   display: flex;
   justify-content: space-between;
   text-align: center;
+  margin-bottom: 40px;
 }
 /* links */
 #header a {

@@ -28,7 +28,7 @@
     </a>
 
     <!-- atendimentos -->
-    <a id="atendimentos" class="opcoesHeader" href="./home.php" onmouseover="start('traco3')" onmouseleave="end('traco3')">
+    <a id="atendimentos" class="opcoesHeader" href="atendimento.php" onmouseover="start('traco3')" onmouseleave="end('traco3')">
       <p>Atendimentos</p>
       <div class="traco"></div>
     </a>

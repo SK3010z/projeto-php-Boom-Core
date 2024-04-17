@@ -38,7 +38,9 @@ body {
   border-radius: 12px;
   box-shadow: 9px 9px 15px #8a8a8a;
   font-weight: bold; */
+  -webkit-backdrop-filter: blur(2px) brightness(0.8);
   backdrop-filter: blur(2px) brightness(0.8);
+
   display: block;
   height: fit-content;
   width: 400px;

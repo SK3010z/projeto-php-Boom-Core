@@ -85,7 +85,7 @@ if (isset($_POST['submitEditProduto'])) {
 
         $sqlAdmin = "INSERT INTO produtos(preco, descricao, img_url) VALUES 
                       ({$preco}, '{$descricao}', '{$arquivo_imagem}')";
-        
+
 
 
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $arquivo_imagem)) {
@@ -100,70 +100,79 @@ if (isset($_POST['submitEditProduto'])) {
       }
     }
   }
-  
+
   ?>
   <!-- <div id="site"> -->
-  
 
-    <?php
-    $sql = "SELECT id, preco, descricao, img_url FROM produtos ";
-    //EXECUTA o codigo sql
 
-    //PESQUISA
-    if (isset($_GET['pesquisa'])){
-      if(!empty($_GET['promptPesquisa'])){
-        //obtém a pesquisa
-        $pesquisa = trim($_GET['promptPesquisa']);
-        // aplica a condição da pesquisa no sql 
-        $sql = $sql . "WHERE descricao LIKE '%{$pesquisa}%' ";
-        echo "<h1 id='resultados'>Resultados para \"<b>{$pesquisa}</b>\":</h1>";
-      }
+  <?php
+  $sql = "SELECT id, preco, descricao, img_url FROM produtos ";
+  //EXECUTA o codigo sql
+
+  //PESQUISA
+  if (isset($_GET['pesquisa'])) {
+    if (!empty($_GET['promptPesquisa'])) {
+      //obtém a pesquisa
+      $pesquisa = trim($_GET['promptPesquisa']);
+      // aplica a condição da pesquisa no sql 
+      $sql = $sql . "WHERE descricao LIKE '%{$pesquisa}%' ";
+      echo "<h1 id='resultados'>Resultados para \"<b>{$pesquisa}</b>\":</h1>";
     }
-    
-    $select = mysqli_query($conn, $sql);
+  }
+
+  $select = mysqli_query($conn, $sql);
 
 
-    echo "<div id='container'>";
-    while ($produto = mysqli_fetch_assoc($select)) {
-      $id = $produto['id'];
-      $img_url = $produto['img_url'];
-      $descricao = $produto['descricao'];
-      $preco = number_format($produto['preco'], 2, ',', '.');
-      $opcoesAdm = '';
-      if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
-        $opcoesAdm = <<<END
-        <!-- TRES PONTINHOS -->
-        <button id='p3' onclick="drop('opcoes')"></button>
-        
-        <form method='post' enctype='multipart/form-data'>
-          <div id='opcoes' class='dropdown options'>
-            <ul>
-              <li class='option'> <!-- EDITAR ITEM -->
-                <button type='button' id='btnEdit' onclick="drop('edit')">Editar Item</button>
-              </li>
-              <li class='option'> <!-- DELETAR ITEM -->
-                <button type='submit' name='delete' id='btnDel'>Apagar Item</button>
-              </li>
-            </ul>
-          </div>
-          <div id='containerEdit'>
-            <div id='edit' class='dropdown telaEditar'>
-              <input type='number' name='precoEdit' placeholder='preço' step='0.01'> <br>
-              <input type='text' name='descricaoEdit' placeholder='descrição'><br>
-              <!-- <label for='imagem'>Imagem:</label><input type='file' name='imagemEdit' placeholder='imagem'> -->
-              <!-- <br> -->
-              <input type='submit' name='submitEditProduto'>
+  echo "<div id='container'>";
+  $count = 0;
+  while ($produto = mysqli_fetch_assoc($select)) {
+    //Informações dos PRODUTOS
+    $id = $produto['id'];
+    $img_url = $produto['img_url'];
+    $descricao = $produto['descricao'];
+    $preco = number_format($produto['preco'], 2, ',', '.');
+    //vazio pra CASO NAO for ADMIN, NAO MOSTRAR NADA
+    $opcoesAdm = '';
+    //IDs das telas de desenvolvedor dos produtos
+    $opcoesId = "opcoes{$count}";
+    $editId = "edit{$count}";
+    $classeP = "produto{$count}";
+    $count++;
+
+    if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
+      $opcoesAdm = <<<OPCOES
+          <!-- TRES PONTINHOS -->
+          <button  id='p3' onclick="drop('{$opcoesId}','{$classeP}', '{$editId}')"></button>
+          
+          <form method='post' enctype='multipart/form-data'>
+            <div id='{$opcoesId}' class='dropdown options'>
+              <ul>
+                <li class='option'> <!-- EDITAR ITEM -->
+                  <button type='button' id='btnEdit' onclick="drop('{$editId}','{$classeP}')">Editar Item</button>
+                </li>
+                <li class='option'> <!-- DELETAR ITEM -->
+                  <button type='submit' name='delete' id='btnDel'>Apagar Item</button>
+                </li>
+              </ul>
             </div>
-          </div>
-        
-          <!-- ID do produto -->
-          <input type='hidden' value='{$id}' name='idProduto'>
-        </form>
-        END;
-      }
+            <div id='containerEdit'>
+              <div id='{$editId}' class='dropdown telaEditar'>
+                <input type='number' name='precoEdit' placeholder='preço' step='0.01'> <br>
+                <input type='text' name='descricaoEdit' placeholder='descrição'><br>
+                <!-- <label for='imagem'>Imagem:</label><input type='file' name='imagemEdit' placeholder='imagem'> -->
+                <!-- <br> -->
+                <input type='submit' name='submitEditProduto'>
+              </div>
+            </div>
+          
+            <!-- ID do produto -->
+            <input type='hidden' value='{$id}' name='idProduto'>
+          </form>
+        OPCOES;
+    }
 
-      echo "
-        <div class='card'>
+    echo "
+        <div class='card {$classeP}'>
           {$opcoesAdm}
           <img id='imagemProduto' src='{$img_url}' />
           <div>
@@ -174,8 +183,8 @@ if (isset($_POST['submitEditProduto'])) {
         </div>
         
       ";
-    }
-    ?>
+  }
+  ?>
 
   </div>
 

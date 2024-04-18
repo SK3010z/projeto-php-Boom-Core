@@ -9,26 +9,26 @@
     <span id="boom">
       <a href="./home.php">
         <label>Boom Core</label><br>
-        <small>Assistência técnica delivery</small>
+        <small id="litou">Assistência técnica delivery</small>
       </a>
     </span>
   </span>
 
   <span id="headerR">
     <!-- Produtos -->
-    <a id="produtos" class="opcoesHeader" href="./home.php" onmouseover="start('traco1')" onmouseleave="end('traco1')">
+    <a id="produtos" class="opcoesHeader" href="./home.php">
       <p>Produtos</p>
       <div class="traco"></div>
     </a>
 
     <!-- Serviços  -->
-    <a id="servicos" class="opcoesHeader" href="./home.php" onmouseover="start('traco2')" onmouseleave="end('traco2')">
+    <a id="servicos" class="opcoesHeader" href="./home.php">
       <p>Serviços</p>
       <div class="traco"></div>
     </a>
 
     <!-- atendimentos -->
-    <a id="atendimentos" class="opcoesHeader" href="atendimento.php" onmouseover="start('traco3')" onmouseleave="end('traco3')">
+    <a id="atendimentos" class="opcoesHeader" href="atendimento.php">
       <p>Atendimentos</p>
       <div class="traco"></div>
     </a>
@@ -44,8 +44,12 @@
 
     <!-- caixa de opções do usuario  -->
     <span id="user">
+      
       <span id="opcoesUsuario">
         <?php
+        echo "<script>
+        document.getElementById('litou').innerHTML = '{$_SESSION['user']}';
+      </script>";
         // Se um nome de usuario estiver definido... 
         if (isset($_SESSION['user'])) {
           //nome do usuario 

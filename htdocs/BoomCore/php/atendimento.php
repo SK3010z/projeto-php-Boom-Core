@@ -1,15 +1,39 @@
 <?php
-
-if(isset($_POST['enviar'])){
+session_start();
+if (isset($_POST['enviar'])) {
   include("assets/conn.php"); /* atendimento -> id, nome, email, assunto, mensagem*/
   $nome = $_POST['nome'];
   $email = $_POST['email'];
   $assunto = $_POST['assunto'];
   $mensagem = $_POST['mensagem'];
   $sql = "INSERT INTO atendimento(nome,email,assunto,mensagem) VALUES('$nome','$email','$assunto','$mensagem');";
-  $conn -> query($sql);
-}
+  $conn->query($sql);
+} 
+//TODO MANUAL TELA ATENDIMENTOS ADMIN
+/*
+caso seja admin:
+    tela de atendimentos:
+        obter array com os itens do banco de dados
+        emitir mensagens
+        nova pagina de mensagens a cada 10 mensagens
+        atual = 1
+        SELECT * FROM `produtos` WHERE 1 LIMIT 10 OFFSET (atual-1)*10
+        assocSelect
+        nPags = ceil(n,10)
+        while assocSelect
+            echo html item valores bd
 
+        botoes de mudar de página
+            caso atual == nPags
+                sem botao de proximo
+            se nao, caso atual == 1
+                sem botao de anterior
+            se nao:
+                dois botoes normais
+
+se nao:
+    tela normal
+*/
 ?>
 <html>
 
@@ -20,7 +44,7 @@ if(isset($_POST['enviar'])){
 
 <body>
   <?php include("assets/header.php"); ?>
-
+  
   <div class="container">
     <div class="cabecalho">
       <h1>ATENDIMENTO</h1>
@@ -39,7 +63,7 @@ if(isset($_POST['enviar'])){
         <label for="mensag">Mensagem:</label><br>
         <textarea id="mensag" name="mensagem" rows="8" cols="40" class="entrada" required maxlength="500"></textarea><br><br>
         <button type="submit" id="enviar" name="enviar">Enviar</button>
-        
+
     </Form>
   </div>
   </div>

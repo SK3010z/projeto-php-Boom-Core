@@ -9,7 +9,7 @@
     <span id="boom">
       <a href="./home.php">
         <label>Boom Core</label><br>
-        <small id="litou">Assistência técnica delivery</small>
+        <small>Assistência técnica delivery</small>
       </a>
     </span>
   </span>
@@ -47,9 +47,6 @@
       
       <span id="opcoesUsuario">
         <?php
-        echo "<script>
-        document.getElementById('litou').innerHTML = '{$_SESSION['user']}';
-      </script>";
         // Se um nome de usuario estiver definido... 
         if (isset($_SESSION['user'])) {
           //nome do usuario 

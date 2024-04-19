@@ -15,9 +15,8 @@
 !/mysql/
 /mysql/*
 /mysql/*/
-!/mysql/data
+!/mysql/data/
 !/mysql/data/*
-!/mysql/data/*/
 
 
 

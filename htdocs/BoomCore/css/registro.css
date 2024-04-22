@@ -25,6 +25,7 @@
 /* CAIXA DE CADASTRO  */
 .flex_container {
   z-index: -1;
+  -webkit-backdrop-filter: blur(2px) brightness(0.8);
   backdrop-filter: blur(2px) brightness(0.8);
   display: block;
   height: fit-content;

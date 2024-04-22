@@ -22,7 +22,7 @@
     </a>
 
     <!-- Serviços  -->
-    <a id="servicos" class="opcoesHeader" href="./home.php">
+    <a id="servicos" class="opcoesHeader" href="servicos.php">
       <p>Serviços</p>
       <div class="traco"></div>
     </a>
@@ -38,13 +38,13 @@
       <!-- caixa de pesquisa  -->
       <input type="text" placeholder="Pesquisar Produto" name="promptPesquisa" />
       <!-- botao de pesquisar  -->
-      <input type="submit" id="botao" value="" title="pesquisar" name='pesquisa'/>
+      <input type="submit" id="botao" value="" title="pesquisar" name='pesquisa' />
     </form>
 
 
     <!-- caixa de opções do usuario  -->
     <span id="user">
-      
+
       <span id="opcoesUsuario">
         <?php
         // Se um nome de usuario estiver definido... 
@@ -75,6 +75,12 @@
     <a href="index.php"><img id="notificacao" src="../images/sino.png" title="Notificações" /></a>
   </span>
 </div>
+<?php
+$css = $_SERVER["DOCUMENT_ROOT"] . "/Boomcore/css/header.css";
+echo <<<STYLE
+STYLE
+?>
+
 <style>
   @import url(../css/header.css);
 </style>

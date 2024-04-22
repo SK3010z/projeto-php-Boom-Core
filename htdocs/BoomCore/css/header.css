@@ -98,7 +98,7 @@ body {
 #header #boom {
   display: inline-block;
   height: inherit;
-  margin: auto 0;
+  margin: auto 0px;
   font-size: 2.2em;
   font-family: "Roboto";
   font-weight: bold;
@@ -106,13 +106,14 @@ body {
   vertical-align: top;
   margin-top: 10px;
 
-  /* frase pequena */
-  small {
-    font-size: 0.57em;
-    font-weight: lighter;
-    font-family: "Times New Roman", Times, serif;
-    line-height: 1.2em;
-  }
+  
+}
+/* frase pequena */
+#header #boom small {
+  font-size: 0.57em;
+  font-weight: lighter;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.2em;
 }
 
 /* headerR (DIREITA) */
@@ -127,26 +128,25 @@ body {
   vertical-align: top;
   margin-left: 3%;
   transform: translateY(60%);
+}
+#header .opcoesHeader p {
+  /*texto*/
+  line-height: 27px;
+  vertical-align: middle;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 
-  p {
-    /*texto*/
-    line-height: 27px;
-    vertical-align: middle;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-
-  .traco {
-    margin: 0 auto;
-    margin-top: 5%;
-    width: 0%;
-    height: 3px;
-    display: block;
-    border-radius: 1em;
-    text-align: center;
-    background-color: white;
-    transition: 0.2s;
-  }
+#header .opcoesHeader .traco {
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 0%;
+  height: 3px;
+  display: block;
+  border-radius: 1em;
+  text-align: center;
+  background-color: white;
+  transition: 0.2s;
 }
 
 #header .opcoesHeader:hover .traco {
@@ -157,31 +157,30 @@ body {
   margin: 18px 0 0 3%;
   display: inline-block;
   vertical-align: top;
+}
+#header #pesquisa input[type="text"] {
+  height: 30px;
+  font-size: large;
+  border: 0px none transparent;
+  vertical-align: middle;
+}
+#header #pesquisa input#botao {
+  vertical-align: middle;
+  margin-top: 0;
+  height: 32px;
+  width: 32px;
+  padding: 1px 2px;
+  border: unset;
+  background: url("../images/lupa.png") no-repeat scroll transparent;
+  background-position: center;
+  border-radius: 10px;
+  transform: translateX(-38px);
 
-  input[type="text"] {
-    height: 30px;
-    font-size: large;
-    border: 0px none transparent;
-    vertical-align: middle;
-  }
-  input#botao {
-    vertical-align: middle;
-    margin-top: 0;
-    height: 32px;
-    width: 32px;
-    padding: 1px 2px;
-    border: unset;
-    background: url("../images/lupa.png") no-repeat scroll transparent;
-    background-position: center;
-    border-radius: 10px;
-    transform: translateX(-38px);
-
-    background-size: 25px 25px;
-    object-fit: contain;
-  }
-  input#botao:hover {
-    background-color: #0000003d;
-  }
+  background-size: 25px 25px;
+  object-fit: contain;
+}
+#header #pesquisa input#botao:hover {
+  background-color: #0000003d;
 }
 
 #header #user #botaousuario img {

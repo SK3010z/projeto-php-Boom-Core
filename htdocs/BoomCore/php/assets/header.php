@@ -28,10 +28,21 @@
     </a>
 
     <!-- atendimentos -->
-    <a id="atendimentos" class="opcoesHeader" href="atendimento.php">
-      <p>Atendimentos</p>
-      <div class="traco"></div>
-    </a>
+    <form method="POST" id="atendimento">
+      <button type="submit" id="atendimentos" class="opcoesHeader" name="submitAtendimentos">
+        <p>Atendimento</p>
+        <div class="traco"></div>
+      </button>
+    </form>
+    <?php
+    if (isset($_POST['submitAtendimentos'])){
+      if(isset($_SESSION['user'])){
+        header("location: atendimento.php");
+      }
+      setcookie("atendimentoNaoLogado", true, 150); //2m30s
+      header("location: atendimento.php");
+    }
+    ?>
 
     <!-- pesquisa  -->
     <form action="home.php" id="pesquisa" method="get">
@@ -67,7 +78,7 @@
         ?>
       </span>
       <!-- botao de usuario  -->
-      <button id="botaoUsuario" onclick="opcoesUsuario('opcoesUsuario')">
+      <button id="botaoUsuario">
         <img src="../images/user.png" title="Perfil do usuário" />
       </button>
     </span>
@@ -84,6 +95,3 @@ STYLE
 <style>
   @import url(../css/header.css);
 </style>
-
-<script src="../js/header.js">
-</script>

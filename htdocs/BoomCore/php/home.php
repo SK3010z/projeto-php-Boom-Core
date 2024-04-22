@@ -52,7 +52,7 @@ if (isset($_POST['submitEditProduto'])) {
 
   <?php
   if (isset($_SESSION["user"])) {
-    echo "<h1 style='font-size: xx-large; text-align: center; margin-top: 20px'>Seja bem-vindo <b style='font-weight: bold'>{$_SESSION['user']}</b>!</h1>";
+    echo "<h1 style='font-size: xx-large; text-align: center; margin: 20px 0'>Seja bem-vindo <b style='font-weight: bold'>{$_SESSION['user']}</b>!</h1>";
   } else {
   }
 
@@ -123,7 +123,10 @@ if (isset($_POST['submitEditProduto'])) {
   $select = mysqli_query($conn, $sql);
 
 
-  echo "<div id='container'>";
+  echo "
+  <h1 id='titulo'>Produtos</h1>
+  <div id='container'>
+  ";
   $count = 0;
   while ($produto = mysqli_fetch_assoc($select)) {
     //Informações dos PRODUTOS
@@ -138,6 +141,9 @@ if (isset($_POST['submitEditProduto'])) {
     $editId = "edit{$count}";
     $classeP = "produto{$count}";
     $count++;
+    echo <<<SCRIPT
+
+    SCRIPT;
 
     if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
       $opcoesAdm = <<<OPCOES
@@ -176,7 +182,7 @@ if (isset($_POST['submitEditProduto'])) {
           {$opcoesAdm}
           <img id='imagemProduto' src='{$img_url}' />
           <div>
-            <h2>{$descricao}</h2>
+            <h2 title='{$descricao}'>{$descricao}</h2>
             <p class='valor'>R\${$preco}</p><br>
             <button id='comprar'>Comprar</button>
           </div>
@@ -193,9 +199,7 @@ if (isset($_POST['submitEditProduto'])) {
 
 
 
-
   <!-- </div> -->
-
 </body>
 
 </html>

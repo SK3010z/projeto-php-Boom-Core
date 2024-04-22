@@ -76,5 +76,5 @@ function exibirEsconderSenha(olho, input) {
   } else {
     olhoSenha.src = "../images/olhoMostrar.png";
     inputSenha.type = "password";
-  }
+  } 
 }

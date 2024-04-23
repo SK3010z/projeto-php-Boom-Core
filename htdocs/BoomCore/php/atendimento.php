@@ -43,7 +43,8 @@ se nao:
 </head>
 
 <body>
-  <?php include("assets/header.php"); ?>
+  <?php include("assets/header.php"); 
+  ?>
 
   <div class="container">
     <div class="cabecalho">

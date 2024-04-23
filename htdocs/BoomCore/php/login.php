@@ -56,7 +56,10 @@ if (isset($_POST["enviar"])) {
   <?php
   include("./assets/header.php");
   ?>
-
+  <div id="divAtendimentoNaoLogado">
+    <p id="pAtendimentoNaoLogado">
+    </p>
+  </div>
   <div class="flex_container">
 
     <form method="post">
@@ -82,8 +85,8 @@ if (isset($_POST["enviar"])) {
         "
       ?>
 
-      
-      
+
+
 
 
       <span id="spanManter">
@@ -118,7 +121,13 @@ if (isset($_POST["enviar"])) {
 <?php
 //erro com maior prioridade de aparecer, por isso if e elseif
 //FALHA na CONEXAO com o BANCO DE DADOS
-if ($errorConn) {
+if (isset($_COOKIE["atendimentoNaoLogado"])) {
+  echo "
+        <script>
+          AtendimentoNaoLogado();
+        </script>
+      ";
+} elseif ($errorConn) {
   echo "
         <script>
           falhaConexao();

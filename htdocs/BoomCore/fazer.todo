@@ -1,0 +1,5 @@
+incluir o 'AtendimentoNaoLogado()' no registro
+
+excluir o cookie ao fazer login ou registro
+
+ser redirecionado ao atendimento invés de home quando tiver o cookie AtendimentoNaoLogado

@@ -35,12 +35,13 @@
       </button>
     </form>
     <?php
-    if (isset($_POST['submitAtendimentos'])){
-      if(isset($_SESSION['user'])){
+    if (isset($_POST['submitAtendimentos'])) {
+      if (isset($_SESSION['user'])) {
         header("location: atendimento.php");
+      } else {
+        setcookie("atendimentoNaoLogado", true, time() + 150); //2m30s
+        header("location: login.php");
       }
-      setcookie("atendimentoNaoLogado", true, 150); //2m30s
-      header("location: atendimento.php");
     }
     ?>
 

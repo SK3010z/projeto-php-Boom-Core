@@ -118,13 +118,22 @@ body {
 #header #headerR {
   width: 850px;
 }
+#header #headerR #atendimento {
+  margin-block-end: 0;
+  display: inline;
+}
 
 #header .opcoesHeader {
   display: inline-block;
-  height: fit-content;
-  vertical-align: top;
+  height: 30px;
+  vertical-align: middle;
   margin-left: 3%;
   transform: translateY(60%);
+  background: transparent;
+  border: unset;
+  font-size: 17px;
+  color: white;
+  cursor: pointer;
 }
 #header .opcoesHeader p {
   /*texto*/
@@ -179,7 +188,9 @@ body {
 #header #pesquisa input#botao:hover {
   background-color: #0000003d;
 }
-
+#header #user {
+  padding-bottom: 50px;
+}
 #header #user #botaousuario img {
   width: 45px;
   height: 45px;
@@ -191,7 +202,8 @@ body {
   display: inline-block;
 }
 #header #user #botaoUsuario {
-  padding: 7px;
+  padding: 0;
+  vertical-align: super;
   background-color: transparent;
   border: unset;
   border-radius: 100%;

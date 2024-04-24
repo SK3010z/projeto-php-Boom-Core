@@ -41,7 +41,13 @@
           mysqli_query($conn, $sql);
           $_SESSION["user"] = $_POST["user"];
           $_SESSION["senha"] = $_POST["senha"];
-          header("location: home.php");
+
+          if (isset($_COOKIE['atendimentoNaoLogado'])) {
+            setcookie("atendimentoNaoLogado", "", 0);
+            header("location: atendimento.php");
+          } else {
+            header("location: home.php");
+          }
         }
       } else {
         $errorSenhasDiferentes = true;
@@ -72,18 +78,22 @@
     ?>
    <!-- <div id="container"> -->
 
-     <!-- Caixa de cadastro -->
-     <div class="flex_container">
-       <form method="post">
-         <h1>CADASTRAR</h1>
-        
-        <?php
+   <!-- Caixa de cadastro -->
+   <div id="divAtendimentoNaoLogado">
+     <p id="pAtendimentoNaoLogado">
+     </p>
+   </div>
+   <div class="flex_container">
+     <form method="post">
+       <h1>CADASTRAR</h1>
+
+       <?php
         //nao apagar tudo caso ja exista um item no banco de dados
         //atribuição condicional dos valores dos inputs, caso definida, será o valor do input, caso nao, será vazia
         $oldUser = isset($_POST['user']) ? $_POST['user'] : '';
         $oldEmail = isset($_POST['email']) ? $_POST['email'] : '';
-        $oldPass = isset($_POST['senha']) ? $_POST['senha'] : ''; 
-        $oldPass2 = isset($_POST['senha2']) ? $_POST['senha2'] : ''; 
+        $oldPass = isset($_POST['senha']) ? $_POST['senha'] : '';
+        $oldPass2 = isset($_POST['senha2']) ? $_POST['senha2'] : '';
         echo
         "
           <!-- Nome de usuário -->
@@ -110,31 +120,31 @@
           <button type='button' class='botaoOlho' onclick=\"exibirEsconderSenha('olho2','senha2')\"><img  src='../images/olhoMostrar.png' alt='exibir senha' id='olho2' ></button>
           <input type='password' class='inputs1' id='senha2' name='senha2' minlength='3' maxlength='100' required value='{$oldPass2}'/>
         ";
-         ?>
+        ?>
 
-         <!-- Manter login -->
-         <span id='spanManter'>
-            <input type='checkbox' name='manter' id='manter'>
-            <label for='manter' class='labelSub'>Manter-me conectado</label>
-          </span>
-          <br>
-        
-         <!-- Enviar -->
-         <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
+       <!-- Manter login -->
+       <span id='spanManter'>
+         <input type='checkbox' name='manter' id='manter'>
+         <label for='manter' class='labelSub'>Manter-me conectado</label>
+       </span>
+       <br>
 
-         <!-- Caso falha na conexao com o banco de dados  -->
-         <div id="divFalha">
-           <p id="pFalha">
-           </p>
-         </div>
+       <!-- Enviar -->
+       <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
 
-         <!-- Ja possui uma conta?  -->
-         <span id="spanLogin">
-           <label for="login" class="labelSub">Já possui uma conta?</label>
-           <a href="./login.php" id="login">Entrar</a>
-         </span>
-       </form>
-     </div>
+       <!-- Caso falha na conexao com o banco de dados  -->
+       <div id="divFalha">
+         <p id="pFalha">
+         </p>
+       </div>
+
+       <!-- Ja possui uma conta?  -->
+       <span id="spanLogin">
+         <label for="login" class="labelSub">Já possui uma conta?</label>
+         <a href="./login.php" id="login">Entrar</a>
+       </span>
+     </form>
+   </div>
 
    <!-- </div> -->
  </body>
@@ -143,6 +153,14 @@
  <script src="../js/registro.js"></script>
 
  <?php
+  if (isset($_COOKIE["atendimentoNaoLogado"])) {
+    echo "
+  <script>
+  AtendimentoNaoLogado();
+  </script>
+  ";
+  }
+
   if ($errorConn) {
     echo "
         <script>

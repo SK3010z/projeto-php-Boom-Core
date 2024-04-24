@@ -1,5 +1,19 @@
-incluir o 'AtendimentoNaoLogado()' no registro
+V | incluir o 'AtendimentoNaoLogado()' no registro 
 
-excluir o cookie ao fazer login ou registro
+V | excluir o cookie 'AtendimentoNaoLogado' ao fazer login ou registro
 
-ser redirecionado ao atendimento invés de home quando tiver o cookie AtendimentoNaoLogado
+X | excluir o cookie 'AtendimentoNaoLogado' ao fechar a guia
+
+X | resolver erro de nao conseguir deslogar no 'antedimento.php'
+
+X | ser redirecionado ao atendimento invés de home quando tiver o cookie 'AtendimentoNaoLogado'
+
+X | tela de compra de produtos
+
+X | tela de atendimentos recebidos CASO ADMIN
+
+X | tela de contratar serviço
+
+X | fazer algo com a opção "Manter-me conectado" no login e cadastro
+
+

@@ -39,7 +39,7 @@
       if (isset($_SESSION['user'])) {
         header("location: atendimento.php");
       } else {
-        setcookie("atendimentoNaoLogado", true, time() + 150); //2m30s
+        setcookie("atendimentoNaoLogado", true); //2m30s
         header("location: login.php");
       }
     }

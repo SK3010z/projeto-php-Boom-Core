@@ -8,7 +8,6 @@ if (isset($_POST['logout'])) {
 }
 
 if (isset($_POST["enviar"])) {
-  // AAAAAAAAAAAAAAAAA DA UUM JEITO DE VERIFICAR SE EXISTE NO BANCO DE DADOS E ENT INICIAR A SESSAO
   try {
     include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
 
@@ -26,8 +25,14 @@ if (isset($_POST["enviar"])) {
       //DEFINE os valoroes da SESSAO 
       $_SESSION["user"] = $_POST["user"];
       $_SESSION["senha"] = $linha['senha'];
-      //leva para a PAGINA PRINCIPAL
-      header("Location: home.php");
+      //expira o cookie
+      if (isset($_COOKIE['atendimentoNaoLogado'])) {
+        setcookie("atendimentoNaoLogado", '', 0);
+        header("location: atendimento.php");
+      } else {
+        //leva para a PAGINA PRINCIPAL
+        header("Location: home.php");
+      }
     }
     //caso nao encontre valor correspondente, exibe que o usuario e/ou a senha estão incorretos abaixo do login
     else {
@@ -49,6 +54,7 @@ if (isset($_POST["enviar"])) {
   <!-- CSS  -->
   <link rel="stylesheet" type="text/css" href="../css/login.css" />
   <title>Entrar</title>
+
 </head>
 
 <body>
@@ -111,7 +117,6 @@ if (isset($_POST["enviar"])) {
     </form>
 
   </div>
-
 </body>
 
 </html>
@@ -119,15 +124,16 @@ if (isset($_POST["enviar"])) {
 <script src="../js/login.js"></script>
 
 <?php
-//erro com maior prioridade de aparecer, por isso if e elseif
-//FALHA na CONEXAO com o BANCO DE DADOS
 if (isset($_COOKIE["atendimentoNaoLogado"])) {
   echo "
-        <script>
-          AtendimentoNaoLogado();
-        </script>
-      ";
-} elseif ($errorConn) {
+  <script>
+  AtendimentoNaoLogado();
+  </script>
+  ";
+}
+//erro com maior prioridade de aparecer, por isso if e elseif
+//FALHA na CONEXAO com o BANCO DE DADOS
+if ($errorConn) {
   echo "
         <script>
           falhaConexao();

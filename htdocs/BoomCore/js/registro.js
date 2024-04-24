@@ -66,6 +66,26 @@ function falhaSenhasDiferentes() {
     `;
 }
 
+function AtendimentoNaoLogado() {
+  let falhaDiv = document.getElementById("divAtendimentoNaoLogado");
+  let falhaP = document.getElementById("pAtendimentoNaoLogado");
+  falhaP.innerHTML = "Entre para acessar o atendimento";
+  falhaDiv.style = `
+        background-color: #ff00007e;
+        border-radius: 5px;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        
+
+    `;
+  falhaP.style = `
+        padding: 10px 10px;
+        font-size: 1.2em;
+    `;
+}
+
+
 //false -> senha nao a mostra, true -> senha a mostra
 function exibirEsconderSenha(olho, input) {
   let olhoSenha = document.getElementById(olho);

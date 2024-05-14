@@ -60,6 +60,8 @@
       <span id="opcoesUsuario">
         <?php
         // Se um nome de usuario estiver definido... 
+        
+        // Undefined global variable $_SESSION in C:\xampp\htdocs\BoomCore\php\assets\header.php on line 64 NULL
         if (isset($_SESSION['user'])) {
           //nome do usuario 
           echo "<p class='opcaoUser' style='font-weight: 300;'>{$_SESSION['user']}</p> <br> ";
@@ -84,7 +86,7 @@
       </button>
     </span>
     <!-- notificações  -->
-    <a href="index.php"><img id="notificacao" src="../images/sino.png" title="Notificações" /></a>
+    <a href="#"><img id="notificacao" src="../images/sino.png" title="Notificações" /></a>
   </span>
 </div>
 <?php

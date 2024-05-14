@@ -27,7 +27,7 @@ if (isset($_POST["enviar"])) {
       $_SESSION["senha"] = $linha['senha'];
       //expira o cookie
       if (isset($_COOKIE['atendimentoNaoLogado'])) {
-        setcookie("atendimentoNaoLogado", '', 0);
+        setcookie("atendimentoNaoLogado", '', time() - 3600);
         header("location: atendimento.php");
       } else {
         //leva para a PAGINA PRINCIPAL

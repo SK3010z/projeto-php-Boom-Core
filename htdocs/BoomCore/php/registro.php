@@ -43,7 +43,7 @@
           $_SESSION["senha"] = $_POST["senha"];
 
           if (isset($_COOKIE['atendimentoNaoLogado'])) {
-            setcookie("atendimentoNaoLogado", "", 0);
+            setcookie("atendimentoNaoLogado", "", time() - 3600);
             header("location: atendimento.php");
           } else {
             header("location: home.php");

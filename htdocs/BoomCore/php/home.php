@@ -2,10 +2,6 @@
 session_start();
 include("./assets/conn.php");
 
-if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: login.php");
-}
 if (isset($_POST['delete'])) {
   $idProduto =  $_POST['idProduto'];
   $sqlDel = "DELETE FROM produtos WHERE id = '{$idProduto}'";

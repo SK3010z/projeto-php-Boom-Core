@@ -52,7 +52,7 @@ function AtendimentoNaoLogado() {
     `;
 }
 
-//false -> senha nao a mostra, true -> senha a mostra
+false -> senha nao a mostra, true -> senha a mostra
 let estadoSenha = false;
 function exibirEsconderSenha(olho, input) {
   let olhoSenha = document.getElementById(olho);
@@ -66,3 +66,21 @@ function exibirEsconderSenha(olho, input) {
   }
   estadoSenha = !estadoSenha;
 }
+
+// let estadoSenha = false;
+// function exibirEsconderSenha(olho, input) {
+//   // let olhoSenha = document.getElementById(olho);
+//   // let inputSenha = document.getElementById(input);
+//   if (estadoSenha) {
+//     $(`.${olho}`).src = "../images/olhoMostrar.png";
+//     $(`.${input}`).type = "password";
+//     // olhoSenha.src = "../images/olhoMostrar.png";
+//     // inputSenha.type = "password";
+//   } else {
+//     $(`.${olho}`).src = "../images/olhoFechar.png"
+//     $(`.${input}`). 
+//     olhoSenha.src = "../images/olhofechar.png";
+//     inputSenha.type = "text";
+//   }
+//   estadoSenha = !estadoSenha;
+// }

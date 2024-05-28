@@ -1,3 +1,10 @@
+<?php
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header("Location: login.php");
+}
+?>
+
 <div id="header">
 
   <span id="headerL">
@@ -39,7 +46,7 @@
       if (isset($_SESSION['user'])) {
         header("location: atendimento.php");
       } else {
-        setcookie("atendimentoNaoLogado", true); //2m30s
+        setcookie("atendimentoNaoLogado", true, time() + 150); //2m30s
         header("location: login.php");
       }
     }
@@ -60,7 +67,7 @@
       <span id="opcoesUsuario">
         <?php
         // Se um nome de usuario estiver definido... 
-        
+
         // Undefined global variable $_SESSION in C:\xampp\htdocs\BoomCore\php\assets\header.php on line 64 NULL
         if (isset($_SESSION['user'])) {
           //nome do usuario 
@@ -98,3 +105,5 @@ STYLE
 <style>
   @import url(../css/header.css);
 </style>
+
+<script src="jquery-3.7.1.min.js"></script>

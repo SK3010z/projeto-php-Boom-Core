@@ -66,9 +66,11 @@ function falhaSenhasDiferentes() {
     `;
 }
 
-function AtendimentoNaoLogado() {
+function atendimentoNaoLogado() {
+  console.log("aaa");
   let falhaDiv = document.getElementById("divAtendimentoNaoLogado");
   let falhaP = document.getElementById("pAtendimentoNaoLogado");
+
   falhaP.innerHTML = "Entre para acessar o atendimento";
   falhaDiv.style = `
         background-color: #ff00007e;
@@ -85,6 +87,26 @@ function AtendimentoNaoLogado() {
     `;
 }
 
+function servicosNaoLogado() {
+  console.log("aaaasdsadasdsad");
+  let falhaDiv = document.getElementById("divAtendimentoNaoLogado");
+  let falhaP = document.getElementById("pAtendimentoNaoLogado");
+
+  falhaP.innerHTML = "Entre para acessar os serviços";
+  falhaDiv.style = `
+        background-color: #ff00007e;
+        border-radius: 5px;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        
+
+    `;
+  falhaP.style = `
+        padding: 10px 10px;
+        font-size: 1.2em;
+    `;
+}
 
 //false -> senha nao a mostra, true -> senha a mostra
 function exibirEsconderSenha(olho, input) {
@@ -96,5 +118,5 @@ function exibirEsconderSenha(olho, input) {
   } else {
     olhoSenha.src = "../images/olhoMostrar.png";
     inputSenha.type = "password";
-  } 
+  }
 }

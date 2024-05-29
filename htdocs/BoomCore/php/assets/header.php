@@ -29,14 +29,14 @@ if (isset($_POST['logout'])) {
       <div class="traco"></div>
     </a>
 
-    <!-- Serviços  -->
-    <a id="servicos" class="opcoesHeader" href="servicos.php">
-      <p>Serviços</p>
-      <div class="traco"></div>
-    </a>
-
-    <!-- atendimentos -->
     <form method="POST" id="atendimento">
+      <!-- Serviços  -->
+      <button type="submit" id="servicos" class="opcoesHeader" name="submitServicos">
+        <p>Serviços</p>
+        <div class="traco"></div>
+      </button>
+
+      <!-- atendimentos -->
       <button type="submit" id="atendimentos" class="opcoesHeader" name="submitAtendimentos">
         <p>Atendimento</p>
         <div class="traco"></div>
@@ -44,11 +44,19 @@ if (isset($_POST['logout'])) {
     </form>
     <?php
     if (isset($_POST['submitAtendimentos'])) {
-      if (isset($_SESSION['user'])) {
-        header("location: atendimento.php");
-      } else {
-        setcookie("atendimentoNaoLogado", true, time() + 150); //2m30s
+      if (!isset($_SESSION['user'])) {
+        setcookie("naoLogado", "atendimento.php", time() + 150); //2m30s
         header("location: login.php");
+      } else {
+        header("location: atendimento.php");
+      }
+    }
+    if (isset($_POST['submitServicos'])) {
+      if (!isset($_SESSION['user'])) {
+        setcookie("naoLogado", "servicos.php", time() + 150); //2m30s
+        header("location: login.php");
+      } else {
+        header("location: servicos.php");
       }
     }
     ?>
@@ -108,12 +116,11 @@ STYLE
 </style>
 
 <script>
-  $("#user").hover(function () {
-        $("#opcoesUsuario").show();
-        $("#user").css("padding-bottom", "50px");
-      }, function () {
-        $("#opcoesUsuario").hide();
-        $("#user").css("padding-bottom", "0px");
-      }
-    );
+  $("#user").hover(function() {
+    $("#opcoesUsuario").show();
+    $("#user").css("padding-bottom", "50px");
+  }, function() {
+    $("#opcoesUsuario").hide();
+    $("#user").css("padding-bottom", "0px");
+  });
 </script>

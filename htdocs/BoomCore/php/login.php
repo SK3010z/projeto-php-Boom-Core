@@ -2,9 +2,9 @@
 $errorConn = false;
 $errorValid = false;
 session_start();
-if(isset($_COOKIE["session"])){
-  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
-  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+if (isset($_COOKIE["session"])) {
+  $_SESSION["user"] = explode(" ", $_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ", $_COOKIE["session"])[1];
 }
 if (isset($_POST['logout'])) {
   session_destroy();
@@ -34,8 +34,8 @@ if (isset($_POST["enviar"])) {
         setcookie("session", "{$_SESSION["user"]} {$linha['senha']}", time() + (365 * 24 * 60 * 60)); //nunca expirar
       }
       //expira o cookie
-      if (isset($_COOKIE['atendimentoNaoLogado'])) {
-        setcookie("atendimentoNaoLogado", '', time() - 3600);
+      if (isset($_COOKIE['naoLogado'])) {
+        setcookie("naoLogado", '', time() - 3600);
         header("location: atendimento.php");
       } else {
         //leva para a PAGINA PRINCIPAL
@@ -134,12 +134,20 @@ if (isset($_POST["enviar"])) {
 <script src="../js/login.js"></script>
 
 <?php
-if (isset($_COOKIE["atendimentoNaoLogado"])) {
-  echo "
-  <script>
-  AtendimentoNaoLogado();
-  </script>
-  ";
+if (isset($_COOKIE["naoLogado"])) {
+  if ($_COOKIE["naoLogado"] == "atendimento.php") {
+    echo "
+      <script>
+      atendimentoNaoLogado();
+      </script>
+    ";
+  } else if ($_COOKIE["naoLogado"] == "servicos.php") {
+    echo "
+      <script>
+      servicosNaoLogado();
+      </script>
+    ";
+  }
 }
 //erro com maior prioridade de aparecer, por isso if e elseif
 //FALHA na CONEXAO com o BANCO DE DADOS

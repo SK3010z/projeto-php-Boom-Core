@@ -5,9 +5,9 @@
   $errorUserJaExiste = false;
   $errorEmailJaUtilizado = false;
   $errorSenhasDiferentes = false;
-  if(isset($_COOKIE["session"])){
-    $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
-    $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+  if (isset($_COOKIE["session"])) {
+    $_SESSION["user"] = explode(" ", $_COOKIE["session"])[0];
+    $_SESSION["senha"] = explode(" ", $_COOKIE["session"])[1];
   }
   try {
     //CONEXAO com o BANCO DE DADOS
@@ -164,12 +164,20 @@
  <script src="../js/registro.js"></script>
 
  <?php
-  if (isset($_COOKIE["atendimentoNaoLogado"])) {
-    echo "
-  <script>
-  AtendimentoNaoLogado();
-  </script>
-  ";
+  if (isset($_COOKIE["naoLogado"])) {
+    if ($_COOKIE["naoLogado"] == "atendimento.php") {
+      echo "
+      <script>
+      atendimentoNaoLogado();
+      </script>
+    ";
+    } else if ($_COOKIE["naoLogado"] == "servicos.php") {
+      echo "
+      <script>
+      servicosNaoLogado();
+      </script>
+    ";
+    }
   }
 
   if ($errorConn) {

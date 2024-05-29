@@ -188,9 +188,9 @@ body {
 #header #pesquisa input#botao:hover {
   background-color: #0000003d;
 }
-#header #user {
+/* #header #user {
   padding-bottom: 50px;
-}
+} */
 #header #user #botaousuario img {
   width: 45px;
   height: 45px;
@@ -198,9 +198,6 @@ body {
   cursor: pointer;
 }
 
-#header #user:hover #opcoesUsuario {
-  display: inline-block;
-}
 #header #user #botaoUsuario {
   padding: 0;
   vertical-align: super;
@@ -224,6 +221,9 @@ body {
   padding-top: 10.5px;
   border: 2px solid rgba(255, 255, 255, 0.74);
 }
+/* #header #user:hover #opcoesUsuario {
+  display: inline-block;
+} */
 
 #header #user #opcoesUsuario .opcaoUser {
   background-color: transparent;

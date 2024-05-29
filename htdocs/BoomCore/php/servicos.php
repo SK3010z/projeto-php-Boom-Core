@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_COOKIE["session"])){
+  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+}
 ?>
 
 <html lang="en">
@@ -8,6 +12,7 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/servicos.css">
+  <script src="../js/jquery.js"></script>
   <title>Serviços</title>
 </head>
 

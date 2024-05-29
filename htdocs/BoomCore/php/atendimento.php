@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_COOKIE["session"])){
+  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+}
 if (isset($_POST['enviar'])) {
   include("assets/conn.php"); /* atendimento -> id, nome, email, assunto, mensagem*/
   $nome = $_POST['nome'];
@@ -40,6 +44,8 @@ se nao:
 <head>
   <title>Boom Core</title>
   <link rel="stylesheet" href="../css/atendimento.css" />
+  <script src="../js/jquery.js"></script>
+
 </head>
 
 <body>

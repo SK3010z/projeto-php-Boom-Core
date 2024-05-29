@@ -2,6 +2,10 @@
 $errorConn = false;
 $errorValid = false;
 session_start();
+if(isset($_COOKIE["session"])){
+  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+}
 if (isset($_POST['logout'])) {
   session_destroy();
   header("Location: login.php");
@@ -25,6 +29,10 @@ if (isset($_POST["enviar"])) {
       //DEFINE os valoroes da SESSAO 
       $_SESSION["user"] = $_POST["user"];
       $_SESSION["senha"] = $linha['senha'];
+
+      if (isset($_POST["manter"])) {
+        setcookie("session", "{$_SESSION["user"]} {$linha['senha']}", time() + (365 * 24 * 60 * 60)); //nunca expirar
+      }
       //expira o cookie
       if (isset($_COOKIE['atendimentoNaoLogado'])) {
         setcookie("atendimentoNaoLogado", '', time() - 3600);
@@ -53,6 +61,8 @@ if (isset($_POST["enviar"])) {
   <meta charset="utf-8" />
   <!-- CSS  -->
   <link rel="stylesheet" type="text/css" href="../css/login.css" />
+  <script src="../js/jquery.js"></script>
+
   <title>Entrar</title>
 
 </head>

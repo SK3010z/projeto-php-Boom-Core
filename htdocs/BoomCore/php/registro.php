@@ -5,6 +5,10 @@
   $errorUserJaExiste = false;
   $errorEmailJaUtilizado = false;
   $errorSenhasDiferentes = false;
+  if(isset($_COOKIE["session"])){
+    $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
+    $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+  }
   try {
     //CONEXAO com o BANCO DE DADOS
     include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
@@ -33,14 +37,19 @@
             $errorEmailJaUtilizado = true;
           }
         } else {
-          $hash = password_hash($senha, PASSWORD_DEFAULT);
+          $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
           $sql = "INSERT INTO contas (user, senha, email) VALUES
-                        ('$user', '$hash', '$email')";
+                        ('$user', '$senhaHash', '$email')";
 
           mysqli_query($conn, $sql);
           $_SESSION["user"] = $_POST["user"];
-          $_SESSION["senha"] = $_POST["senha"];
+          $_SESSION["senha"] = $senhaHash;
+
+          if (isset($_POST["manter"])) {
+            setcookie("session", array($_SESSION["user"], $linha['senha']), time() + (365 * 24 * 60 * 60)); //nunca expirar
+
+          }
 
           if (isset($_COOKIE['atendimentoNaoLogado'])) {
             setcookie("atendimentoNaoLogado", "", time() - 3600);
@@ -69,6 +78,8 @@
    <meta charset="utf-8" />
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="../css/registro.css" />
+   <script src="../js/jquery.js"></script>
+
    <title>Cadastrar</title>
  </head>
 

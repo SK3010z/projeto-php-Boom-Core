@@ -52,35 +52,33 @@ function AtendimentoNaoLogado() {
     `;
 }
 
-false -> senha nao a mostra, true -> senha a mostra
-let estadoSenha = false;
-function exibirEsconderSenha(olho, input) {
-  let olhoSenha = document.getElementById(olho);
-  let inputSenha = document.getElementById(input);
-  if (estadoSenha) {
-    olhoSenha.src = "../images/olhoMostrar.png";
-    inputSenha.type = "password";
-  } else {
-    olhoSenha.src = "../images/olhofechar.png";
-    inputSenha.type = "text";
-  }
-  estadoSenha = !estadoSenha;
-}
-
+// false -> senha nao a mostra, true -> senha a mostra
 // let estadoSenha = false;
 // function exibirEsconderSenha(olho, input) {
-//   // let olhoSenha = document.getElementById(olho);
-//   // let inputSenha = document.getElementById(input);
+//   let olhoSenha = document.getElementById(olho);
+//   let inputSenha = document.getElementById(input);
 //   if (estadoSenha) {
-//     $(`.${olho}`).src = "../images/olhoMostrar.png";
-//     $(`.${input}`).type = "password";
-//     // olhoSenha.src = "../images/olhoMostrar.png";
-//     // inputSenha.type = "password";
+//     olhoSenha.src = "../images/olhoMostrar.png";
+//     inputSenha.type = "password";
 //   } else {
-//     $(`.${olho}`).src = "../images/olhoFechar.png"
-//     $(`.${input}`). 
 //     olhoSenha.src = "../images/olhofechar.png";
 //     inputSenha.type = "text";
 //   }
 //   estadoSenha = !estadoSenha;
 // }
+
+let estadoSenha = false;
+function exibirEsconderSenha(olho, input) {
+  if (estadoSenha) {
+    $(`#${olho}`).attr("src", "../images/olhoMostrar.png");
+    $(`#${input}`).attr("type", "password");
+    console.log(`.${input}`);
+  } else {
+    $(`#${olho}`).attr("src", "../images/olhoFechar.png");
+    $(`#${input}`).attr("type", "text");
+
+
+    console.log(`.${olho}`);
+  }
+  estadoSenha = !estadoSenha;
+}

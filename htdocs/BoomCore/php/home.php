@@ -2,6 +2,11 @@
 session_start();
 include("./assets/conn.php");
 
+if(isset($_COOKIE["session"])){
+  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+}
+
 if (isset($_POST['delete'])) {
   $idProduto =  $_POST['idProduto'];
   $sqlDel = "DELETE FROM produtos WHERE id = '{$idProduto}'";
@@ -26,6 +31,8 @@ if (isset($_POST['submitEditProduto'])) {
   <title>BoomCore</title>
   <link rel="icon" href="../images/boom core.png">
   <link rel="stylesheet" href="../css/home.css">
+  <script src="../js/jquery.js"></script>
+
 
 </head>
 

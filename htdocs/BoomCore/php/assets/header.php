@@ -2,6 +2,7 @@
 if (isset($_POST['logout'])) {
   session_destroy();
   header("Location: login.php");
+  setcookie($_SESSION["user"], 0, time() - 3600);
 }
 ?>
 
@@ -106,4 +107,13 @@ STYLE
   @import url(../css/header.css);
 </style>
 
-<script src="jquery-3.7.1.min.js"></script>
+<script>
+  $("#user").hover(function () {
+        $("#opcoesUsuario").show();
+        $("#user").css("padding-bottom", "50px");
+      }, function () {
+        $("#opcoesUsuario").hide();
+        $("#user").css("padding-bottom", "0px");
+      }
+    );
+</script>

@@ -29,37 +29,17 @@ if (isset($_POST['logout'])) {
       <div class="traco"></div>
     </a>
 
-    <form method="POST" id="atendimento">
-      <!-- Serviços  -->
-      <button type="submit" id="servicos" class="opcoesHeader" name="submitServicos">
-        <p>Serviços</p>
-        <div class="traco"></div>
-      </button>
+    <!-- Serviços  -->
+    <a href="servicos.php" id="servicos" class="opcoesHeader">
+      <p>Serviços</p>
+      <div class="traco"></div>
+    </a>
 
-      <!-- atendimentos -->
-      <button type="submit" id="atendimentos" class="opcoesHeader" name="submitAtendimentos">
-        <p>Atendimento</p>
-        <div class="traco"></div>
-      </button>
-    </form>
-    <?php
-    if (isset($_POST['submitAtendimentos'])) {
-      if (!isset($_SESSION['user'])) {
-        setcookie("naoLogado", "atendimento.php", time() + 150); //2m30s
-        header("location: login.php");
-      } else {
-        header("location: atendimento.php");
-      }
-    }
-    if (isset($_POST['submitServicos'])) {
-      if (!isset($_SESSION['user'])) {
-        setcookie("naoLogado", "servicos.php", time() + 150); //2m30s
-        header("location: login.php");
-      } else {
-        header("location: servicos.php");
-      }
-    }
-    ?>
+    <!-- atendimentos -->
+    <a href="atendimento.php" id="atendimentos" class="opcoesHeader">
+      <p>Atendimento</p>
+      <div class="traco"></div>
+    </a>
 
     <!-- pesquisa  -->
     <form action="home.php" id="pesquisa" method="get">
@@ -123,4 +103,11 @@ STYLE
     $("#opcoesUsuario").hide();
     $("#user").css("padding-bottom", "0px");
   });
+
+
+  window.addEventListener('beforeunload', function() {
+    // Define o cookie com uma data de expiração no passado
+    document.cookie = "naoLogado=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+});
+  console.log("uai");
 </script>

@@ -4,6 +4,12 @@ if(isset($_COOKIE["session"])){
   $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
   $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
 }
+
+
+if (!isset($_SESSION['user'])) {
+  setcookie("naoLogado", "servicos.php"); //sessão
+  header("location: login.php");
+}
 ?>
 
 <html lang="en">

@@ -1,9 +1,8 @@
-
-X | excluir o cookie 'AtendimentoNaoLogado' ao fechar a guia
-
 X | tela de compra de produtos
 
 X | tela de atendimentos recebidos CASO ADMIN
+
+X | tela de serviços contratados CASO ADMIN
 
 X | tela de contratar serviço
 

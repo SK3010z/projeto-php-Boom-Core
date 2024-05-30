@@ -2,9 +2,9 @@
 session_start();
 include("./assets/conn.php");
 
-if(isset($_COOKIE["session"])){
-  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
-  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+if (isset($_COOKIE["session"])) {
+  $_SESSION["user"] = explode(" ", $_COOKIE["session"])[0];
+  $_SESSION["senha"] = explode(" ", $_COOKIE["session"])[1];
 }
 
 if (isset($_POST['delete'])) {
@@ -30,6 +30,7 @@ if (isset($_POST['submitEditProduto'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BoomCore</title>
   <link rel="icon" href="../images/boom core.png">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="../css/home.css">
   <script src="../js/jquery.js"></script>
 
@@ -37,13 +38,6 @@ if (isset($_POST['submitEditProduto'])) {
 </head>
 
 <body>
-
-
-
-
-
-
-
 
   <?php include("./assets/header.php"); ?>
 
@@ -105,31 +99,44 @@ if (isset($_POST['submitEditProduto'])) {
   }
 
   ?>
-  <!-- <div id="site"> -->
 
-
+  <h1 id='titulo'>Produtos</h1>
   <?php
   $sql = "SELECT id, preco, descricao, img_url FROM produtos ";
   //EXECUTA o codigo sql
+  
+
 
   //PESQUISA
+  
+  echo <<<HTML
+    <div id='container'>
+  HTML;
+
   if (isset($_GET['pesquisa'])) {
     if (!empty($_GET['promptPesquisa'])) {
       //obtém a pesquisa
       $pesquisa = trim($_GET['promptPesquisa']);
       // aplica a condição da pesquisa no sql 
       $sql = $sql . "WHERE descricao LIKE '%{$pesquisa}%' ";
-      echo "<h1 id='resultados'>Resultados para \"<b>{$pesquisa}</b>\":</h1>";
+      echo <<<HTML
+        <div style='text-align: left'>
+          <h1 id='resultados' 
+          style="font-size: 25px; text-align: left; margin: 15px 0;"
+          ><!-- alterado pelo jquery dps --></h1>
+        </div>
+      HTML;
     }
   }
-
   $select = mysqli_query($conn, $sql);
 
+  echo <<<HTML
+    <script>
+      
+    </script>
+    <div id="produtos">
+  HTML;
 
-  echo "
-  <h1 id='titulo'>Produtos</h1>
-  <div id='container'>
-  ";
   $count = 0;
   while ($produto = mysqli_fetch_assoc($select)) {
     //Informações dos PRODUTOS
@@ -144,12 +151,18 @@ if (isset($_POST['submitEditProduto'])) {
     $editId = "edit{$count}";
     $classeP = "produto{$count}";
     $count++;
-    echo <<<SCRIPT
-
-    SCRIPT;
+    if (isset($_GET['pesquisa'])) {
+      if (!empty($_GET['promptPesquisa'])) {
+        echo <<<HTML
+          <script>
+              $("#resultados").html('Mostrando {$count} resultados para "<b>{$pesquisa}</b>":');
+          </script>
+        HTML;
+      }
+    }
 
     if (isset($_SESSION["user"]) and $_SESSION["user"] == "admin") {
-      $opcoesAdm = <<<OPCOES
+      $opcoesAdm = <<<HTML
           <!-- TRES PONTINHOS -->
           <button  id='p3' onclick="drop('{$opcoesId}','{$classeP}', '{$editId}')"></button>
           
@@ -177,10 +190,10 @@ if (isset($_POST['submitEditProduto'])) {
             <!-- ID do produto -->
             <input type='hidden' value='{$id}' name='idProduto'>
           </form>
-        OPCOES;
+        HTML;
     }
 
-    echo "
+    echo <<<HTML
         <div class='card {$classeP}'>
           {$opcoesAdm}
           <img id='imagemProduto' src='{$img_url}' />
@@ -190,12 +203,11 @@ if (isset($_POST['submitEditProduto'])) {
             <button id='comprar'>Comprar</button>
           </div>
         </div>
-        
-      ";
+      HTML;
   }
   ?>
-
-  </div>
+    </div> <!-- produtos -->
+  </div> <!-- container -->
 
 
 
@@ -206,4 +218,7 @@ if (isset($_POST['submitEditProduto'])) {
 </body>
 
 </html>
-<script src="../js/home.js"></script>
+<script src="../js/home.js">
+  $(selector).text(textString);
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->

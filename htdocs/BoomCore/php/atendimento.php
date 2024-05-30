@@ -13,6 +13,13 @@ if (isset($_POST['enviar'])) {
   $sql = "INSERT INTO atendimento(nome,email,assunto,mensagem) VALUES('$nome','$email','$assunto','$mensagem');";
   $conn->query($sql);
 }
+
+
+if (!isset($_SESSION['user'])) {
+  setcookie("naoLogado", "atendimento.php"); //sessão
+  header("location: login.php");
+}
+
 //TODO MANUAL TELA ATENDIMENTOS ADMIN
 /*
 caso seja admin:

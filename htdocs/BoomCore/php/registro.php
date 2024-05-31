@@ -6,8 +6,10 @@
   $errorEmailJaUtilizado = false;
   $errorSenhasDiferentes = false;
   if (isset($_COOKIE["session"])) {
-    $_SESSION["user"] = explode(" ", $_COOKIE["session"])[0];
-    $_SESSION["senha"] = explode(" ", $_COOKIE["session"])[1];
+    $session_Cookie = explode(" ", $_COOKIE["session"]);
+    $_SESSION["user"] = $session_Cookie[0];
+    $_SESSION["senha"] = $session_Cookie[1];
+    $_SESSION["email"] = $session_Cookie[2];
   }
   try {
     //CONEXAO com o BANCO DE DADOS
@@ -43,11 +45,12 @@
                         ('$user', '$senhaHash', '$email')";
 
           mysqli_query($conn, $sql);
-          $_SESSION["user"] = $_POST["user"];
+          $_SESSION["user"] = $user;
           $_SESSION["senha"] = $senhaHash;
+          $_SESSION["email"] = $email;
 
           if (isset($_POST["manter"])) {
-            setcookie("session", array($_SESSION["user"], $linha['senha']), time() + (365 * 24 * 60 * 60)); //nunca expirar
+            setcookie("session", array($user, $senha, $email), time() + (365 * 24 * 60 * 60)); //nunca expirar
 
           }
 

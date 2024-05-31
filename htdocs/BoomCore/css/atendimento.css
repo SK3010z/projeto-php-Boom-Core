@@ -4,27 +4,7 @@ body {
   background-color: rgb(27, 25, 139);
 }
 
-.cabecalho {
-  position: relative;
-  font-family: "Lucida Sans";
-  font-weight: 400;
-  color: aliceblue;
-  text-align: left;
-  padding: 0 10px;
-}
-.cabecalho h1 {
-  font-family: "Roboto";
-  font-size: 2.7em;
-  font-weight: 900;
-  letter-spacing: 6px;
-  text-align: center;
-  color: white;
-  margin-bottom: 20px;
-}
-.container label{
-  font-size: 20px;
-  font-weight: bold;
-}
+
 
 .container {
   /* position: relative;
@@ -52,6 +32,100 @@ body {
   align-content: center;
 }
 
+.container .cabecalho {
+  position: relative;
+  font-family: "Lucida Sans";
+  font-weight: 400;
+  color: aliceblue;
+  text-align: left;
+  padding: 0 10px;
+}
+.container .cabecalho h1 {
+  font-family: "Roboto";
+  font-size: 2.7em;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+.container .container label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container .cabecalho #enviado{
+  display: none;
+  
+  padding: 10px;
+  margin: 1rem;
+  
+  text-align: center;
+  font-size: 1.5em;
+  
+  background-color: #16cf3e9d;
+  border-radius: 10px;
+}
+
+.container .cabecalho #enviado #redirecionando{
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.container #atendimento_recebido{
+  margin: 10px 0;
+  padding: 8px;
+
+  background-color: #00000050;
+  box-shadow: 4px 4px #00000090;
+
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.container #atendimento_recebido h2{
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.container #atendimento_recebido p   {
+  text-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.container #resposta textarea{
+  background-color: #00000050;
+  box-shadow: 4px 4px #00000090;
+  border: 1px solid white;
+  color: white;
+  font-size: 1em;
+}
+
+.container #resposta button{
+  display: block;
+  width: 80%;
+
+  border: none;
+  border-radius: 20px;
+
+  padding: 3px;
+  margin: 15px auto;
+
+  background-color: #00000060;
+  color: white;
+
+  font-family: "Roboto";
+  font-size: 2em;
+  font-weight: 500;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+ 
 legend {
   text-align: center;
   font-size: 25px;
@@ -90,7 +164,7 @@ textarea {
   min-height: 50px;
 }
 
-button#enviar {
+.container button {
   /* display: inline-block;
   margin: 0 25%;
   background-color: rgb(63, 63, 247);
@@ -117,10 +191,16 @@ button#enviar {
   width: 80%;
   transition: 0.3s;
 }
-button#enviar:hover{
+
+.container button:hover{
   background-color: #9c9c9c40;
 }
 
-button:hover {
-  background-color: rgb(97, 97, 255);
+.disabled{
+  cursor: not-allowed;
+}
+button#enviar.disabled{
+  cursor: not-allowed;
+  background-color: #000000a0;
+
 }

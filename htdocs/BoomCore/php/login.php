@@ -3,8 +3,10 @@ $errorConn = false;
 $errorValid = false;
 session_start();
 if (isset($_COOKIE["session"])) {
-  $_SESSION["user"] = explode(" ", $_COOKIE["session"])[0];
-  $_SESSION["senha"] = explode(" ", $_COOKIE["session"])[1];
+  $session_Cookie = explode(" ", $_COOKIE["session"]);
+  $_SESSION["user"] = $session_Cookie[0];
+  $_SESSION["senha"] = $session_Cookie[1];
+  $_SESSION["email"] = $session_Cookie[2];
 }
 if (isset($_POST['logout'])) {
   session_destroy();
@@ -16,22 +18,23 @@ if (isset($_POST["enviar"])) {
     include("./assets/conn.php"); // $conn -> boomcore -> contas(id, user, senha, email)
 
     //SELECIONA os itens que corresponderem com USER e SENHA nas ENTRADAS do LOGIN
-    $sql = "SELECT user, senha from contas where user = '{$_POST["user"]}'";
+    $sql = "SELECT user, senha, email from contas where user = '{$_POST["user"]}'";
     //EXECUTA o codigo sql
     $select = mysqli_query($conn, $sql);
+    //array associativo do select
     $linha = mysqli_fetch_assoc($select);
     //Se existir algum valor(que é o caso que corresponde), INICIA A SESSAO e leva para a pagina principal
     if (mysqli_num_rows($select) > 0 && password_verify($_POST['senha'], $linha['senha'])) {
-      //array associativo do select
 
       //FECHA a CONEXÃO com o banco de dados
       mysqli_close($conn);
       //DEFINE os valoroes da SESSAO 
       $_SESSION["user"] = $_POST["user"];
-      $_SESSION["senha"] = $linha['senha'];
+      $_SESSION["senha"] = $linha["senha"];
+      $_SESSION["email"] = $linha["email"];
 
       if (isset($_POST["manter"])) {
-        setcookie("session", "{$_SESSION["user"]} {$linha['senha']}", time() + (365 * 24 * 60 * 60)); //nunca expirar
+        setcookie("session", "{$_SESSION["user"]} {$SESSION['senha']} {$SESSION['email']}", time() + (365 * 24 * 60 * 60)); //nunca expirar
       }
       //expira o cookie
       if (isset($_COOKIE['naoLogado'])) {

@@ -12,6 +12,11 @@ body {
   font-family: "Roboto";
 }
 
+body *{
+  font-family: "Roboto";
+
+}
+
 @keyframes start {
   0% {
     width: 0%;

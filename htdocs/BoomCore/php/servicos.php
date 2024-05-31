@@ -1,8 +1,10 @@
 <?php
 session_start();
 if(isset($_COOKIE["session"])){
-  $_SESSION["user"] = explode(" ",$_COOKIE["session"])[0];
-  $_SESSION["senha"] = explode(" ",$_COOKIE["session"])[1];
+  $session_Cookie = explode(" ", $_COOKIE["session"]);
+  $_SESSION["user"] = $session_Cookie[0];
+  $_SESSION["senha"] = $session_Cookie[1];
+  $_SESSION["email"] = $session_Cookie[2];
 }
 
 

@@ -34,12 +34,47 @@ if (isset($_POST['submitEditProduto'])) {
   <link rel="icon" href="../images/boom core.png">
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/compra.css">
   <script src="../js/jquery.js"></script>
 
 
 </head>
 
 <body>
+  <div id="fundo-compra" style="display: none;">
+    <div class="product-page">
+      <div class="product-gallery">
+        <div class="main-image">
+          <img src="https://m.media-amazon.com/images/I/71irWztV+qL.jpg" alt="Main Product Image">
+        </div>
+        <div class="thumbnail-images">
+          <img src="https://i5.walmartimages.com/asr/80b3555b-e4b2-4897-8414-c8e46a7f0db5.4504ee614109b02150cd9f478a7b260d.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff" alt="Thumbnail 1">
+          <img src="https://compujordan.com/image/cache/catalog/products/rampage/Cooler/5-1200x1200.jpg" alt="Thumbnail 2">
+          <img src="https://tse1.mm.bing.net/th?id=OIP.UA1eF6qEDFBhCvI55I_GxAHaHg&pid=Api&P=0&h=180" alt="Thumbnail 3">
+        </div>
+      </div>
+      <div class="product-details">
+        <div class="prod-titu">
+          <h1>
+            Cooler Master Hyper 212 RGB Black Edition CPU Air Cooler, SF120R
+            RGB Fan, 4 CD 2.0 Heatpipes, Anodized Gun-Metal Black, Brushed
+            Nickel Fins, RGB Lighting for AMD Ryzen/Intel LGA1151
+          </h1>
+        </div>
+        <div class="product-price">
+          <span class="valor">R$ 120,00</span>
+        </div>
+        <div class="purchase-options">
+          <button class="buy-now">Comprar</button>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product-description">
+          <p>Cooler muy cool</p>
+          <p>turbina de avião</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <?php include("./assets/header.php"); ?>
 
@@ -106,11 +141,11 @@ if (isset($_POST['submitEditProduto'])) {
   <?php
   $sql = "SELECT id, preco, descricao, img_url FROM produtos ";
   //EXECUTA o codigo sql
-  
+
 
 
   //PESQUISA
-  
+
   echo <<<HTML
     <div id='container'>
   HTML;
@@ -198,17 +233,17 @@ if (isset($_POST['submitEditProduto'])) {
     echo <<<HTML
         <div class='card {$classeP}'>
           {$opcoesAdm}
-          <img id='imagemProduto' src='{$img_url}' />
+          <img class='imagemProduto' src='{$img_url}' />
           <div>
             <h2 title='{$descricao}'>{$descricao}</h2>
             <p class='valor'>R\${$preco}</p><br>
-            <button id='comprar'>Comprar</button>
+            <button class='comprar'>Comprar</button>
           </div>
         </div>
       HTML;
   }
   ?>
-    </div> <!-- produtos -->
+  </div> <!-- produtos -->
   </div> <!-- container -->
 
 
@@ -221,6 +256,5 @@ if (isset($_POST['submitEditProduto'])) {
 
 </html>
 <script src="../js/home.js">
-  $(selector).text(textString);
 </script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->

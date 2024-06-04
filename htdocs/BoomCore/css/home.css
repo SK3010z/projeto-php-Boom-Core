@@ -140,7 +140,7 @@ h1#resultados b {
   display: block !important;
 }
 
-.card #imagemProduto {
+.card .imagemProduto {
   object-fit: contain;
   display: block;
   margin: 40px auto 25px;
@@ -181,7 +181,7 @@ h1#resultados b {
   color: black;
 }
 
-.card button#comprar {
+.card button.comprar {
   background-color: blue;
   height: 36px;
   border: none;
@@ -193,7 +193,7 @@ h1#resultados b {
   border-radius: 4px;
 }
 
-.card button#comprar:hover {
+.card button.comprar:hover {
   background-color: #137de8;
   cursor: pointer;
 }

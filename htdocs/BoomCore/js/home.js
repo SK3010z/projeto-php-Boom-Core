@@ -31,3 +31,13 @@ window.onclick = function (event) {
     }
   }
 };
+
+
+// TODO - OBTER INFORMAÇÕES DE CADA PRODUTO PRA MOSTRAR A TELA 
+$(".comprar, .buy-now").click(function (e) { 
+  e.preventDefault();
+  $("#fundo-compra").toggle();
+  $("body").toggleClass("overflow");
+});
+
+

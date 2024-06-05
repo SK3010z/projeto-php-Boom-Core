@@ -1,148 +1,141 @@
-*{
-    margin: 0;
-    padding: 0;
-    
+* {
+  margin: 0;
+  padding: 0;
 }
-.overflow{
-    overflow: hidden;
+.overflow {
+  overflow: hidden;
 }
-.hidden{
-    opacity: 0;
-
+.hidden {
+  opacity: 0;
 }
 
 #tela-compra {
-    font-family: Arial, sans-serif;
-    background-color: #292942c9;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    display: flex;
-    position: fixed;
-    z-index: 40;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    
-    transition: all .2s ease;
-    
+  font-family: Arial, sans-serif;
+  background-color: #292942c9;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  display: flex;
+  position: fixed;
+  z-index: 40;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  transition: all 0.2s ease;
 }
 
-.product-page{
-    display: block;
-    max-width: 70%;
-    max-height: 80%;
+.product-page {
+  display: block;
+  max-width: 70%;
+  max-height: 80%;
 
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    overflow: hidden;
-
+  overflow: hidden;
 }
 
 .product {
+  display: flex;
 
-    display: flex;
+  padding-bottom: 30px;
 
-    padding-bottom: 30px;
-
-    overflow: auto;
+  overflow: auto;
 }
 
 .product-gallery {
-    width: 45%;
-    height: auto;
-    padding: 20px;
+  width: 45%;
+  height: auto;
+  padding: 20px;
 }
 
 .main-image img {
-    width: 350px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  width: 350px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .thumbnail-images {
-    display: flex;
-    gap: 10px;
-    transform: translateX(15%);
+  display: flex;
+  gap: 10px;
+  transform: translateX(15%);
 }
 
 .thumbnail-images img {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border 0.3s;
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
 }
 
 .thumbnail-images img:hover {
-    border: 2px solid #007BFF;
+  border: 2px solid #007bff;
 }
 
 .product-details {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#fechar_tela_compra{
-    margin-left: auto;
-    margin-bottom: auto;
-    cursor: pointer;
-    color: black;
-    border: unset;
-    background: none;
+#fechar_tela_compra {
+  display: block;
+  margin-left: auto;
+  margin-bottom: auto;
+  cursor: pointer;
+  color: black;
+  border: unset;
+  background: none;
 }
 
 .prod-titu h1 {
-    font-size: 30px;
-    color: #333;
-    
+  font-size: 30px;
+  color: #333;
 }
 
 .product-price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-
 #valor {
-    font-size: 30px;
-    color: black ;
+  font-size: 30px;
+  color: black;
 }
 
 .purchase-options {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .buy-now,
 .add-to-cart {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .buy-now {
-    background-color: #001aaf;
-    color: white;
+  background-color: #001aaf;
+  color: white;
 }
 
 .add-to-cart {
-    background-color: #001aaf;
-    color: white;
+  background-color: #001aaf;
+  color: white;
 }
 
-
 .product-description {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #555;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #555;
 }

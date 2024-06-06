@@ -7,14 +7,13 @@ body {
   background-attachment: fixed;
   background-size: cover;
 
-  width: 100%;
+  width: auto;
   color: white;
   font-family: "Roboto";
 }
 
-body *{
+body * {
   font-family: "Roboto";
-
 }
 
 @keyframes start {
@@ -121,7 +120,8 @@ body *{
 /* headerR (DIREITA) */
 /* opcões do cabeçalho do site  */
 #header #headerR {
-  width: 850px;
+  display: flex;
+  width: 820px;
 }
 #header #headerR #atendimento {
   margin-block-end: 0;
@@ -196,11 +196,9 @@ body *{
 /* #header #user {
   padding-bottom: 50px;
 } */
-#header #user #botaousuario img {
-  width: 45px;
-  height: 45px;
-  vertical-align: top;
-  cursor: pointer;
+
+#header #user {
+  position: relative;
 }
 
 #header #user #botaoUsuario {
@@ -209,6 +207,14 @@ body *{
   background-color: transparent;
   border: unset;
   border-radius: 100%;
+  transform: translateY(20%);
+}
+
+#header #user #botaousuario img {
+  width: 45px;
+  height: 45px;
+  vertical-align: top;
+  cursor: pointer;
 }
 #header #user #botaoUsuario:hover {
   background-color: #0000003d;
@@ -220,8 +226,8 @@ body *{
   background-color: rgba(0, 0, 0, 0.7);
   width: 150px;
   height: min-content;
-  right: 90px;
-  top: 70px;
+  right: 0px;
+  top: 64px;
   border-radius: 10px;
   padding-top: 10.5px;
   border: 2px solid rgba(255, 255, 255, 0.74);
@@ -254,11 +260,54 @@ body *{
 #header #user #opcoesUsuario input.opcaoUser {
   cursor: pointer;
 }
-
 #header #notificacao {
+  background: none;
+  border: none;
+
+  position: relative;
+
+  margin-left: 1.5%;
+}
+#header #notificacao img {
+  cursor: pointer;
   width: 45px;
   height: 45px;
   vertical-align: top;
-  transform: translateY(30%);
-  margin-left: 1.5%;
+  transform: translateY(5%);
+}
+#header #notificacao #tela-notificacoes {
+  display: none;
+
+  width: 300px;
+  height: 400px;
+
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 70px;
+
+  border: 2px solid white;
+  border-radius: 0 0 15px 15px;
+  
+  background-color: rgba(0, 0, 0, 0.7);
+
+}
+
+#header #notificacao #contagem-notificacoes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 25px;
+  height: 25px;
+
+  position: absolute;
+  top: 0;
+  right: -5;
+
+  background-color: #ff2f2f;
+
+  border-radius: 50%;
+
+  color: white;
 }

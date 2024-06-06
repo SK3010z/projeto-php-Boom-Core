@@ -82,7 +82,11 @@ if (isset($_POST['logout'])) {
       </button>
     </span>
     <!-- notificações  -->
-    <a href="#"><img id="notificacao" src="../images/sino.png" title="Notificações" /></a>
+    <button id="notificacao">
+      <img src="../images/sino.png" title="Notificações" />
+      <span id="contagem-notificacoes">99</span>
+      <span id="tela-notificacoes"></span>
+    </button>
   </span>
 </div>
 <?php
@@ -95,19 +99,6 @@ STYLE
   @import url(../css/header.css);
 </style>
 
-<script>
-  $("#user").hover(function() {
-    $("#opcoesUsuario").show();
-    $("#user").css("padding-bottom", "50px");
-  }, function() {
-    $("#opcoesUsuario").hide();
-    $("#user").css("padding-bottom", "0px");
-  });
+<script src="../js/header.js">
 
-
-  window.addEventListener('beforeunload', function() {
-    // Define o cookie com uma data de expiração no passado
-    document.cookie = "naoLogado=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-});
-  console.log("uai");
 </script>

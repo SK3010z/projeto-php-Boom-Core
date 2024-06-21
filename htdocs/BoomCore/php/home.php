@@ -104,7 +104,7 @@ if (isset($_POST['submitEditProduto'])) {
           <h2>Novo produto</h2>
           <input type='number' name='preco' placeholder='preço' step='0.01'> <br>
           <input type='text' name='descricao' placeholder='descrição'> <br>
-          <input type='text' name='detalhes' placeholder='detalhes'> <br>
+          <textarea type='textarea' name='detalhes' placeholder='detalhes'></textarea> <br>
           <label for='imagem'>Imagem: </label><input type='file' name='imagem' placeholder='imagem'>
           
           <br>

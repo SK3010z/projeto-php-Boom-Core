@@ -15,15 +15,16 @@ if (isset($_POST['enviar'])) {
   $email = $_SESSION['email'];
   $assunto = $_POST['assunto'];
   $mensagem = $_POST['mensagem'];
-  $sql = "INSERT INTO atendimento(nome, email, assunto, mensagem, dataHora) 
-          VALUES('$nome', '$email', '$assunto', '$mensagem', '$dataHoraAtual');";
+  $sql = "INSERT INTO atendimento(nome, email, assunto, mensagem, dataHora, respondido) 
+          VALUES('$nome', '$email', '$assunto', '$mensagem', '$dataHoraAtual', 'NAO');";
   $conn->query($sql);
   $enviado = true;
 }
 
 if (isset($_POST["respostaEnviar"])){
+  $resposta = $_POST["resposta"];
   $idAtendimentoAnterior = $_POST["idAtendimento"];
-  $delete = "DELETE FROM atendimento where id = {$idAtendimentoAnterior};";
+  $delete = "UPDATE atendimento SET resposta = '{$resposta}', respondido = 'SIM' where id = {$idAtendimentoAnterior};";
   $conn->query($delete);
 }
 
@@ -82,7 +83,7 @@ se nao:
     </div>
     <?php
     if ($_SESSION["user"] == "admin") {
-      $atendimentos = "SELECT * FROM atendimento order by id desc";
+      $atendimentos = "SELECT * FROM atendimento WHERE respondido = 'NAO' ORDER BY id DESC";
       $select = $conn->query($atendimentos);
       $atendimento_recebido = mysqli_fetch_assoc($select);
 
@@ -111,7 +112,7 @@ se nao:
           </section>
           <p style="font-size: 1.3em;">Responder</p>
           <form action="" method="post" id="resposta">
-            <textarea name=""  cols="30" rows="5" required></textarea>
+            <textarea name="resposta"  cols="30" rows="5" required></textarea>
             <input type="hidden" name="idAtendimento" value="{$id_recebido}">
             <button type="submit" name="respostaEnviar">Enviar</button>
           </form>

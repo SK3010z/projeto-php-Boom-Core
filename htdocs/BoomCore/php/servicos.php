@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("./assets/conn.php");
 if(isset($_COOKIE["session"])){
   $session_Cookie = explode(" ", $_COOKIE["session"]);
   $_SESSION["user"] = $session_Cookie[0];
@@ -12,6 +13,8 @@ if (!isset($_SESSION['user'])) {
   setcookie("naoLogado", "servicos.php"); //sessão
   header("location: login.php");
 }
+
+
 ?>
 
 <html lang="en">

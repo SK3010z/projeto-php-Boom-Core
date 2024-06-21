@@ -82,10 +82,56 @@ if (isset($_POST['logout'])) {
       </button>
     </span>
     <!-- notificações  -->
-    <button id="notificacao">
-      <img src="../images/sino.png" title="Notificações" />
-      <span id="contagem-notificacoes">99</span>
-      <span id="tela-notificacoes"></span>
+    <button id="notificacao" title="Não há notificações no momento">
+      <img src="../images/sino.png" />
+      <span id="contagem-notificacoes" style="display: none;">n</span>
+      <span id="tela-notificacoes">
+        <p>Não há notificações no momento</p>
+        <?php
+        if (isset($_SESSION["user"])) {
+          // id nome email assunto mensagem dataHora respondido resposta
+          $sqlNotificacoes =
+            "SELECT * from atendimento where nome = '{$_SESSION['user']}' AND email = '{$_SESSION['email']}'";
+          $selectNotificacoes = $conn->query($sqlNotificacoes);
+          $qtdNotificacoes = mysqli_num_rows($selectNotificacoes);
+          if ($qtdNotificacoes > 0) {
+
+            echo <<<HTML
+              <script>
+                $('#notificacao img').css('filter', 'none');
+                $('#contagem-notificacoes').show();
+                $('#contagem-notificacoes').text('{$qtdNotificacoes}');
+                $("body").click(function (e) { 
+                  e.preventDefault();
+                  console.log(e);
+                  console.log(e.target);
+                  if (e.target == $botaoNotificacao){
+                    true;
+                  }
+                  
+                }); /* AQUIIIIIIIII EM ALGUM LUGAR */
+              </script>
+            HTML;
+
+            echo <<<HTML
+              <script>
+                $('#tela-notificacoes p').hide();
+              </script>
+            HTML;
+            while ($notificacao = mysqli_fetch_assoc($selectNotificacoes)) {
+              echo <<<HTML
+              <div class='notificacaoMsg'>
+                <p>
+                  Sua pergunta sobre "{$notificacao['assunto']}" foi respondida. Por favor, verifique seu e-mail.
+                </p>
+                <ion-icon class="botaoNotificacao" name="checkmark-done-outline" style="cursor: pointer; display:block" value="{$notificacao['id']}"></ion-icon> 
+              </div>
+              HTML;
+            }
+          }
+        }
+        ?>
+      </span>
     </button>
   </span>
 </div>
@@ -102,3 +148,5 @@ STYLE
 <script src="../js/header.js">
 
 </script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

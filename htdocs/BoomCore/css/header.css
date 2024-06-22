@@ -272,8 +272,10 @@ body * {
   cursor: pointer;
   width: 45px;
   height: 45px;
-  vertical-align: top;
-  transform: translateY(5%);
+
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
 
   filter: brightness(0.5);
 }
@@ -289,9 +291,11 @@ body * {
   top: 70px;
 
   border: 2px solid white;
-  border-radius: 0 0 15px 15px;
+  /* border-radius: 0 0 15px 15px; */
   
   background-color: rgba(0, 0, 0, 0.7);
+    
+  overflow: auto;
 
 }
 
@@ -312,10 +316,28 @@ body * {
   border: 1px solid white;
 }
 
-#header #notificacao #tela-notificacoes .notificacaoMsg ion-icon{
+#header #notificacao #tela-notificacoes .notificacaoMsg .okSubmit{
+  background: none;
+  border: none;
+  position: relative;
+  display: block;
+
+  margin-left: auto;
+  padding: 0;
+
+  cursor: pointer;
+}
+#header #notificacao #tela-notificacoes .notificacaoMsg .okSubmit:hover{
+  background-color: #ffffff40;
+  border-top-left-radius: 5px;
+}
+
+
+#header #notificacao #tela-notificacoes .notificacaoMsg .okSubmit ion-icon{
+  color: white;
   font-size: 28px;
   display: block;
-  margin: 0 3px 3px auto;
+  margin: 0 3px 0px auto;
 }
 
 #header #notificacao #contagem-notificacoes{

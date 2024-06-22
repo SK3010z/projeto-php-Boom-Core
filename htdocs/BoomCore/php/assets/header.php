@@ -4,6 +4,12 @@ if (isset($_POST['logout'])) {
   header("Location: login.php");
   setcookie($_SESSION["user"], 0, time() - 3600);
 }
+
+if (isset($_POST['submitNotificacao'])) {
+  $idExcluir = $_POST['idNotificacao'];
+  $sqlExcluirNotificacao = "DELETE FROM atendimento WHERE id = '{$idExcluir}'";
+  $conn->query($sqlExcluirNotificacao);
+}
 ?>
 
 <div id="header">
@@ -72,7 +78,7 @@ if (isset($_POST['logout'])) {
           // botao pra pagina de login 
           echo "<a class='opcaoUser' href='./login.php'>Entrar</a> <br>";
           // botao pra pagina de Cadastro
-          echo "<a class='opcaoUser' href='./registro.php'>Cadastrar</a>";
+          echo "<a class='opcaoUser' href='./cadastro.php'>Cadastrar</a>";
         }
         ?>
       </span>
@@ -82,7 +88,7 @@ if (isset($_POST['logout'])) {
       </button>
     </span>
     <!-- notificações  -->
-    <button id="notificacao" title="Não há notificações no momento">
+    <span id="notificacao">
       <img src="../images/sino.png" />
       <span id="contagem-notificacoes" style="display: none;">n</span>
       <span id="tela-notificacoes">
@@ -91,7 +97,7 @@ if (isset($_POST['logout'])) {
         if (isset($_SESSION["user"])) {
           // id nome email assunto mensagem dataHora respondido resposta
           $sqlNotificacoes =
-            "SELECT * from atendimento where nome = '{$_SESSION['user']}' AND email = '{$_SESSION['email']}'";
+            "SELECT * from atendimento where nome = '{$_SESSION['user']}' AND email = '{$_SESSION['email']}' AND respondido = 'SIM' ";
           $selectNotificacoes = $conn->query($sqlNotificacoes);
           $qtdNotificacoes = mysqli_num_rows($selectNotificacoes);
           if ($qtdNotificacoes > 0) {
@@ -101,40 +107,43 @@ if (isset($_POST['logout'])) {
                 $('#notificacao img').css('filter', 'none');
                 $('#contagem-notificacoes').show();
                 $('#contagem-notificacoes').text('{$qtdNotificacoes}');
-                $("body").click(function (e) { 
-                  e.preventDefault();
-                  console.log(e);
-                  console.log(e.target);
-                  if (e.target == $botaoNotificacao){
-                    true;
-                  }
-                  
-                }); /* AQUIIIIIIIII EM ALGUM LUGAR */
               </script>
             HTML;
 
             echo <<<HTML
               <script>
-                $('#tela-notificacoes p').hide();
+                $('#tela-notificacoes > p').hide();
               </script>
             HTML;
             while ($notificacao = mysqli_fetch_assoc($selectNotificacoes)) {
               echo <<<HTML
-              <div class='notificacaoMsg'>
-                <p>
-                  Sua pergunta sobre "{$notificacao['assunto']}" foi respondida. Por favor, verifique seu e-mail.
-                </p>
-                <ion-icon class="botaoNotificacao" name="checkmark-done-outline" style="cursor: pointer; display:block" value="{$notificacao['id']}"></ion-icon> 
-              </div>
-              HTML;
+                <div class='notificacaoMsg'>
+                  <p>
+                    Sua pergunta sobre "{$notificacao['assunto']}" foi respondida. Por favor, verifique seu e-mail.
+                  </p>
+                  <form action="" method="post">
+                    <input type="hidden" name="idNotificacao" value="{$notificacao['id']}">
+                    <button type="submit" class = "okSubmit" name="submitNotificacao">
+                      <ion-icon class="botaoNotificacao" name="checkmark-done-outline" value="{$notificacao['id']}"></ion-icon> 
+                    </button>
+                      
+
+                  </form>
+                </div>
+                HTML;
             }
           }
         }
         ?>
       </span>
-    </button>
+    </span>
   </span>
 </div>
+
+
+
+
+
 <?php
 $css = $_SERVER["DOCUMENT_ROOT"] . "/Boomcore/css/header.css";
 echo <<<STYLE

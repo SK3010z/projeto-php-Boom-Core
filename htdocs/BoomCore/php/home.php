@@ -85,9 +85,6 @@ if (isset($_POST['submitEditProduto'])) {
   <?php include("./assets/header.php"); ?>
 
 
-  <form action="" method="get">
-
-  </form>
 
 
   <?php

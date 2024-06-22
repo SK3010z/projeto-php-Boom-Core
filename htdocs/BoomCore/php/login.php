@@ -2,6 +2,11 @@
 $errorConn = false;
 $errorValid = false;
 session_start();
+
+if(isset($_SESSION['user'])){
+  header("location: ./");
+}
+
 if (isset($_COOKIE["session"])) {
   $session_Cookie = explode(" ", $_COOKIE["session"]);
   $_SESSION["user"] = $session_Cookie[0];
@@ -38,8 +43,9 @@ if (isset($_POST["enviar"])) {
       }
       //expira o cookie
       if (isset($_COOKIE['naoLogado'])) {
+        $direcionar = $_COOKIE['naoLogado'];
         setcookie("naoLogado", '', time() - 3600);
-        header("location: atendimento.php");
+        header("location: {$direcionar}");
       } else {
         //leva para a PAGINA PRINCIPAL
         header("Location: home.php");
@@ -124,7 +130,7 @@ if (isset($_POST["enviar"])) {
 
       <span id="spanLogin">
         <label for="login" class="labelSub">Ainda não possui uma conta?</label>
-        <a href="./registro.php" id="login">Cadastrar</a>
+        <a href="./cadastro.php" id="login">Cadastrar</a>
       </span>
 
     </form>

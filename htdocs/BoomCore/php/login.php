@@ -71,6 +71,7 @@ if (isset($_POST["enviar"])) {
   <!-- CSS  -->
   <link rel="stylesheet" type="text/css" href="../css/login.css" />
   <script src="../js/jquery.js"></script>
+  <link rel="icon" href="../images/boom core.png">
 
   <title>Entrar</title>
 

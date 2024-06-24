@@ -71,7 +71,7 @@ if (isset($_POST['submitEditProduto'])) {
           </div>
           <div class="purchase-options">
             <button class="buy-now">Comprar</button>
-            <button class="add-to-cart">Adicionar ao Carrinho</button>
+            <!-- <button class="add-to-cart">Adicionar ao Carrinho</button> -->
           </div>
           <div class="product-description">
           </div>

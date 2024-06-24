@@ -86,6 +86,7 @@
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="../css/registro.css" />
    <script src="../js/jquery.js"></script>
+   <link rel="icon" href="../images/boom core.png">
 
    <title>Cadastrar</title>
  </head>

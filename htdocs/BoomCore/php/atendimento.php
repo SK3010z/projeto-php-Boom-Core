@@ -1,6 +1,18 @@
 <?php
 session_start();
 include("assets/conn.php"); /* $conn > atendimento > id, nome, email, assunto, mensagem*/
+
+include("./vendor/includes/config.php");
+include("./vendor/autoload.php");
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer(true);
+
+
+
 if (isset($_COOKIE["session"])) {
   $session_Cookie = explode(" ", $_COOKIE["session"]);
   $_SESSION["user"] = $session_Cookie[0];
@@ -17,15 +29,56 @@ if (isset($_POST['enviar'])) {
   $mensagem = $_POST['mensagem'];
   $sql = "INSERT INTO atendimento(nome, email, assunto, mensagem, dataHora, respondido) 
           VALUES('$nome', '$email', '$assunto', '$mensagem', '$dataHoraAtual', 'NAO');";
+  
+  
   $conn->query($sql);
   $enviado = true;
 }
 
 if (isset($_POST["respostaEnviar"])){
   $resposta = $_POST["resposta"];
+  $assuntoCliente = $_POST["assuntoCliente"];
+  
+  $mensagem = <<<MENSAGEM
+  Sobre o assunto "$assuntoCliente": <br>
+  <br>
+  $resposta
+  MENSAGEM;
+
+  $emailCliente = $_POST["emailCliente"];
+  $headers = "From: boomcoreoficial@gmail.com";
+
+    
+  try {
+    // Server settings
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = SMTP_HOST;                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = SMTP_USER;                     //SMTP username
+    $mail->Password   = SMTP_PASS;                               //SMTP password
+    $mail->Port       = SMTP_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('boomcoreoficial@gmail.com', 'BoomCore');
+    $mail->addAddress($emailCliente, 'BoomCore');     //Add a recipient
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Atendimento ao cliente - BoomCore';
+    $mail->Body    = $mensagem;
+
+    $mail->send();
+    // echo 'Message has been sent';
+} catch (Exception $e) {
+    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+
+
   $idAtendimentoAnterior = $_POST["idAtendimento"];
-  $delete = "UPDATE atendimento SET resposta = '{$resposta}', respondido = 'SIM' where id = {$idAtendimentoAnterior};";
-  $conn->query($delete);
+  $resposta = "UPDATE atendimento SET resposta = '{$resposta}',respondido = 'SIM' where id = {$idAtendimentoAnterior};";
+  
+  $conn->query($resposta);
 }
 
 if (!isset($_SESSION['user'])) {
@@ -33,31 +86,6 @@ if (!isset($_SESSION['user'])) {
   header("location: login.php");
 }
 
-//TODO MANUAL TELA ATENDIMENTOS ADMIN
-/*
-caso seja admin:
-    tela de atendimentos:
-        obter array com os itens do banco de dados
-        emitir mensagens
-        nova pagina de mensagens a cada 10 mensagens
-        atual = 1
-        SELECT * FROM `produtos` WHERE 1 LIMIT 10 OFFSET (atual-1)*10
-        assocSelect
-        nPags = ceil(n,10)
-        while assocSelect
-            echo html item valores bd
-
-        botoes de mudar de página
-            caso atual == nPags
-                sem botao de proximo
-            se nao, caso atual == 1
-                sem botao de anterior
-            se nao:
-                dois botoes normais
-
-se nao:
-    tela normal
-*/
 ?>
 <html>
 
@@ -65,6 +93,7 @@ se nao:
   <title>Boom Core</title>
   <link rel="stylesheet" href="../css/atendimento.css" />
   <script src="../js/jquery.js"></script>
+  <link rel="icon" href="../images/boom core.png">
 
 
 </head>
@@ -83,7 +112,7 @@ se nao:
     </div>
     <?php
     if ($_SESSION["user"] == "admin") {
-      $atendimentos = "SELECT * FROM atendimento WHERE respondido = 'NAO' ORDER BY id DESC";
+      $atendimentos = "SELECT * FROM atendimento WHERE respondido = 'NAO' ORDER BY id";
       $select = $conn->query($atendimentos);
       $atendimento_recebido = mysqli_fetch_assoc($select);
 
@@ -113,6 +142,8 @@ se nao:
           <p style="font-size: 1.3em;">Responder</p>
           <form action="" method="post" id="resposta">
             <textarea name="resposta"  cols="30" rows="5" required></textarea>
+            <input type="hidden" name="assuntoCliente" value= "{$assunto_recebido}">
+            <input type="hidden" name="emailCliente" value= "{$email_recebido}">
             <input type="hidden" name="idAtendimento" value="{$id_recebido}">
             <button type="submit" name="respostaEnviar">Enviar</button>
           </form>

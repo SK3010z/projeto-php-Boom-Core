@@ -2,6 +2,7 @@
 session_start();
 include("./assets/conn.php");
 
+
 $confirmacao = false;
 if (isset($_COOKIE["session"])) {
   $session_Cookie = explode(" ", $_COOKIE["session"]);
@@ -55,6 +56,7 @@ if (isset($_POST["submitServico"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/boom core.png">
   <link rel="stylesheet" href="../css/servicos.css">
   <script src="../js/jquery.js"></script>
   <title>Serviços</title>

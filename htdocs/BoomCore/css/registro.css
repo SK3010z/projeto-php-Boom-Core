@@ -162,3 +162,8 @@
     }
   }
 }
+
+footer{
+  transform: translateY(5.7em);
+
+}

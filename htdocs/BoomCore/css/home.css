@@ -25,7 +25,7 @@
 #container {
   width: 80%;
 
-  margin: 5px auto 50px;
+  margin: 5px auto 0px;
   padding: 20px;
 
   background-color: #00000060;
@@ -199,4 +199,10 @@ h1#resultados b {
 .card button.comprar:hover {
   background-color: #137de8;
   cursor: pointer;
+}
+
+
+footer{
+  transform: translateY(11.1em);
+
 }

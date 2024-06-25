@@ -204,3 +204,10 @@ button#enviar.disabled{
   background-color: #000000a0;
 
 }
+
+
+
+footer{
+  transform: translateY(5.2em);
+
+}

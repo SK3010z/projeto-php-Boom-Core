@@ -3,7 +3,7 @@ $errorConn = false;
 $errorValid = false;
 session_start();
 
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
   header("location: ./");
 }
 
@@ -78,24 +78,24 @@ if (isset($_POST["enviar"])) {
 </head>
 
 <body>
+  <div id="corpo">
+    <?php
+    include("./assets/header.php");
+    ?>
+    <div id="divAtendimentoNaoLogado">
+      <p id="pAtendimentoNaoLogado">
+      </p>
+    </div>
+    <div class="flex_container">
 
-  <?php
-  include("./assets/header.php");
-  ?>
-  <div id="divAtendimentoNaoLogado">
-    <p id="pAtendimentoNaoLogado">
-    </p>
-  </div>
-  <div class="flex_container">
+      <form method="post">
+        <h1>ENTRAR</h1>
 
-    <form method="post">
-      <h1>ENTRAR</h1>
+        <?php
+        $oldUser = isset($_POST['user']) ? $_POST['user'] : '';
+        $oldSenha = isset($_POST['senha']) ? $_POST['senha'] : '';
 
-      <?php
-      $oldUser = isset($_POST['user']) ? $_POST['user'] : '';
-      $oldSenha = isset($_POST['senha']) ? $_POST['senha'] : '';
-
-      echo "
+        echo "
         <!-- Nome  -->
         <label for='exampleInputEmail1' class='labelInputs1' for='user'>Nome de usuário</label>
         <img src='../images/userLogin.png' alt='usuário' class='iconLabelLogin'>
@@ -109,34 +109,36 @@ if (isset($_POST["enviar"])) {
         <button type='button' class='botaoOlho' onclick=\"exibirEsconderSenha('olho','senha')\"><img  src='../images/olhoMostrar.png' alt='exibir senha' id='olho' ></button>
         <input type='password' class='inputs1' id='senha' name='senha' minlength='3' maxlength='100' required value='{$oldSenha}' />
         "
-      ?>
+        ?>
 
 
 
 
 
-      <span id="spanManter">
-        <input type="checkbox" name="manter" id="manter">
-        <label for="manter" class="labelSub">Manter-me conectado</label>
-      </span>
-      <br>
+        <span id="spanManter">
+          <input type="checkbox" name="manter" id="manter">
+          <label for="manter" class="labelSub">Manter-me conectado</label>
+        </span>
+        <br>
 
-      <!-- enviar -->
-      <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
+        <!-- enviar -->
+        <button type="submit" id="botaoEnviar" name="enviar">Enviar</button>
 
-      <div id="divFalha">
-        <p id="pFalha">
-        </p>
-      </div>
+        <div id="divFalha">
+          <p id="pFalha">
+          </p>
+        </div>
 
-      <span id="spanLogin">
-        <label for="login" class="labelSub">Ainda não possui uma conta?</label>
-        <a href="./cadastro.php" id="login">Cadastrar</a>
-      </span>
+        <span id="spanLogin">
+          <label for="login" class="labelSub">Ainda não possui uma conta?</label>
+          <a href="./cadastro.php" id="login">Cadastrar</a>
+        </span>
 
-    </form>
+      </form>
 
-  </div>
+    </div>
+  </div> <!-- corpo -->
+  <?php include("./assets/footer.php"); ?>
 </body>
 
 </html>

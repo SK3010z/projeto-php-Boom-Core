@@ -1,0 +1,20 @@
+:root {
+  --header-total-height: 121.25px;
+}
+#corpo {
+  position: relative;
+  min-height: calc(100vh - var(--header-total-height));
+  margin-bottom: 10em;
+}
+
+footer {
+    z-index: -1;
+    font-size: 0.9em;
+  background-color: #0008;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8em;
+  text-align: center;
+  padding-top:10px ;
+}

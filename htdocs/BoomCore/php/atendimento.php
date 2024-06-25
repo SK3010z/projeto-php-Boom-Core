@@ -98,7 +98,8 @@ if (!isset($_SESSION['user'])) {
 
 </head>
 
-<body>
+<body>  
+  <div id="corpo">
   <?php include("assets/header.php");
   ?>
 
@@ -177,6 +178,8 @@ if (!isset($_SESSION['user'])) {
 
     ?>
   </div> <!-- container -->
+</div> <!-- corpo -->
+<?php include("./assets/footer.php");?>
 </body>
 
 </html>

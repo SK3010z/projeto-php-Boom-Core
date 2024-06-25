@@ -208,3 +208,8 @@ b{
 .confirmacao button:hover {
   background-color: #0056b3;
 }
+
+footer{
+  transform: translateY(11.7em);
+
+}

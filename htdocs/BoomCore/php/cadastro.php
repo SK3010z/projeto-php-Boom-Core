@@ -91,7 +91,8 @@
    <title>Cadastrar</title>
  </head>
 
- <body>
+ <body>  
+  <div id="corpo">
    <?php
     include("./assets/header.php");
     ?>
@@ -166,6 +167,8 @@
    </div>
 
    <!-- </div> -->
+  </div> <!-- corpo -->
+  <?php include("./assets/footer.php");?>
  </body>
 
  </html>
